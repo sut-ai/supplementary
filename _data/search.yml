@@ -1,0 +1,48 @@
+/supplementary/:
+  category: Page
+  content: ''
+  description: Additional contents and supplementary materials!
+  title: Notes
+  url: /supplementary/
+http://www-math.mit.edu/~rigollet/:
+  category: External
+  content: ''
+  description: ''
+  title: Prof. Philippe Rigollet
+  url: http://www-math.mit.edu/~rigollet/
+https://ocw.mit.edu/:
+  category: External
+  content: ''
+  description: ''
+  title: MIT OCW
+  url: https://ocw.mit.edu/
+? https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/
+: category: External, Course, Prerequisite
+  content: ''
+  description: <p>A great course which covers probability theory from axioms up until
+    basic Markov Chains and Markov Decision Processes. Intructed by the great  <a
+    href="https://www.mit.edu/~jnt/home.html">Prof. John Tsitsiklis</a>, auditing
+    this course is highly suggested for those students who feel uncomfortable with
+    general probability theory.</p>
+  title: MIT6.041-F2010 Probabilistic Systems Analysis & Applied Probability
+  url: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/
+https://ocw.mit.edu/courses/mathematics/18-650-statistics-for-applications-fall-2016/:
+  category: External, Course, Prerequisite
+  content: ''
+  description: <p>A complete course by <a href="http://www-math.mit.edu/~rigollet/">Prof.
+    Philippe Rigollet</a>, covering topics ranging from Parametric Inference to PCA
+    and Generalized Linear Models.</p>
+  title: MIT18.650-F2016 Statistics for Applications
+  url: https://ocw.mit.edu/courses/mathematics/18-650-statistics-for-applications-fall-2016/
+https://sut-ai.github.io/:
+  category: External
+  content: ''
+  description: ''
+  title: CE417
+  url: https://sut-ai.github.io/
+https://www.mit.edu/~jnt/home.html:
+  category: External
+  content: ''
+  description: ''
+  title: Prof. John Tsitsiklis
+  url: https://www.mit.edu/~jnt/home.html
