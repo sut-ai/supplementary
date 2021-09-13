@@ -1,0 +1,35 @@
+title: Supplementary
+
+nav:
+  patch: index/nav.yml
+
+meta:
+  patch: index/meta.yml
+
+config:
+  patch: index/config.yml
+
+header:
+  title: Supplementary
+  description: Additional contents and supplementary materials!
+  background: images/supplementary-header.jpg
+
+footer:
+  background: images/supplementary-header.jpg
+
+prerequisites:
+  label: Prerequisites
+  background: images/supplementary-header.jpg
+  patch: pages/topics/prerequisites.yml
+
+notebooks:
+  label: Notebooks
+  background: images/supplementary-header.jpg
+  content: TODO
+  # patch: pages/topics/notebooks.yml
+
+further-readings:
+  label: Further Readings
+  background: images/supplementary-header.jpg
+  content: TODO
+  # patch: pages/topics/further_readings.yml
