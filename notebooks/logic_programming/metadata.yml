@@ -6,10 +6,14 @@ meta:
     content: Artificial Intelligence, Prolog, Logic Programming
     
 header:
+  background: images/supplementary-header.jpg
   title: Prolog - Gateway to Logic Programming
   description: |
     In this notebook we talk about Prolog basics. We also learn how to benefit from Prolog's power using Python.
     
+footer:
+  background: images/supplementary-header.jpg
+
 authors:
   label:
     position: top
@@ -28,4 +32,4 @@ authors:
 
 comments:
   label: false
-  kind: comment
+  kind: comments
