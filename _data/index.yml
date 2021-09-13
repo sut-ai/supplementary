@@ -75,7 +75,13 @@ prerequisites:
 notebooks:
   label: Notebooks
   background: /supplementary/assets/images/supplementary-header.jpg
-  content: <p>TODO</p>
+  content:
+  - notebook: notebooks/logic_programming
+    link: /supplementary/notebooks/logic_programming/
+    kind: notebook
+    text: <p>Prolog - Gateway to Logic Programming</p>
+    description: <p>In this notebook we talk about Prolog basics. We also learn how
+      to benefit from Prolog's power using Python.</p>
 further-readings:
   label: Further Readings
   background: /supplementary/assets/images/supplementary-header.jpg

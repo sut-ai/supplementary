@@ -4,6 +4,55 @@
   description: Additional contents and supplementary materials!
   title: Notes
   url: /supplementary/
+/supplementary/notebooks/logic_programming/:
+  category: notebook
+  content: ''
+  description: <p>In this notebook we talk about Prolog basics. We also learn how
+    to benefit from Prolog's power using Python.</p>
+  title: <p>Prolog - Gateway to Logic Programming</p>
+  url: /supplementary/notebooks/logic_programming/
+http://dstrohmaier.com/why-learn-prolog-in-2021/:
+  category: External
+  content: ''
+  description: ''
+  title: this article
+  url: http://dstrohmaier.com/why-learn-prolog-in-2021/
+https://en.wikipedia.org/wiki/Declarative_programming:
+  category: External
+  content: ''
+  description: ''
+  title: declarative programming language
+  url: https://en.wikipedia.org/wiki/Declarative_programming
+https://en.wikipedia.org/wiki/First-order_logic:
+  category: External
+  content: ''
+  description: ''
+  title: First-Order Logic
+  url: https://en.wikipedia.org/wiki/First-order_logic
+https://en.wikipedia.org/wiki/Natural_language_processing:
+  category: External
+  content: ''
+  description: ''
+  title: NLP
+  url: https://en.wikipedia.org/wiki/Natural_language_processing
+https://en.wikipedia.org/wiki/Tower_of_Hanoi:
+  category: External
+  content: ''
+  description: ''
+  title: Wikipedia
+  url: https://en.wikipedia.org/wiki/Tower_of_Hanoi
+https://github.com/yuce/pyswip:
+  category: External
+  content: ''
+  description: ''
+  title: https://github.com/yuce/pyswip
+  url: https://github.com/yuce/pyswip
+https://github.com/yuce/pyswip/blob/master/INSTALL.md:
+  category: External
+  content: ''
+  description: ''
+  title: here
+  url: https://github.com/yuce/pyswip/blob/master/INSTALL.md
 https://ocw.mit.edu/:
   category: External
   content: ''
@@ -32,3 +81,21 @@ https://sut-ai.github.io/:
   description: ''
   title: CE417
   url: https://sut-ai.github.io/
+https://www.metalevel.at/prolog:
+  category: External
+  content: ''
+  description: ''
+  title: https://www.metalevel.at/prolog
+  url: https://www.metalevel.at/prolog
+https://www.swi-prolog.org/download/stable:
+  category: External
+  content: ''
+  description: ''
+  title: SWI-Prolog Download
+  url: https://www.swi-prolog.org/download/stable
+https://www.youtube.com/channel/UCFFeNyzCEQDS4KCecugmotg:
+  category: External
+  content: ''
+  description: ''
+  title: The Power of Prolog YouTube Channel
+  url: https://www.youtube.com/channel/UCFFeNyzCEQDS4KCecugmotg

@@ -1,0 +1,783 @@
+---
+layout: content
+metadata: notebooks_logic_programming_metadata
+colab: https://colab.research.google.com/github/sut-ai/supplementary/blob/master/notebooks/logic_programming/index.ipynb
+---
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Prolog">Prolog<a class="anchor-link" href="#Prolog">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Table-of-Contents:">Table of Contents:<a class="anchor-link" href="#Table-of-Contents:">¶</a></h2><ul>
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#what-is-prolog">What is Prolog</a></li>
+<li><a href="#why-learn-prolog">Why Learn Prolog?</a></li>
+<li><a href="#installing-prolog">Installing Prolog</a></li>
+<li><a href="#prolog-101">Prolog 101</a><ul>
+<li><a href="#terminologies">Terminalogies</a></li>
+<li><a href="#simple-example">Simple example</a></li>
+</ul>
+</li>
+<li><a href="#examples">Instersting Prolog examples</a><ul>
+<li><a href="#hanoi">Tower of Hanoi</a></li>
+<li><a href="#coins-problem">Coins Problem</a></li>
+<li><a href="#n-queens">N-Queens</a></li>
+</ul>
+</li>
+<li><a href="#ref">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="what-is-prolog"></a></div><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>because logic was removed from the course’s syllabus and students might be unfamiliar with this topic it’s good to have a prerequisites subsection listing links to required skills and mathematical background such as logic itself, this notebook is trying to fulfill the lack of logic topics in the course.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="what-is-prolog"></a></div><h2 id="What-is-Prolog?">What is Prolog?<a class="anchor-link" href="#What-is-Prolog?">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Prolog is a <strong>logic programming</strong> language. It means that it is different in nature from the general-purpose form of languages like C++, Java, Python, Javascript, etc.</p>
+<p>Prolog is based on <a href="https://en.wikipedia.org/wiki/First-order_logic">First-Order Logic</a> and is purely designed as a <a href="https://en.wikipedia.org/wiki/Declarative_programming">declarative programming language</a>. The logic is expressed in terms of relations, and all the computation is initiated by queries.</p>
+<p>The language is used for theorem proving, designing expert systems, term rewriting, automated planning, <a href="https://en.wikipedia.org/wiki/Natural_language_processing">NLP</a>, and many more interesting fields.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="why-learn-prolog"></a></div><h2 id="Why-Learn-Prolog?">Why Learn Prolog?<a class="anchor-link" href="#Why-Learn-Prolog?">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>Do I get a job by solely learning Prolog? The answer is probably not. Prolog is not a general-purpose language and is currently used only in specific fields.</p>
+</li>
+<li><p>Does learning Prolog change your overall programming skill? Absolutely Yes. It uses a different paradigm than famous languages and teaches you how to tackle problems differently.</p>
+</li>
+<li><p>Does learning prolog help you get a better position in a company? That depends on the type of company. Suppose the company is related to Artificial Intelligence. In that case, your way of logical thinking that you get by learning Prolog and even the Prolog can help you be promoted to a better position.</p>
+</li>
+</ul>
+<p>For other reasons why to learn Prolog, read <a href="http://dstrohmaier.com/why-learn-prolog-in-2021/">this article</a>.</p>
+<p>As a summary, I selected this sentence from the aforementioned article:</p>
+<p>"As a student of computer science [engineering], one can make a decent career by always following the hype, but to stand out, one has to diverge from the well-trodden paths. Those willing to explore unpopular territory have a chance of being ahead of the crowd."</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="installing-prolog"></a></div><h2 id="Installing-Prolog">Installing Prolog<a class="anchor-link" href="#Installing-Prolog">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Actually, Prolog is a standard, and there are different implementations of it. Arguably, the most famous and widely used one is SWI-Prolog. You can download the SWI-Prolog installer from its site.
+<a href="https://www.swi-prolog.org/download/stable">SWI-Prolog Download</a></p>
+<p>If you use Windows, don't forget to <strong>check the 'add swipl to the system PATH for all users' option</strong> during the installation. If you forget to do so, you can manually add <code>C:\Program Files\swipl\bin</code> to the system path, given that you used the default installation path.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are some jupyter notebook kernels available, but they mostly work on particular OS builds. Therefore, we use a python package named pyswip that runs code using SWI-Prolog. You can see the full installation guide <a href="https://github.com/yuce/pyswip/blob/master/INSTALL.md">here</a>, but a simple pip install should suffice.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install pyswip
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyswip</span> <span class="kn">import</span> <span class="n">Prolog</span><span class="p">,</span> <span class="n">registerForeign</span>
+<span class="n">prolog</span> <span class="o">=</span> <span class="n">Prolog</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="prolog-101"></a></div><h2 id="Prolog-101">Prolog 101<a class="anchor-link" href="#Prolog-101">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Like all programming language tutorials, the first thing is "Hello World"!</p>
+<div class="highlight"><pre><span></span><span class="nf">write</span><span class="p">(</span><span class="s s-Atom">'Hello World'</span><span class="p">),</span><span class="s s-Atom">nl</span><span class="p">,</span><span class="nf">write</span><span class="p">(</span><span class="s s-Atom">'Let\'s</span> <span class="nv">Learn</span> <span class="nv">Prolog</span><span class="p">!</span><span class="err">'</span><span class="p">).</span>
+</pre></div>
+<p>Note that all prolog statements must end with dot <code>.</code>.</p>
+<p>As we use pyswip here, we won't need Prolog <code>write</code>, because we can use python <code>print</code> and even use some python functions.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="terminologies"></a></div><h3 id="Terminalogies">Terminalogies<a class="anchor-link" href="#Terminalogies">¶</a></h3><ul>
+<li><strong>Fact</strong>: A fact is a predicate expression that makes a declarative statement about the problem domain. Facts either consist of a particular item or a relation between items.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="s s-Atom">rainy</span><span class="p">.</span>
+
+<span class="nf">father</span><span class="p">(</span><span class="s s-Atom">michael</span> <span class="p">,</span> <span class="s s-Atom">jane</span><span class="p">).</span>
+</pre></div>
+<p>These two statements are both facts. <code>father</code> is a relationship. <code>rainy</code>,<code>michael</code>, and <code>jane</code> are <em>atoms</em> (constants). All <em>atoms</em> must start with <strong>lowercase</strong> letters unless they are enclosed in single quotes <code>'</code>.</p>
+<ul>
+<li><p><strong>Rules</strong>: rules allow us to make conditional statements. They are defined using <code>:-</code> symbol. <code>left :- right1,right2</code> says <strong>IF</strong> <code>right1</code> <strong>and</strong> <code>right2</code> is true, then left is also true. Note that <code>,</code> acts as <em>and</em> operator here.  Also <code>;</code> acts as <em>or</em> operator.</p>
+</li>
+<li><p><strong>Variables</strong>: A Variable is an object we can't name at the time of execution. Variables are <strong>uppercase</strong>.</p>
+</li>
+<li><p><strong>Query</strong>:  In making a query, you ask Prolog whether it can <em>prove</em> that your statement is true. In Prolog, a query is made with <code>?-</code> symbol, but in <code>pyswip</code> we can use <code>query(string)</code>.</p>
+</li>
+</ul>
+<div><a class="anchor" id="simple-example"></a></div><h3 id="Simple-examle">Simple examle<a class="anchor-link" href="#Simple-examle">¶</a></h3><p>Let's see a simple example:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">prolog</span><span class="o">.</span><span class="n">assertz</span><span class="p">(</span><span class="s2">"father(michael,jane)"</span><span class="p">)</span> 
+<span class="n">prolog</span><span class="o">.</span><span class="n">assertz</span><span class="p">(</span><span class="s2">"child(X,Y) :- father(Y,X)"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">solns</span> <span class="ow">in</span> <span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"child(X , Y)"</span><span class="p">):</span> <span class="c1">#X and Y are prolog variables. This two lines simply print all child relationships.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">solns</span><span class="p">[</span><span class="s2">"X"</span><span class="p">]</span> <span class="p">,</span> <span class="s2">"is child of"</span> <span class="p">,</span> <span class="n">solns</span><span class="p">[</span><span class="s2">"Y"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>jane is child of michael
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First line is a <em>fact</em> that says Michael is father of Jane. Second line is a <em>rule</em> that says if Y is a father of X then X is a child of Y. Note that X and Y are variables.</p>
+<p>In the <code>for</code>, we <em>query</em> for all <code>child</code> relationships and <code>print</code> them. Note that the result of <code>query()</code> is a python generator and must be used in a foreach statement or casted into a <code>list</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>consult</code>: You can load a database of prolog statements using <code>consult</code>. It works both in prolog and pyswip. In prolog you can use both    <code>?- consult('file.pl').</code> and <code>['file1.pl'].</code>. In pyswip you can use <code>consult(path)</code> function.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's make a more complicated example and put it in a file named <code>1.pl</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1">% 1.pl</span>
+
+<span class="nf">father</span><span class="p">(</span><span class="s s-Atom">albert</span><span class="p">,</span> <span class="s s-Atom">bob</span><span class="p">).</span>
+<span class="nf">father</span><span class="p">(</span><span class="s s-Atom">albert</span><span class="p">,</span> <span class="s s-Atom">betsy</span><span class="p">).</span>
+<span class="nf">father</span><span class="p">(</span><span class="s s-Atom">albert</span><span class="p">,</span> <span class="s s-Atom">bill</span><span class="p">).</span>
+
+<span class="nf">mother</span><span class="p">(</span><span class="s s-Atom">alice</span><span class="p">,</span> <span class="s s-Atom">bob</span><span class="p">).</span>
+<span class="nf">mother</span><span class="p">(</span><span class="s s-Atom">alice</span><span class="p">,</span> <span class="s s-Atom">betsy</span><span class="p">).</span>
+<span class="nf">mother</span><span class="p">(</span><span class="s s-Atom">alice</span><span class="p">,</span> <span class="s s-Atom">bill</span><span class="p">).</span>
+
+<span class="nf">father</span><span class="p">(</span><span class="s s-Atom">bob</span><span class="p">,</span> <span class="s s-Atom">carl</span><span class="p">).</span>
+<span class="nf">father</span><span class="p">(</span><span class="s s-Atom">bob</span><span class="p">,</span> <span class="s s-Atom">charlie</span><span class="p">).</span>
+
+<span class="nf">parent</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">father</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">);</span> <span class="nf">mother</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">).</span>
+
+<span class="nf">grandparent</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">parent</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Z</span><span class="p">),</span><span class="nf">parent</span><span class="p">(</span><span class="nv">Z</span><span class="p">,</span><span class="nv">Y</span><span class="p">).</span> <span class="c1">%X is grandparent of Y if X is parent of Z and Z is parent of Y</span>
+
+<span class="nf">grandchild</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">parent</span><span class="p">(</span><span class="nv">Z</span><span class="p">,</span><span class="nv">X</span><span class="p">)</span> <span class="p">,</span> <span class="nf">parent</span><span class="p">(</span><span class="nv">Y</span><span class="p">,</span><span class="nv">Z</span><span class="p">).</span> <span class="c1">%X is grandchild of Y if Y is parent of Z and Z is parent of X</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">prolog</span><span class="o">.</span><span class="n">consult</span><span class="p">(</span><span class="s2">"prolog_files/1.pl"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">solns</span> <span class="ow">in</span> <span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"grandparent(albert , X)"</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Albert"</span> <span class="p">,</span> <span class="s2">"is grandparent of"</span> <span class="p">,</span> <span class="n">solns</span><span class="p">[</span><span class="s2">"X"</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">solns</span> <span class="ow">in</span> <span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"grandchild(carl , X)"</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Albert"</span> <span class="p">,</span> <span class="s2">"is grandchild of"</span> <span class="p">,</span> <span class="n">solns</span><span class="p">[</span><span class="s2">"X"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Albert is grandparent of carl
+Albert is grandparent of charlie
+Albert is grandchild of albert
+Albert is grandchild of alice
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="examples"></a></div><h2 id="Interesting-Prolog-Examples">Interesting Prolog Examples<a class="anchor-link" href="#Interesting-Prolog-Examples">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="hanoi"></a></div><h3 id="Tower-of-Hanoi">Tower of Hanoi<a class="anchor-link" href="#Tower-of-Hanoi">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tower of Hanoi is a very famous programming problem that is used to teach recursive functions. You can see the problem definition on <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Wikipedia</a>. Here we try to implement it in Prolog and solve a simple instance of it using pyswip.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1">% hanoi.pl</span>
+
+<span class="nf">hanoi</span><span class="p">(</span><span class="nv">N</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">move</span><span class="p">(</span><span class="nv">N</span><span class="p">,</span> <span class="s s-Atom">left</span><span class="p">,</span> <span class="s s-Atom">right</span><span class="p">,</span> <span class="s s-Atom">center</span><span class="p">).</span>
+<span class="nf">move</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">_</span><span class="p">,</span> <span class="k">_</span><span class="p">,</span> <span class="k">_</span><span class="p">)</span> <span class="p">:-</span> <span class="p">!.</span>
+<span class="nf">move</span><span class="p">(</span><span class="nv">N</span><span class="p">,</span> <span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">,</span> <span class="nv">C</span><span class="p">)</span> <span class="p">:-</span>
+  <span class="nv">M</span> <span class="o">is</span> <span class="nv">N</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+  <span class="nf">move</span><span class="p">(</span><span class="nv">M</span><span class="p">,</span> <span class="nv">A</span><span class="p">,</span> <span class="nv">C</span><span class="p">,</span> <span class="nv">B</span><span class="p">),</span>
+  <span class="nf">notify</span><span class="p">([</span><span class="nv">A</span><span class="p">,</span><span class="nv">B</span><span class="p">]),</span>
+  <span class="nf">move</span><span class="p">(</span><span class="nv">M</span><span class="p">,</span> <span class="nv">C</span><span class="p">,</span> <span class="nv">B</span><span class="p">,</span> <span class="nv">A</span><span class="p">).</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>hanoi(N)</code> will lead to calling <code>move(N)</code>. <code>move (0,_,_,_)</code> is the termination condition of recursive call, and <code>!</code> tells prolog to stop calling the function and backtracking. <code>_</code> matches (unifies) with everything; It is similar to "don't care" in logic circuits. <code>move(N,A,B,C)</code> is the actual recursive formulation of Tower of Hanoi. <code>is</code> operator is the same as <code>=</code> in other languages and here it means "put <code>N-1</code> into <code>M</code>". <code>notify</code> is a function that will be defined in python and we will use pyswip to bind prolog and python code together.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">prolog</span><span class="o">.</span><span class="n">consult</span><span class="p">(</span><span class="s2">"prolog_files/hanoi.pl"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">N</span><span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"move disk from </span><span class="si">%s</span><span class="s2"> pole to </span><span class="si">%s</span><span class="s2"> pole."</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">notify</span><span class="o">.</span><span class="n">arity</span> <span class="o">=</span> <span class="mi">1</span>
+        
+<span class="n">registerForeign</span><span class="p">(</span><span class="n">notify</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"hanoi(</span><span class="si">%d</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">N</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>move disk from left pole to right pole.
+move disk from left pole to center pole.
+move disk from right pole to center pole.
+move disk from left pole to right pole.
+move disk from center pole to left pole.
+move disk from center pole to right pole.
+move disk from left pole to right pole.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>registerForeign</code> is used to make prolog run python's <code>notify</code> function. Also note that as we said before, <code>prolog.query()</code> makes a generator. Generators are not evaluated by default. They must be used in a foreach or casted into list to force python actually evaluate them.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="coins-problem"></a></div><h3 id="Coins-Problem">Coins Problem<a class="anchor-link" href="#Coins-Problem">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In a country, there are coins of 1,2,5,50 and 100. We want to find all the ways to sum at most <code>max_count</code> of these coins to get to a cumulative sum of <code>total</code>. We solve this in <code>coins.pl</code> file.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="p">:-</span> <span class="nf">use_module</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s s-Atom">'bounds'</span><span class="p">)).</span>
+
+<span class="nf">coins</span><span class="p">(</span><span class="nv">S</span><span class="p">,</span> <span class="nv">Count</span><span class="p">,</span> <span class="nv">Total</span><span class="p">)</span> <span class="p">:-</span>
+    <span class="c1">% A=1, B=5, C=10, D=50, E=100</span>
+    <span class="nv">S</span> <span class="o">=</span> <span class="p">[</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">,</span> <span class="nv">C</span><span class="p">,</span> <span class="nv">D</span><span class="p">,</span> <span class="nv">E</span><span class="p">],</span>
+
+    <span class="nv">Av</span> <span class="o">is</span>   <span class="mi">1</span><span class="p">,</span>
+    <span class="nv">Bv</span> <span class="o">is</span>   <span class="mi">5</span><span class="p">,</span>
+    <span class="nv">Cv</span> <span class="o">is</span>  <span class="mi">10</span><span class="p">,</span>
+    <span class="nv">Dv</span> <span class="o">is</span>  <span class="mi">50</span><span class="p">,</span>
+    <span class="nv">Ev</span> <span class="o">is</span> <span class="mi">100</span><span class="p">,</span>
+
+    <span class="nv">Aup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Av</span><span class="p">,</span> <span class="c1">% // means integer division</span>
+    <span class="nv">Bup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Bv</span><span class="p">,</span>
+    <span class="nv">Cup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Cv</span><span class="p">,</span>
+    <span class="nv">Dup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Dv</span><span class="p">,</span>
+    <span class="nv">Eup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Ev</span><span class="p">,</span>
+
+    <span class="nv">A</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Aup</span><span class="p">,</span>
+    <span class="nv">B</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Bup</span><span class="p">,</span>
+    <span class="nv">C</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Cup</span><span class="p">,</span>
+    <span class="nv">D</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Dup</span><span class="p">,</span>
+    <span class="nv">E</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Eup</span><span class="p">,</span>
+
+    <span class="nv">VA</span> <span class="s s-Atom">#=</span> <span class="nv">A</span><span class="o">*</span><span class="nv">Av</span><span class="p">,</span>
+    <span class="nv">VB</span> <span class="s s-Atom">#=</span> <span class="nv">B</span><span class="o">*</span><span class="nv">Bv</span><span class="p">,</span>
+    <span class="nv">VC</span> <span class="s s-Atom">#=</span> <span class="nv">C</span><span class="o">*</span><span class="nv">Cv</span><span class="p">,</span>
+    <span class="nv">VD</span> <span class="s s-Atom">#=</span> <span class="nv">D</span><span class="o">*</span><span class="nv">Dv</span><span class="p">,</span>
+    <span class="nv">VE</span> <span class="s s-Atom">#=</span> <span class="nv">E</span><span class="o">*</span><span class="nv">Ev</span><span class="p">,</span>
+
+    <span class="nf">sum</span><span class="p">(</span><span class="nv">S</span><span class="p">,</span> <span class="s s-Atom">#=</span><span class="p">,</span> <span class="nv">Count</span><span class="p">),</span>
+    <span class="nv">VA</span> <span class="o">+</span> <span class="nv">VB</span> <span class="o">+</span> <span class="nv">VC</span> <span class="o">+</span> <span class="nv">VD</span> <span class="o">+</span> <span class="nv">VE</span> <span class="s s-Atom">#=</span> <span class="nv">Total</span><span class="p">,</span>
+
+    <span class="nf">label</span><span class="p">(</span><span class="nv">S</span><span class="p">).</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>bound</code> library is used to make the search space limited. For example if sum is <code>1000</code>, we could have at most <code>100</code> coins of value <code>10</code>. So <code>C</code> should be between <code>0</code> to <code>100</code>. <code>#=</code> is same as <code>=</code> for algebraic expressions. <code>sum (S,#=,Count)</code> means that sum of all elements in list <code>S</code> should be equal to <code>Count</code>. Elements of <code>S</code> indicate count of each coin.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">prolog</span><span class="o">.</span><span class="n">consult</span><span class="p">(</span><span class="s2">"prolog_files/coins.pl"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">max_count</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">soln</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"coins(S, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">)."</span> <span class="o">%</span> <span class="p">(</span><span class="n">max_count</span><span class="p">,</span><span class="n">total</span><span class="p">))):</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">soln</span><span class="p">[</span><span class="s2">"S"</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2">x</span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">v</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0 0x1 100x5 0x10 0x50 0x100 
+1 5x1 91x5 4x10 0x50 0x100 
+2 10x1 82x5 8x10 0x50 0x100 
+3 15x1 73x5 12x10 0x50 0x100 
+4 15x1 81x5 3x10 1x50 0x100 
+5 20x1 64x5 16x10 0x50 0x100 
+6 20x1 72x5 7x10 1x50 0x100 
+7 25x1 55x5 20x10 0x50 0x100 
+8 25x1 63x5 11x10 1x50 0x100 
+9 25x1 71x5 2x10 2x50 0x100 
+10 25x1 73x5 1x10 0x50 1x100 
+11 30x1 46x5 24x10 0x50 0x100 
+12 30x1 54x5 15x10 1x50 0x100 
+13 30x1 62x5 6x10 2x50 0x100 
+14 30x1 64x5 5x10 0x50 1x100 
+15 35x1 37x5 28x10 0x50 0x100 
+16 35x1 45x5 19x10 1x50 0x100 
+17 35x1 53x5 10x10 2x50 0x100 
+18 35x1 55x5 9x10 0x50 1x100 
+19 35x1 61x5 1x10 3x50 0x100 
+20 35x1 63x5 0x10 1x50 1x100 
+21 40x1 28x5 32x10 0x50 0x100 
+22 40x1 36x5 23x10 1x50 0x100 
+23 40x1 44x5 14x10 2x50 0x100 
+24 40x1 46x5 13x10 0x50 1x100 
+25 40x1 52x5 5x10 3x50 0x100 
+26 40x1 54x5 4x10 1x50 1x100 
+27 45x1 19x5 36x10 0x50 0x100 
+28 45x1 27x5 27x10 1x50 0x100 
+29 45x1 35x5 18x10 2x50 0x100 
+30 45x1 37x5 17x10 0x50 1x100 
+31 45x1 43x5 9x10 3x50 0x100 
+32 45x1 45x5 8x10 1x50 1x100 
+33 45x1 51x5 0x10 4x50 0x100 
+34 50x1 10x5 40x10 0x50 0x100 
+35 50x1 18x5 31x10 1x50 0x100 
+36 50x1 26x5 22x10 2x50 0x100 
+37 50x1 28x5 21x10 0x50 1x100 
+38 50x1 34x5 13x10 3x50 0x100 
+39 50x1 36x5 12x10 1x50 1x100 
+40 50x1 42x5 4x10 4x50 0x100 
+41 50x1 44x5 3x10 2x50 1x100 
+42 50x1 46x5 2x10 0x50 2x100 
+43 55x1 1x5 44x10 0x50 0x100 
+44 55x1 9x5 35x10 1x50 0x100 
+45 55x1 17x5 26x10 2x50 0x100 
+46 55x1 19x5 25x10 0x50 1x100 
+47 55x1 25x5 17x10 3x50 0x100 
+48 55x1 27x5 16x10 1x50 1x100 
+49 55x1 33x5 8x10 4x50 0x100 
+50 55x1 35x5 7x10 2x50 1x100 
+51 55x1 37x5 6x10 0x50 2x100 
+52 60x1 0x5 39x10 1x50 0x100 
+53 60x1 8x5 30x10 2x50 0x100 
+54 60x1 10x5 29x10 0x50 1x100 
+55 60x1 16x5 21x10 3x50 0x100 
+56 60x1 18x5 20x10 1x50 1x100 
+57 60x1 24x5 12x10 4x50 0x100 
+58 60x1 26x5 11x10 2x50 1x100 
+59 60x1 28x5 10x10 0x50 2x100 
+60 60x1 32x5 3x10 5x50 0x100 
+61 60x1 34x5 2x10 3x50 1x100 
+62 60x1 36x5 1x10 1x50 2x100 
+63 65x1 1x5 33x10 0x50 1x100 
+64 65x1 7x5 25x10 3x50 0x100 
+65 65x1 9x5 24x10 1x50 1x100 
+66 65x1 15x5 16x10 4x50 0x100 
+67 65x1 17x5 15x10 2x50 1x100 
+68 65x1 19x5 14x10 0x50 2x100 
+69 65x1 23x5 7x10 5x50 0x100 
+70 65x1 25x5 6x10 3x50 1x100 
+71 65x1 27x5 5x10 1x50 2x100 
+72 70x1 0x5 28x10 1x50 1x100 
+73 70x1 6x5 20x10 4x50 0x100 
+74 70x1 8x5 19x10 2x50 1x100 
+75 70x1 10x5 18x10 0x50 2x100 
+76 70x1 14x5 11x10 5x50 0x100 
+77 70x1 16x5 10x10 3x50 1x100 
+78 70x1 18x5 9x10 1x50 2x100 
+79 70x1 22x5 2x10 6x50 0x100 
+80 70x1 24x5 1x10 4x50 1x100 
+81 70x1 26x5 0x10 2x50 2x100 
+82 75x1 1x5 22x10 0x50 2x100 
+83 75x1 5x5 15x10 5x50 0x100 
+84 75x1 7x5 14x10 3x50 1x100 
+85 75x1 9x5 13x10 1x50 2x100 
+86 75x1 13x5 6x10 6x50 0x100 
+87 75x1 15x5 5x10 4x50 1x100 
+88 75x1 17x5 4x10 2x50 2x100 
+89 75x1 19x5 3x10 0x50 3x100 
+90 80x1 0x5 17x10 1x50 2x100 
+91 80x1 4x5 10x10 6x50 0x100 
+92 80x1 6x5 9x10 4x50 1x100 
+93 80x1 8x5 8x10 2x50 2x100 
+94 80x1 10x5 7x10 0x50 3x100 
+95 80x1 12x5 1x10 7x50 0x100 
+96 80x1 14x5 0x10 5x50 1x100 
+97 85x1 1x5 11x10 0x50 3x100 
+98 85x1 3x5 5x10 7x50 0x100 
+99 85x1 5x5 4x10 5x50 1x100 
+100 85x1 7x5 3x10 3x50 2x100 
+101 85x1 9x5 2x10 1x50 3x100 
+102 90x1 0x5 6x10 1x50 3x100 
+103 90x1 2x5 0x10 8x50 0x100 
+104 95x1 1x5 0x10 0x50 4x100 
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="N-Queens"></a></div><h3 id="N-Queens">N-Queens<a class="anchor-link" href="#N-Queens">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>N-Queens is a famous problem that asks how to put N queens in an $N \times N$ checkboard such that none of them threatens each other. As we know, in each column, there must be one queen, so we encode the state as an N-tuple in which element at index $i$ indicates which row the queen at column $i$ resides in. We can simply model this problem in Prolog like this:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="p">:-</span> <span class="nf">use_module</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s s-Atom">clpfd</span><span class="p">)).</span>
+
+<span class="nf">n_queens</span><span class="p">(</span><span class="nv">N</span><span class="p">,</span> <span class="nv">Qs</span><span class="p">)</span> <span class="p">:-</span>
+        <span class="nf">length</span><span class="p">(</span><span class="nv">Qs</span><span class="p">,</span> <span class="nv">N</span><span class="p">),</span>
+        <span class="nv">Qs</span> <span class="s s-Atom">ins</span> <span class="mf">1.</span><span class="p">.</span><span class="nv">N</span><span class="p">,</span> <span class="c1">%ins is in clpfd library. It check that "each" element of Qs is in range 1 to N</span>
+        <span class="nf">safe_queens</span><span class="p">(</span><span class="nv">Qs</span><span class="p">),</span>
+        <span class="nf">label</span><span class="p">(</span><span class="nv">Qs</span><span class="p">).</span>
+
+<span class="nf">safe_queens</span><span class="p">([]).</span> <span class="c1">%Empty list is a good combination.</span>
+<span class="nf">safe_queens</span><span class="p">([</span><span class="nv">Q</span><span class="p">|</span><span class="nv">Qs</span><span class="p">])</span> <span class="p">:-</span> <span class="nf">safe_queens</span><span class="p">(</span><span class="nv">Qs</span><span class="p">,</span> <span class="nv">Q</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nf">safe_queens</span><span class="p">(</span><span class="nv">Qs</span><span class="p">).</span>
+
+<span class="nf">safe_queens</span><span class="p">([],</span> <span class="k">_</span><span class="p">,</span> <span class="k">_</span><span class="p">).</span> <span class="c1">%Empty list is a good combination.</span>
+<span class="nf">safe_queens</span><span class="p">([</span><span class="nv">Q</span><span class="p">|</span><span class="nv">Qs</span><span class="p">],</span> <span class="nv">Q0</span><span class="p">,</span> <span class="nv">D0</span><span class="p">)</span> <span class="p">:-</span>
+        <span class="nv">Q0</span> <span class="s s-Atom">#\=</span> <span class="nv">Q</span><span class="p">,</span>
+        <span class="nf">abs</span><span class="p">(</span><span class="nv">Q0</span> <span class="o">-</span> <span class="nv">Q</span><span class="p">)</span> <span class="s s-Atom">#\=</span> <span class="nv">D0</span><span class="p">,</span> <span class="c1">%Diagonal Check</span>
+        <span class="nv">D1</span> <span class="s s-Atom">#=</span> <span class="nv">D0</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nf">safe_queens</span><span class="p">(</span><span class="nv">Qs</span><span class="p">,</span> <span class="nv">Q0</span><span class="p">,</span> <span class="nv">D1</span><span class="p">).</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">prolog</span><span class="o">.</span><span class="n">consult</span><span class="p">(</span><span class="s2">"prolog_files/queens.pl"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">soln</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"n_queens(</span><span class="si">%d</span><span class="s2">, Qs)."</span> <span class="o">%</span> <span class="p">(</span><span class="mi">8</span><span class="p">))):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s2">".</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span><span class="n">soln</span><span class="p">[</span><span class="s2">"Qs"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1 .	 [1, 5, 8, 6, 3, 7, 2, 4]
+2 .	 [1, 6, 8, 3, 7, 4, 2, 5]
+3 .	 [1, 7, 4, 6, 8, 2, 5, 3]
+4 .	 [1, 7, 5, 8, 2, 4, 6, 3]
+5 .	 [2, 4, 6, 8, 3, 1, 7, 5]
+6 .	 [2, 5, 7, 1, 3, 8, 6, 4]
+7 .	 [2, 5, 7, 4, 1, 8, 6, 3]
+8 .	 [2, 6, 1, 7, 4, 8, 3, 5]
+9 .	 [2, 6, 8, 3, 1, 4, 7, 5]
+10 .	 [2, 7, 3, 6, 8, 5, 1, 4]
+11 .	 [2, 7, 5, 8, 1, 4, 6, 3]
+12 .	 [2, 8, 6, 1, 3, 5, 7, 4]
+13 .	 [3, 1, 7, 5, 8, 2, 4, 6]
+14 .	 [3, 5, 2, 8, 1, 7, 4, 6]
+15 .	 [3, 5, 2, 8, 6, 4, 7, 1]
+16 .	 [3, 5, 7, 1, 4, 2, 8, 6]
+17 .	 [3, 5, 8, 4, 1, 7, 2, 6]
+18 .	 [3, 6, 2, 5, 8, 1, 7, 4]
+19 .	 [3, 6, 2, 7, 1, 4, 8, 5]
+20 .	 [3, 6, 2, 7, 5, 1, 8, 4]
+21 .	 [3, 6, 4, 1, 8, 5, 7, 2]
+22 .	 [3, 6, 4, 2, 8, 5, 7, 1]
+23 .	 [3, 6, 8, 1, 4, 7, 5, 2]
+24 .	 [3, 6, 8, 1, 5, 7, 2, 4]
+25 .	 [3, 6, 8, 2, 4, 1, 7, 5]
+26 .	 [3, 7, 2, 8, 5, 1, 4, 6]
+27 .	 [3, 7, 2, 8, 6, 4, 1, 5]
+28 .	 [3, 8, 4, 7, 1, 6, 2, 5]
+29 .	 [4, 1, 5, 8, 2, 7, 3, 6]
+30 .	 [4, 1, 5, 8, 6, 3, 7, 2]
+31 .	 [4, 2, 5, 8, 6, 1, 3, 7]
+32 .	 [4, 2, 7, 3, 6, 8, 1, 5]
+33 .	 [4, 2, 7, 3, 6, 8, 5, 1]
+34 .	 [4, 2, 7, 5, 1, 8, 6, 3]
+35 .	 [4, 2, 8, 5, 7, 1, 3, 6]
+36 .	 [4, 2, 8, 6, 1, 3, 5, 7]
+37 .	 [4, 6, 1, 5, 2, 8, 3, 7]
+38 .	 [4, 6, 8, 2, 7, 1, 3, 5]
+39 .	 [4, 6, 8, 3, 1, 7, 5, 2]
+40 .	 [4, 7, 1, 8, 5, 2, 6, 3]
+41 .	 [4, 7, 3, 8, 2, 5, 1, 6]
+42 .	 [4, 7, 5, 2, 6, 1, 3, 8]
+43 .	 [4, 7, 5, 3, 1, 6, 8, 2]
+44 .	 [4, 8, 1, 3, 6, 2, 7, 5]
+45 .	 [4, 8, 1, 5, 7, 2, 6, 3]
+46 .	 [4, 8, 5, 3, 1, 7, 2, 6]
+47 .	 [5, 1, 4, 6, 8, 2, 7, 3]
+48 .	 [5, 1, 8, 4, 2, 7, 3, 6]
+49 .	 [5, 1, 8, 6, 3, 7, 2, 4]
+50 .	 [5, 2, 4, 6, 8, 3, 1, 7]
+51 .	 [5, 2, 4, 7, 3, 8, 6, 1]
+52 .	 [5, 2, 6, 1, 7, 4, 8, 3]
+53 .	 [5, 2, 8, 1, 4, 7, 3, 6]
+54 .	 [5, 3, 1, 6, 8, 2, 4, 7]
+55 .	 [5, 3, 1, 7, 2, 8, 6, 4]
+56 .	 [5, 3, 8, 4, 7, 1, 6, 2]
+57 .	 [5, 7, 1, 3, 8, 6, 4, 2]
+58 .	 [5, 7, 1, 4, 2, 8, 6, 3]
+59 .	 [5, 7, 2, 4, 8, 1, 3, 6]
+60 .	 [5, 7, 2, 6, 3, 1, 4, 8]
+61 .	 [5, 7, 2, 6, 3, 1, 8, 4]
+62 .	 [5, 7, 4, 1, 3, 8, 6, 2]
+63 .	 [5, 8, 4, 1, 3, 6, 2, 7]
+64 .	 [5, 8, 4, 1, 7, 2, 6, 3]
+65 .	 [6, 1, 5, 2, 8, 3, 7, 4]
+66 .	 [6, 2, 7, 1, 3, 5, 8, 4]
+67 .	 [6, 2, 7, 1, 4, 8, 5, 3]
+68 .	 [6, 3, 1, 7, 5, 8, 2, 4]
+69 .	 [6, 3, 1, 8, 4, 2, 7, 5]
+70 .	 [6, 3, 1, 8, 5, 2, 4, 7]
+71 .	 [6, 3, 5, 7, 1, 4, 2, 8]
+72 .	 [6, 3, 5, 8, 1, 4, 2, 7]
+73 .	 [6, 3, 7, 2, 4, 8, 1, 5]
+74 .	 [6, 3, 7, 2, 8, 5, 1, 4]
+75 .	 [6, 3, 7, 4, 1, 8, 2, 5]
+76 .	 [6, 4, 1, 5, 8, 2, 7, 3]
+77 .	 [6, 4, 2, 8, 5, 7, 1, 3]
+78 .	 [6, 4, 7, 1, 3, 5, 2, 8]
+79 .	 [6, 4, 7, 1, 8, 2, 5, 3]
+80 .	 [6, 8, 2, 4, 1, 7, 5, 3]
+81 .	 [7, 1, 3, 8, 6, 4, 2, 5]
+82 .	 [7, 2, 4, 1, 8, 5, 3, 6]
+83 .	 [7, 2, 6, 3, 1, 4, 8, 5]
+84 .	 [7, 3, 1, 6, 8, 5, 2, 4]
+85 .	 [7, 3, 8, 2, 5, 1, 6, 4]
+86 .	 [7, 4, 2, 5, 8, 1, 3, 6]
+87 .	 [7, 4, 2, 8, 6, 1, 3, 5]
+88 .	 [7, 5, 3, 1, 6, 8, 2, 4]
+89 .	 [8, 2, 4, 1, 7, 5, 3, 6]
+90 .	 [8, 2, 5, 3, 1, 7, 4, 6]
+91 .	 [8, 3, 1, 6, 2, 5, 7, 4]
+92 .	 [8, 4, 1, 3, 6, 2, 7, 5]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you can see, it has found all 92 unique solutions of 8-Queen. You can test it with other numbers too. The code we wrote for this problem is much less than its implementation in most general purpose langauges and yet, it is very elegant and can be understood with little to no effort if you are familiar with prolog syntax.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><a class="anchor" id="ref"></a></div><h2 id="Good-References-to-Learn-Prolog,-Pyswip,-and-their-applications:">Good References to Learn Prolog, Pyswip, and their applications:<a class="anchor-link" href="#Good-References-to-Learn-Prolog,-Pyswip,-and-their-applications:">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://www.metalevel.at/prolog">https://www.metalevel.at/prolog</a></li>
+<li><a href="https://github.com/yuce/pyswip">https://github.com/yuce/pyswip</a></li>
+<li><a href="https://www.youtube.com/channel/UCFFeNyzCEQDS4KCecugmotg">The Power of Prolog YouTube Channel</a></li>
+</ul>
+</div>
+</div>
+</div>

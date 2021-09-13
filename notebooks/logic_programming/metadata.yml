@@ -17,7 +17,7 @@ authors:
   kind: people
   content:
     - name: Amirmahdi Namjoo
-      role: C3, HW1, P1
+      role: Author
       contact:
         - link: https://github.com/titansarus
           icon: fab fa-github

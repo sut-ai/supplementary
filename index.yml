@@ -25,8 +25,8 @@ prerequisites:
 notebooks:
   label: Notebooks
   background: images/supplementary-header.jpg
-  content: TODO
-  # patch: pages/topics/notebooks.yml
+  content:
+    patch: notebooks/index.yml
 
 further-readings:
   label: Further Readings
