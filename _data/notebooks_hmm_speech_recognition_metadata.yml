@@ -16,9 +16,12 @@ authors:
   - name: Kourosh Shariat
     role: Author
     contact:
+    - icon: fab fa-github
+      link: https://github.com/cyrus80
     - link: mailto://shariat.kourosh@gmail.com
       icon: fas fa-envelope
     kind: person
+    image: https://github.com/cyrus80.png
 comments:
   label: false
   kind: comments
