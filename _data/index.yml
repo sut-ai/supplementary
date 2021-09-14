@@ -82,6 +82,13 @@ notebooks:
     text: <p>Prolog - Gateway to Logic Programming</p>
     description: <p>In this notebook we talk about Prolog basics. We also learn how
       to benefit from Prolog's power using Python.</p>
+  - notebook: notebooks/hmm_speech_recognition
+    link: /supplementary/notebooks/hmm_speech_recognition/
+    kind: notebook
+    text: <p>HMMs' Applications - Speach Recognition</p>
+    description: <p>In this notebook, we will study how Hidden Markov Models can be
+      applied to speech recognition and introduce some useful automatic speech recognition
+      (ASR) tools.</p>
 further-readings:
   label: Further Readings
   background: /supplementary/assets/images/supplementary-header.jpg

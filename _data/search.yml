@@ -4,6 +4,14 @@
   description: Additional contents and supplementary materials!
   title: Notes
   url: /supplementary/
+/supplementary/notebooks/hmm_speech_recognition/:
+  category: notebook
+  content: ''
+  description: <p>In this notebook, we will study how Hidden Markov Models can be
+    applied to speech recognition and introduce some useful automatic speech recognition
+    (ASR) tools.</p>
+  title: <p>HMMs' Applications - Speach Recognition</p>
+  url: /supplementary/notebooks/hmm_speech_recognition/
 /supplementary/notebooks/logic_programming/:
   category: notebook
   content: ''
@@ -17,30 +25,120 @@ http://dstrohmaier.com/why-learn-prolog-in-2021/:
   description: ''
   title: this article
   url: http://dstrohmaier.com/why-learn-prolog-in-2021/
+http://kaldi-asr.org/:
+  category: External
+  content: ''
+  description: ''
+  title: Kaldi
+  url: http://kaldi-asr.org/
+http://kaldi-asr.org/doc:
+  category: External
+  content: ''
+  description: ''
+  title: docs
+  url: http://kaldi-asr.org/doc
+http://kaldi-asr.org/doc/hmm.html:
+  category: External
+  content: ''
+  description: ''
+  title: Here
+  url: http://kaldi-asr.org/doc/hmm.html
+http://people.csail.mit.edu/sshum/talks/ivector_tutorial_interspeech_27Aug2011.pdf:
+  category: PDF
+  content: ''
+  description: ''
+  title: i-vectors
+  url: http://people.csail.mit.edu/sshum/talks/ivector_tutorial_interspeech_27Aug2011.pdf
+http://www.cs.umd.edu/~djacobs/CMSC828/ApplicationsHMMs.pdf:
+  category: PDF
+  content: ''
+  description: ''
+  title: example
+  url: http://www.cs.umd.edu/~djacobs/CMSC828/ApplicationsHMMs.pdf
+http://www.danielpovey.com/kaldi-lectures.html:
+  category: External
+  content: ''
+  description: ''
+  title: Lecture slides on speech recognition with Kaldi
+  url: http://www.danielpovey.com/kaldi-lectures.html
+https://cs.nyu.edu/~mohri/pub/hbka.pdf:
+  category: PDF
+  content: ''
+  description: ''
+  title: paper
+  url: https://cs.nyu.edu/~mohri/pub/hbka.pdf
+https://en.wikipedia.org/wiki/Cepstral_mean_and_variance_normalization:
+  category: External
+  content: ''
+  description: ''
+  title: CMVN
+  url: https://en.wikipedia.org/wiki/Cepstral_mean_and_variance_normalization
 https://en.wikipedia.org/wiki/Declarative_programming:
   category: External
   content: ''
   description: ''
   title: declarative programming language
   url: https://en.wikipedia.org/wiki/Declarative_programming
+https://en.wikipedia.org/wiki/Discrete_Fourier_transform:
+  category: External
+  content: ''
+  description: ''
+  title: fourier transform
+  url: https://en.wikipedia.org/wiki/Discrete_Fourier_transform
 https://en.wikipedia.org/wiki/First-order_logic:
   category: External
   content: ''
   description: ''
   title: First-Order Logic
   url: https://en.wikipedia.org/wiki/First-order_logic
+https://en.wikipedia.org/wiki/Mel-frequency_cepstrum:
+  category: External
+  content: ''
+  description: ''
+  title: MFCC
+  url: https://en.wikipedia.org/wiki/Mel-frequency_cepstrum
 https://en.wikipedia.org/wiki/Natural_language_processing:
   category: External
   content: ''
   description: ''
   title: NLP
   url: https://en.wikipedia.org/wiki/Natural_language_processing
+https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem:
+  category: External
+  content: ''
+  description: ''
+  title: Nyquist's rate
+  url: https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem
+https://en.wikipedia.org/wiki/Stochastic_process:
+  category: External
+  content: ''
+  description: ''
+  title: stochastic process
+  url: https://en.wikipedia.org/wiki/Stochastic_process
 https://en.wikipedia.org/wiki/Tower_of_Hanoi:
   category: External
   content: ''
   description: ''
   title: Wikipedia
   url: https://en.wikipedia.org/wiki/Tower_of_Hanoi
+https://en.wikipedia.org/wiki/WAV:
+  category: External
+  content: ''
+  description: ''
+  title: .wav
+  url: https://en.wikipedia.org/wiki/WAV
+https://github.com/Jakobovski/free-spoken-digit-dataset:
+  category: External
+  content: ''
+  description: ''
+  title: Free Spoken Digit Dataset (FSDD)
+  url: https://github.com/Jakobovski/free-spoken-digit-dataset
+https://github.com/pykaldi/pykaldi:
+  category: External
+  content: ''
+  description: ''
+  title: Pykaldi
+  url: https://github.com/pykaldi/pykaldi
 https://github.com/yuce/pyswip:
   category: External
   content: ''
@@ -53,6 +151,12 @@ https://github.com/yuce/pyswip/blob/master/INSTALL.md:
   description: ''
   title: here
   url: https://github.com/yuce/pyswip/blob/master/INSTALL.md
+https://mi.eng.cam.ac.uk/~mjfg/mjfg_NOW.pdf:
+  category: PDF
+  content: ''
+  description: ''
+  title: A detailed survey on the applications of HMMs in ASR
+  url: https://mi.eng.cam.ac.uk/~mjfg/mjfg_NOW.pdf
 https://ocw.mit.edu/:
   category: External
   content: ''
@@ -81,6 +185,18 @@ https://sut-ai.github.io/:
   description: ''
   title: CE417
   url: https://sut-ai.github.io/
+https://towardsdatascience.com/how-to-start-with-kaldi-and-speech-recognition-a9b7670ffff6:
+  category: External
+  content: ''
+  description: ''
+  title: A quick overview on the general process of speech recognition and Kaldi
+  url: https://towardsdatascience.com/how-to-start-with-kaldi-and-speech-recognition-a9b7670ffff6
+https://www.mdpi.com/2227-7072/6/2/36:
+  category: External
+  content: ''
+  description: ''
+  title: example
+  url: https://www.mdpi.com/2227-7072/6/2/36
 https://www.metalevel.at/prolog:
   category: External
   content: ''
@@ -99,3 +215,9 @@ https://www.youtube.com/channel/UCFFeNyzCEQDS4KCecugmotg:
   description: ''
   title: The Power of Prolog YouTube Channel
   url: https://www.youtube.com/channel/UCFFeNyzCEQDS4KCecugmotg
+https://youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0:
+  category: External
+  content: ''
+  description: ''
+  title: Audio Signal Processing for Machine Learning
+  url: https://youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0

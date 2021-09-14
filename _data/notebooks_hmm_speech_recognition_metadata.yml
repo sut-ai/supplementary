@@ -1,0 +1,24 @@
+title: HMM Speech Recognition
+meta:
+- name: keywords
+  content: Artificial Intelligence, Hidden Markov Models, Speech Recognition, Kaldi
+header:
+  title: <p>HMMs' Applications - Speach Recognition</p>
+  description: <p>In this notebook, we will study how Hidden Markov Models can be
+    applied to speech recognition and introduce some useful automatic speech recognition
+    (ASR) tools.</p>
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+  - name: Kourosh Shariat
+    role: Author
+    contact:
+    - link: mailto://shariat.kourosh@gmail.com
+      icon: fas fa-envelope
+    kind: person
+comments:
+  label: false
+  kind: comments

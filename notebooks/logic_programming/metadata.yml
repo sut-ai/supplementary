@@ -9,7 +9,7 @@ header:
   title: Prolog - Gateway to Logic Programming
   description: |
     In this notebook we talk about Prolog basics. We also learn how to benefit from Prolog's power using Python.
-    
+
 authors:
   label:
     position: top
@@ -28,4 +28,4 @@ authors:
 
 comments:
   label: false
-  kind: comment
+  kind: comments
