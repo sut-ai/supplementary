@@ -26,4 +26,4 @@ jobs:
           allow_empty_commit: true
           publish_dir: .
           
-          exclude_assets: '.github,README.md,LICENSE'
+          exclude_assets: '.github,README.md,LICENSE,.gitignore'
