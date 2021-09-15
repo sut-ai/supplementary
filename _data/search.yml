@@ -1,9 +1,9 @@
-/:
+/supplementary/:
   category: External
   content: ''
   description: ''
   title: Supplementary
-  url: /
+  url: /supplementary/
 /supplementary/notebooks/hmm_speech_recognition/:
   category: notebook
   content: ''
