@@ -18,7 +18,7 @@ nav:
   - link: https://sut-ai.github.io/pages/problem_sets/
     text: Problem Sets
   - link: https://sut-ai.github.io/pages/team/
-    text: Educational Team
+    text: Team
 meta:
 - name: keywords
   content: "Webifier, Sharif University of Technology, Mohammad Hossein Rohban, Markov\
@@ -44,6 +44,9 @@ footer:
 prerequisites:
   label: Prerequisites
   background: /supplementary/assets/images/supplementary-header.jpg
+  ds_algorithms:
+    label: Datastructures & Algorithms
+    content: ''
   prob_stats:
     label: Probability and Statistics
     content: '<p>About half of this course hinges around a general understanding of
