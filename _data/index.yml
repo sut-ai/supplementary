@@ -44,6 +44,47 @@ footer:
 prerequisites:
   label: Prerequisites
   background: /supplementary/assets/index/images/supplementary-header.jpg
+  math:
+    label: Mathematics
+    content: "<p>One can argue that Artificial Intelligence is nothing but pure mathematics!\
+      \ The more math you know, the easier studying this course and any other \nengineering\
+      \ course would be for you. No significant background in mathematics is necessary\
+      \ for taking this course, but students are expected to be \nfamiliar with basic\
+      \ Calculus. In addition, knowing some Linear Algebra is a plus.</p>"
+    calculus:
+      label: Calculus
+      content: <p>If you feel uncomfortable with (Multivariate) Calculus, these courses
+        and materials can be helpful:</p>
+      links:
+        kind: block
+        label: false
+        content:
+        - link: https://ocw.mit.edu/courses/mathematics/18-01-single-variable-calculus-fall-2006/
+          text: MIT18.02-F2010 Multivariable Calculus
+          description: <p>An introductory calculus course by Prof. David Jerison,
+            covering differentiation and integration of functions of one variable,
+            with applications.</p>
+          kind: Course, Prerequisite
+          icon: fas fa-chalkboard-teacher
+        - link: https://ocw.mit.edu/courses/mathematics/18-02sc-multivariable-calculus-fall-2010/
+          text: MIT18.02-F2010 Multivariable Calculus
+          description: <p>A course by Prof. Denis Auroux that covers differential,
+            integral and vector calculus for functions of more than one variable.
+            These mathematical tools and methods are used extensively in the physical
+            sciences, engineering, economics and computer graphics.</p>
+          kind: Course, Prerequisite
+          icon: fas fa-chalkboard-teacher
+        - link: https://www.pearson.com/nl/en_NL/higher-education/subject-catalogue/mathematics/Calculus-A-Complete-Course-Adams-10e.html
+          text: 'Calculus: A Complete Course, by Robert A. Adams & Christopher Essex'
+          description: <p>This book covers all of Undergraduate Level Calculus and
+            is highly praised for providing complete and precise statements of theorems,
+            using geometric reasoning in applied problems, and for offering a range
+            of applications across the sciences.</p>
+          icon: fas fa-book
+          kind: Textbook, Prerequisite
+  ds_algorithms:
+    label: Datastructures & Algorithms
+    content: ''
   prob_stats:
     label: Probability and Statistics
     content: '<p>About half of this course hinges around a general understanding of
@@ -139,9 +180,6 @@ prerequisites:
             assumed to know calculus and a little linear algebra.</p>
           kind: Textbook, Prerequisite
           icon: fas fa-book
-  ds_algorithms:
-    label: Datastructures & Algorithms
-    content: ''
 notebooks:
   label: Notebooks
   background: /supplementary/assets/index/images/supplementary-header.jpg

@@ -195,6 +195,22 @@ https://ocw.mit.edu/:
     who feel uncomfortable with general probability theory.</p>
   title: MIT6.041-F2010 Probabilistic Systems Analysis & Applied Probability
   url: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/
+https://ocw.mit.edu/courses/mathematics/18-01-single-variable-calculus-fall-2006/:
+  category: Course, Prerequisite
+  content: ''
+  description: <p>An introductory calculus course by Prof. David Jerison, covering
+    differentiation and integration of functions of one variable, with applications.</p>
+  title: MIT18.02-F2010 Multivariable Calculus
+  url: https://ocw.mit.edu/courses/mathematics/18-01-single-variable-calculus-fall-2006/
+https://ocw.mit.edu/courses/mathematics/18-02sc-multivariable-calculus-fall-2010/:
+  category: Course, Prerequisite
+  content: ''
+  description: <p>A course by Prof. Denis Auroux that covers differential, integral
+    and vector calculus for functions of more than one variable. These mathematical
+    tools and methods are used extensively in the physical sciences, engineering,
+    economics and computer graphics.</p>
+  title: MIT18.02-F2010 Multivariable Calculus
+  url: https://ocw.mit.edu/courses/mathematics/18-02sc-multivariable-calculus-fall-2010/
 https://ocw.mit.edu/courses/mathematics/18-650-statistics-for-applications-fall-2016/:
   category: Course, Prerequisite
   content: ''
@@ -250,6 +266,15 @@ https://www.metalevel.at/prolog:
   description: ''
   title: https://www.metalevel.at/prolog
   url: https://www.metalevel.at/prolog
+https://www.pearson.com/nl/en_NL/higher-education/subject-catalogue/mathematics/Calculus-A-Complete-Course-Adams-10e.html:
+  category: Textbook, Prerequisite
+  content: ''
+  description: <p>This book covers all of Undergraduate Level Calculus and is highly
+    praised for providing complete and precise statements of theorems, using geometric
+    reasoning in applied problems, and for offering a range of applications across
+    the sciences.</p>
+  title: 'Calculus: A Complete Course, by Robert A. Adams & Christopher Essex'
+  url: https://www.pearson.com/nl/en_NL/higher-education/subject-catalogue/mathematics/Calculus-A-Complete-Course-Adams-10e.html
 https://www.pearson.com/store/p/first-course-in-probability-a/P100000865710/9780134753683:
   category: Textbook, Prerequisite
   content: ''
