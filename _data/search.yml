@@ -1,9 +1,9 @@
-/supplementary/index/:
-  category: Page
+/:
+  category: External
   content: ''
-  description: Additional contents and supplementary materials!
+  description: ''
   title: Supplementary
-  url: /supplementary/index/
+  url: /
 /supplementary/notebooks/hmm_speech_recognition/:
   category: notebook
   content: ''
