@@ -10,10 +10,10 @@ nav:
     text: Lectures
   - link: https://sut-ai.github.io/notes/
     text: Notes
-  - index: index
+  - index: index/index
     text: Supplementary
     description: Additional contents and supplementary materials!
-    link: /supplementary/
+    link: /supplementary/index/
     kind: Page
   - link: https://sut-ai.github.io/pages/problem_sets/
     text: Problem Sets
@@ -38,12 +38,12 @@ config:
 header:
   title: <p>Supplementary</p>
   description: <p>Additional contents and supplementary materials!</p>
-  background: /supplementary/assets/images/supplementary-header.jpg
+  background: /supplementary/assets/index/images/supplementary-header.jpg
 footer:
-  background: /supplementary/assets/images/supplementary-header.jpg
+  background: /supplementary/assets/index/images/supplementary-header.jpg
 prerequisites:
   label: Prerequisites
-  background: /supplementary/assets/images/supplementary-header.jpg
+  background: /supplementary/assets/index/images/supplementary-header.jpg
   ds_algorithms:
     label: Datastructures & Algorithms
     content: ''
@@ -144,7 +144,7 @@ prerequisites:
           icon: fas fa-book
 notebooks:
   label: Notebooks
-  background: /supplementary/assets/images/supplementary-header.jpg
+  background: /supplementary/assets/index/images/supplementary-header.jpg
   content:
   - notebook: notebooks/logic_programming
     link: /supplementary/notebooks/logic_programming/
@@ -161,5 +161,5 @@ notebooks:
       (ASR) tools.</p>
 further-readings:
   label: Further Readings
-  background: /supplementary/assets/images/supplementary-header.jpg
+  background: /supplementary/assets/index/images/supplementary-header.jpg
   content: <p>TODO</p>
