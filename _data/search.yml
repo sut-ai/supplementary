@@ -151,6 +151,29 @@ https://github.com/yuce/pyswip/blob/master/INSTALL.md:
   description: ''
   title: here
   url: https://github.com/yuce/pyswip/blob/master/INSTALL.md
+https://link.springer.com/book/10.1007/978-0-387-21736-9:
+  category: Textbook, Prerequisite
+  content: ''
+  description: <p>This book covers a much wider range of topics than a typical introductory
+    text on mathematical statistics. It includes modern topics like nonparametric
+    curve estimation, bootstrapping and classification, topics that are usually relegated
+    to follow-up courses. The reader is assumed to know calculus and a little linear
+    algebra.</p>
+  title: 'All of Statistics: A Concise Course in Statistical Inference, by Larry Wasserman'
+  url: https://link.springer.com/book/10.1007/978-0-387-21736-9
+https://maktabkhooneh.org/:
+  category: Course Repository
+  content: ''
+  description: <p>Repository professional courses taught in Farsi</p>
+  title: maktabkhoone
+  url: https://maktabkhooneh.org/
+? https://maktabkhooneh.org/course/%D8%A2%D9%85%D8%A7%D8%B1-%D8%A7%D8%AD%D8%AA%D9%85%D8%A7%D9%84-%D9%85%D9%87%D9%86%D8%AF%D8%B3%DB%8C-mk627/
+: category: Course, Prerequisite
+  content: ''
+  description: <p>A complete course on probability and statistics, intended for computer
+    engineering students.</p>
+  title: Prof. A. Sharifi's Engineering probability and statistics course
+  url: https://maktabkhooneh.org/course/%D8%A2%D9%85%D8%A7%D8%B1-%D8%A7%D8%AD%D8%AA%D9%85%D8%A7%D9%84-%D9%85%D9%87%D9%86%D8%AF%D8%B3%DB%8C-mk627/
 https://mi.eng.cam.ac.uk/~mjfg/mjfg_NOW.pdf:
   category: PDF
   content: ''
@@ -158,13 +181,13 @@ https://mi.eng.cam.ac.uk/~mjfg/mjfg_NOW.pdf:
   title: A detailed survey on the applications of HMMs in ASR
   url: https://mi.eng.cam.ac.uk/~mjfg/mjfg_NOW.pdf
 https://ocw.mit.edu/:
-  category: External
+  category: Course Repository
   content: ''
-  description: ''
+  description: <p>Massive repository of free MIT courses</p>
   title: MIT OCW
   url: https://ocw.mit.edu/
 ? https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/
-: category: External, Course, Prerequisite
+: category: Course, Prerequisite
   content: ''
   description: <p>A thorough course that covers probability theory from axioms up
     until basic Markov Chains and Markov Decision Processes. Instructed by the great
@@ -173,7 +196,7 @@ https://ocw.mit.edu/:
   title: MIT6.041-F2010 Probabilistic Systems Analysis & Applied Probability
   url: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/
 https://ocw.mit.edu/courses/mathematics/18-650-statistics-for-applications-fall-2016/:
-  category: External, Course, Prerequisite
+  category: Course, Prerequisite
   content: ''
   description: <p>A complete course by Prof. Philippe Rigollet, covering topics ranging
     from Parametric Inference to PCA and Generalized Linear Models.</p>
@@ -203,6 +226,14 @@ https://www.metalevel.at/prolog:
   description: ''
   title: https://www.metalevel.at/prolog
   url: https://www.metalevel.at/prolog
+https://www.pearson.com/store/p/first-course-in-probability-a/P100000865710/9780134753683:
+  category: External
+  content: ''
+  description: <p>features clear and intuitive explanations of the mathematics of
+    probability theory, outstanding problem sets, and a variety of diverse examples
+    and applications. This book only assumes a background in elementary calculus.</p>
+  title: A First Course in Probability, by Sheldon M. Ross
+  url: https://www.pearson.com/store/p/first-course-in-probability-a/P100000865710/9780134753683
 https://www.swi-prolog.org/download/stable:
   category: External
   content: ''

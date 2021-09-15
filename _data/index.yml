@@ -36,42 +36,98 @@ prerequisites:
   background: /supplementary/assets/images/supplementary-header.jpg
   prob_stats:
     label: Probability and Statistics
-    description:
-      label: false
-      content: '<p>About half of this course hinges around a general understanding
-        of probability theory and some essential statistical tools such as MLEs and
-        Confidence Intervals.
+    content: '<p>About half of this course hinges around a general understanding of
+      probability theory and some essential
 
-        Although most of the materials in this course are self-contained and usually
-        do a retouch on these fundamental concepts, it is highly suggested that students
-        who take this course, already have a strong background in both probability
-        and statistics.</p>
+      statistical tools such as MLEs and Confidence Intervals.Although most of the
+      materials in this course are
 
-        <p>There are a number of excellent courses available online covering these
-        topics. A skim through the material or lectures of such courses might be a
-        perfect way to review and fill in the gaps of your probabilistic and statistical
-        sense!</p>
+      self-contained and usually do a retouch on these fundamental concepts, it is
+      highly suggested that students
 
-        <p>The following two courses from <a href="https://ocw.mit.edu/">MIT OCW</a>,
+      who take this course, already have a strong background in both probability and
+      statistics.</p>'
+    english_courses:
+      label: Courses
+      content: '<p>There are a number of excellent courses available online covering
+        these topics. A skim through the material or
+
+        lectures of such courses might be a perfect way to review and fill in the
+        gaps of your probabilistic and
+
+        statistical knowledge!</p>
+
+        <p>The following two courses from <a data-bs-html="true" data-bs-toggle="tooltip"
+        description="Massive repository of free MIT courses" href="https://ocw.mit.edu/"
+        kind="Course Repository" title="&lt;p&gt;Massive repository of free MIT courses&lt;/p&gt;">MIT
+        OCW</a>,
+
         are a great start:</p>'
-    content:
-      kind: block
+      courses:
+        kind: block
+        label: false
+        content:
+        - link: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/
+          text: MIT6.041-F2010 Probabilistic Systems Analysis & Applied Probability
+          description: <p>A thorough course that covers probability theory from axioms
+            up until basic Markov Chains and Markov Decision Processes. Instructed
+            by the great Prof. John Tsitsiklis, auditing this course is highly suggested
+            for those students who feel uncomfortable with general probability theory.</p>
+          kind: Course, Prerequisite
+          icon: fas fa-chalkboard-teacher
+        - link: https://ocw.mit.edu/courses/mathematics/18-650-statistics-for-applications-fall-2016/
+          text: MIT18.650-F2016 Statistics for Applications
+          description: <p>A complete course by Prof. Philippe Rigollet, covering topics
+            ranging from Parametric Inference to PCA and Generalized Linear Models.</p>
+          kind: Course, Prerequisite
+          icon: fas fa-chalkboard-teacher
+    farsi_courses:
       label: false
-      content:
-      - link: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/
-        text: MIT6.041-F2010 Probabilistic Systems Analysis & Applied Probability
-        description: <p>A thorough course that covers probability theory from axioms
-          up until basic Markov Chains and Markov Decision Processes. Instructed by
-          the great Prof. John Tsitsiklis, auditing this course is highly suggested
-          for those students who feel uncomfortable with general probability theory.</p>
-        kind: External, Course, Prerequisite
-        icon: fas fa-link
-      - link: https://ocw.mit.edu/courses/mathematics/18-650-statistics-for-applications-fall-2016/
-        text: MIT18.650-F2016 Statistics for Applications
-        description: <p>A complete course by Prof. Philippe Rigollet, covering topics
-          ranging from Parametric Inference to PCA and Generalized Linear Models.</p>
-        kind: External, Course, Prerequisite
-        icon: fas fa-link
+      content: '<p>If you are looking for courses taught in Farsi,
+
+        <a data-bs-html="true" data-bs-toggle="tooltip" description="A complete course
+        on probability and statistics, intended for computer engineering students."
+        href="https://maktabkhooneh.org/course/%D8%A2%D9%85%D8%A7%D8%B1-%D8%A7%D8%AD%D8%AA%D9%85%D8%A7%D9%84-%D9%85%D9%87%D9%86%D8%AF%D8%B3%DB%8C-mk627/"
+        kind="Course, Prerequisite" title="&lt;p&gt;A complete course on probability
+        and statistics, intended for computer engineering students.&lt;/p&gt;"><i
+        aria-hidden="true" class="fas fa-chalkboard-teacher"></i> Prof. A. Sharifi''s
+        Engineering probability and statistics course</a>
+
+        on <a data-bs-html="true" data-bs-toggle="tooltip" description="Repository
+        professional courses taught in Farsi" href="https://maktabkhooneh.org/" kind="Course
+        Repository" title="&lt;p&gt;Repository professional courses taught in Farsi&lt;/p&gt;">maktabkhoone</a>
+
+        is highly suggested.</p>'
+    textbooks:
+      label: Textbooks
+      content: '<p>There is no doubt that consulting one of the numerous well-known
+        textbooks on each of these subjects is also a
+
+        great way to ensure a concrete understanding of probability and statistics.
+        The following is a list of suggested
+
+        references to checkout:</p>'
+      links:
+        kind: block
+        label: false
+        content:
+        - link: https://www.pearson.com/store/p/first-course-in-probability-a/P100000865710/9780134753683
+          text: A First Course in Probability, by Sheldon M. Ross
+          description: <p>features clear and intuitive explanations of the mathematics
+            of probability theory, outstanding problem sets, and a variety of diverse
+            examples and applications. This book only assumes a background in elementary
+            calculus.</p>
+          icon: fas fa-book
+        - link: https://link.springer.com/book/10.1007/978-0-387-21736-9
+          text: 'All of Statistics: A Concise Course in Statistical Inference, by
+            Larry Wasserman'
+          description: <p>This book covers a much wider range of topics than a typical
+            introductory text on mathematical statistics. It includes modern topics
+            like nonparametric curve estimation, bootstrapping and classification,
+            topics that are usually relegated to follow-up courses. The reader is
+            assumed to know calculus and a little linear algebra.</p>
+          kind: Textbook, Prerequisite
+          icon: fas fa-book
 notebooks:
   label: Notebooks
   background: /supplementary/assets/images/supplementary-header.jpg

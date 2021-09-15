@@ -20,7 +20,7 @@ footer:
 prerequisites:
   label: Prerequisites
   background: images/supplementary-header.jpg
-  patch: index/topics/prerequisites.yml
+  patch: index/topics/prerequisites/index.yml
 
 notebooks:
   label: Notebooks
