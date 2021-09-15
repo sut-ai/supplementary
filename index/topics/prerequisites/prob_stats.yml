@@ -60,6 +60,7 @@ prob_stats:
             problem sets, and a variety of diverse examples and applications. This book only assumes a background in
             elementary calculus.
           icon: fas fa-book
+          kind: Textbook, Prerequisite
         - link: https://link.springer.com/book/10.1007/978-0-387-21736-9
           text: "All of Statistics: A Concise Course in Statistical Inference, by Larry Wasserman"
           description: This book covers a much wider range of topics than a typical introductory text on mathematical

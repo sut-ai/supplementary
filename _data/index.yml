@@ -118,6 +118,7 @@ prerequisites:
             examples and applications. This book only assumes a background in elementary
             calculus.</p>
           icon: fas fa-book
+          kind: Textbook, Prerequisite
         - link: https://link.springer.com/book/10.1007/978-0-387-21736-9
           text: 'All of Statistics: A Concise Course in Statistical Inference, by
             Larry Wasserman'
