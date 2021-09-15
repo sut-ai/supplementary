@@ -14,7 +14,7 @@ math:
       label: false
       content:
       - link: https://ocw.mit.edu/courses/mathematics/18-01-single-variable-calculus-fall-2006/
-        text: MIT18.02-F2010 Multivariable Calculus
+        text: MIT18.01-F2006 Single Variable Calculus
         description: An introductory calculus course by Prof. David Jerison, covering differentiation and integration of functions of one variable, with 
           applications. 
         kind: Course, Prerequisite
