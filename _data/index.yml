@@ -44,9 +44,6 @@ footer:
 prerequisites:
   label: Prerequisites
   background: /supplementary/assets/index/images/supplementary-header.jpg
-  ds_algorithms:
-    label: Datastructures & Algorithms
-    content: ''
   prob_stats:
     label: Probability and Statistics
     content: '<p>About half of this course hinges around a general understanding of
@@ -142,6 +139,9 @@ prerequisites:
             assumed to know calculus and a little linear algebra.</p>
           kind: Textbook, Prerequisite
           icon: fas fa-book
+  ds_algorithms:
+    label: Datastructures & Algorithms
+    content: ''
 notebooks:
   label: Notebooks
   background: /supplementary/assets/index/images/supplementary-header.jpg
