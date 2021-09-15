@@ -8,7 +8,7 @@ content:
     text: Lectures
   - link: https://sut-ai.github.io/notes/
     text: Notes
-  - index: index
+  - index: index/index
     text: Supplementary
   - link: https://sut-ai.github.io/pages/problem_sets/
     text: Problem Sets

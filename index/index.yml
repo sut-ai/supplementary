@@ -12,24 +12,24 @@ config:
 header:
   title: Supplementary
   description: Additional contents and supplementary materials!
-  background: images/supplementary-header.jpg
+  background: index/images/supplementary-header.jpg
 
 footer:
-  background: images/supplementary-header.jpg
+  background: index/images/supplementary-header.jpg
 
 prerequisites:
   label: Prerequisites
-  background: images/supplementary-header.jpg
+  background: index/images/supplementary-header.jpg
   patch: index/topics/prerequisites/index.yml
 
 notebooks:
   label: Notebooks
-  background: images/supplementary-header.jpg
+  background: index/images/supplementary-header.jpg
   content:
     patch: notebooks/index.yml
 
 further-readings:
   label: Further Readings
-  background: images/supplementary-header.jpg
+  background: index/images/supplementary-header.jpg
   content: TODO
   # patch: pages/topics/further_readings.yml
