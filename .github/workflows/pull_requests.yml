@@ -14,3 +14,5 @@ jobs:
 
       - name: Webify
         uses: webifier/build@master
+        with:
+          index: index/index.yml
