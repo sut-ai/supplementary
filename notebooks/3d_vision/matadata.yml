@@ -1,0 +1,25 @@
+title: 3D Computer Vision # shown on browser tab
+
+header:
+    title: 3D Computer Vision # title of your notebook
+    description: This notebook intruduces 3D Computer Vision and pointclouds, famous neural networks and adversarial attacks in this field.
+
+authors:
+    label: 
+        position: top
+    content:
+    # list of notebook authors
+    - name: Kimia Noorbakhsh
+      role: Teacher Assistant
+      contact:
+      # list of contact information
+      - link: https://github.com/kimianoorbakhsh
+        icon: fab fa-github
+      # optionally add other contact information like  
+      # - link: <change this> # contact link
+      #   icon: <change this> # awsomefont tag for link (check: https://fontawesome.com/v5.15/icons)
+
+comments:
+    # enable comments for your post
+    label: false
+    kind: comments
