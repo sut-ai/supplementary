@@ -1,0 +1,28 @@
+title: Introduction to Big Data
+
+meta:
+  - name: keywords
+    content: Big Data, ML
+
+header:
+    title: <change this> # title of your notebook
+    description: |
+      <change this>
+
+authors:
+    label: 
+      position: top
+    content:
+    - name: Alireza Tajmirriahi
+      role: Author
+      contact:
+      - link: https://github.com/AlirezaT99
+        icon: fab fa-github
+      - link: https://www.linkedin.com/in/alireza-tajmirriahi
+        icon: fab fa-linkedin
+      - link: mailto://artajmirriahi99@gmail.com
+        icon: fas fa-envelope
+
+comments:
+    label: false
+    kind: comments
