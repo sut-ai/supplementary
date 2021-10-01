@@ -1,18 +1,20 @@
-title: Introduction to Big Data
+title: Big Data Intro
 
 meta:
   - name: keywords
     content: Big Data, ML
 
 header:
-    title: <change this> # title of your notebook
-    description: |
-      <change this>
+  title: Introduction to Big Data
+  description: |
+    <change this>
 
 authors:
-    label: 
-      position: top
-    content:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
     - name: Alireza Tajmirriahi
       role: Author
       contact:
@@ -24,5 +26,5 @@ authors:
         icon: fas fa-envelope
 
 comments:
-    label: false
-    kind: comments
+  label: false
+  kind: comments
