@@ -1,0 +1,29 @@
+title: Adversarial attacks and robustness
+
+meta:
+  - name: keywords
+    content: Artificial Intelligence, Adversarial attacks, robustness
+    
+header:
+  title: Adversarial attacks and robustness
+  description: |
+    In this notebook we talk about diffrent kinds of attacks on machine learning and how to resist them.
+
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+    - name: matinamehdizadeh
+      role: Author
+      contact:
+        - link: https://github.com/matinamehdizadeh
+          icon: fab fa-github
+        - link: mailto://matinamehdizadeh@gmail.com
+          icon: fas fa-envelope
+
+comments:
+  label: false
+  kind: comments
+  
