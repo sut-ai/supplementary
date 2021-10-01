@@ -1,0 +1,31 @@
+title: Generative Adversarial Networks
+
+meta:
+  - name: keywords
+    content: Artificial Intelligence, Generative Models, Generative Adversarial Network, GAN, Conditional Generative Adversarial Network, cGAN 
+    
+header:
+  title: Geneartive Adversarial Networks
+  description: |
+    In this notebook we talk about generative adversarial networks, conditonal GANs and implementation of these in PyTorch.
+
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+    - name: Arman Zarei
+      role: Author
+      contact:
+        - link: https://github.com/ArmanZarei/
+          icon: fab fa-github
+        - link: https://www.linkedin.com/in/arman-zarei-02b82994/
+          icon: fab fa-linkedin
+        - link: mailto://armanzarei1378@gmail.com
+          icon: fas fa-envelope
+
+comments:
+  label: false
+  kind: comments
+  
