@@ -1,14 +1,14 @@
 
-title: Prolog | Logic Programming
+title: Convex Optimization
 
 meta:
   - name: keywords
-    content: Artificial Intelligence, Prolog, Logic Programming
+    content: Artificial Intelligence, Optimization, Mathematical Optimization, Convex Optimization, CVXPY
     
 header:
-  title: Prolog - Gateway to Logic Programming
+  title: Convex Optimization
   description: |
-    In this notebook we talk about Prolog basics. We also learn how to benefit from Prolog's power using Python.
+    In this notebook we talk about Convex Optimization fundamentals. We also examine a simple practical application of convex optimization; Image in-painting using CVXPY package in Python.
 
 authors:
   label:
