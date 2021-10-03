@@ -1,3 +1,4 @@
 - notebook: notebooks/logic_programming
 - notebook: notebooks/search_in_continuous_space
 - notebook: notebooks/hmm_speech_recognition
+- notebook: notebooks/convex_optimization
