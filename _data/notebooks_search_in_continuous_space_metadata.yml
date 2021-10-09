@@ -26,7 +26,7 @@ authors:
 comments:
   label: false
   kind: comments
+kind: Content
 search:
   content: true
   links: false
-kind: Content

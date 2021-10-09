@@ -206,7 +206,7 @@ further-readings:
   label: Further Readings
   background: /supplementary/assets/index/images/supplementary-header.jpg
   content: <p>TODO</p>
+kind: Index
 search:
   content: true
   links: false
-kind: Index
