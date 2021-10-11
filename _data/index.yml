@@ -202,6 +202,12 @@ notebooks:
       applied to speech recognition and introduce some useful automatic speech recognition
       (ASR) tools.</p>
     kind: Content
+  - notebook: notebooks/decision_trees
+    link: /supplementary/notebooks/decision_trees/
+    text: <p>Machine Learning - Decision Trees</p>
+    description: <p>In this notebook, we will study decision trees and different types
+      of them and we will discuss topics like pruning and indexing in ML.</p>
+    kind: Content
 further-readings:
   label: Further Readings
   background: /supplementary/assets/index/images/supplementary-header.jpg

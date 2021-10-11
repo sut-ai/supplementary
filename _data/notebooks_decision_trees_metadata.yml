@@ -1,0 +1,30 @@
+title: Classical ML Algorithm Legends
+meta:
+- name: keywords
+  content: Artificial Intelligence, Machine Learning, Decision Trees, pruning
+header:
+  title: <p>Machine Learning - Decision Trees</p>
+  description: <p>In this notebook, we will study decision trees and different types
+    of them and we will discuss topics like pruning and indexing in ML.</p>
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+  - name: Alireza (Sina) Tavakkoli
+    role: Author
+    contact:
+    - icon: fab fa-github
+      link: https://github.com/sinatav
+    - link: mailto://stavakkoli1999@gmail.com
+      icon: fas fa-envelope
+    kind: person
+    image: https://github.com/sinatav.png
+comments:
+  label: false
+  kind: comments
+kind: Content
+search:
+  content: true
+  links: false
