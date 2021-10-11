@@ -1,0 +1,34 @@
+title: Convex Optimization
+meta:
+- name: keywords
+  content: Artificial Intelligence, Optimization, Mathematical Optimization, Convex
+    Optimization, CVXPY
+header:
+  title: <p>Convex Optimization</p>
+  description: <p>In this notebook we talk about Convex Optimization fundamentals.
+    We also examine a simple practical application of convex optimization; Image in-painting
+    using CVXPY package in Python.</p>
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+  - name: Amirmahdi Namjoo
+    role: Author
+    contact:
+    - link: https://github.com/titansarus
+      icon: fab fa-github
+    - link: https://www.linkedin.com/in/amirmahdi-namjoo-23b4b9192/
+      icon: fab fa-linkedin
+    - link: mailto://amirm137878@gmail.com
+      icon: fas fa-envelope
+    kind: person
+    image: https://github.com/titansarus.png
+comments:
+  label: false
+  kind: comments
+kind: Content
+search:
+  content: true
+  links: false

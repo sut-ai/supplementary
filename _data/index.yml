@@ -183,17 +183,24 @@ notebooks:
   label: Notebooks
   background: /supplementary/assets/index/images/supplementary-header.jpg
   content:
-  - notebook: notebooks/logic_programming
-    link: /supplementary/notebooks/logic_programming/
-    text: <p>Prolog - Gateway to Logic Programming</p>
-    description: <p>In this notebook we talk about Prolog basics. We also learn how
-      to benefit from Prolog's power using Python.</p>
-    kind: Content
   - notebook: notebooks/search_in_continuous_space
     link: /supplementary/notebooks/search_in_continuous_space/
     text: <p>ML In Continuous Space</p>
     description: <p>In this notebook we talk about gradient descent, challenges and
       improvements on this algorithm.</p>
+    kind: Content
+  - notebook: notebooks/convex_optimization
+    link: /supplementary/notebooks/convex_optimization/
+    text: <p>Convex Optimization</p>
+    description: <p>In this notebook we talk about Convex Optimization fundamentals.
+      We also examine a simple practical application of convex optimization; Image
+      in-painting using CVXPY package in Python.</p>
+    kind: Content
+  - notebook: notebooks/logic_programming
+    link: /supplementary/notebooks/logic_programming/
+    text: <p>Prolog - Gateway to Logic Programming</p>
+    description: <p>In this notebook we talk about Prolog basics. We also learn how
+      to benefit from Prolog's power using Python.</p>
     kind: Content
   - notebook: notebooks/hmm_speech_recognition
     link: /supplementary/notebooks/hmm_speech_recognition/
