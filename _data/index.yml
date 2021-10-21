@@ -215,6 +215,13 @@ notebooks:
     description: <p>In this notebook, we will study decision trees and different types
       of them and we will discuss topics like pruning and indexing in ML.</p>
     kind: Content
+  - notebook: notebooks/robust_and_trustworthy_machine_learning
+    link: /supplementary/notebooks/robust_and_trustworthy_machine_learning/
+    text: <p>Robust and Trustworthy Machine Learning</p>
+    description: <p>In this notebook, we will look into two of the main topics in
+      robust and trustworthy ML, evasion and poisoning attacks, and mechanisms to
+      defend against them.</p>
+    kind: Content
 further-readings:
   label: Further Readings
   background: /supplementary/assets/index/images/supplementary-header.jpg

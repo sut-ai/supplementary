@@ -1,0 +1,26 @@
+title: Robust and Trustworthy Machine Learning
+header:
+  title: <p>Robust and Trustworthy Machine Learning</p>
+  description: <p>In this notebook, we will look into two of the main topics in robust
+    and trustworthy ML, evasion and poisoning attacks, and mechanisms to defend against
+    them.</p>
+authors:
+  label:
+    position: top
+  content:
+  - name: Mehrnaz Mofakhami
+    role: Author
+    contact:
+    - link: https://github.com/mhrnz
+      icon: fab fa-github
+    - link: https://www.linkedin.com/in/mehrnazmofakhami98/
+      icon: fab fa-linkedin
+    - link: mailto://m.mofakhami.77@gmail.com
+      icon: fas fa-envelope
+comments:
+  label: false
+  kind: comments
+kind: Content
+search:
+  content: true
+  links: false
