@@ -7,6 +7,8 @@ header:
 authors:
   label:
     position: top
+    text: Authors
+  kind: people
   content:
   - name: Mehrnaz Mofakhami
     role: Author
@@ -17,6 +19,8 @@ authors:
       icon: fab fa-linkedin
     - link: mailto://m.mofakhami.77@gmail.com
       icon: fas fa-envelope
+    kind: person
+    image: https://github.com/mhrnz.png
 comments:
   label: false
   kind: comments
