@@ -9,7 +9,8 @@ header:
 authors:
   label:
     position: top
-
+    text: Authors
+  kind: people
   content:
     - name: Mehrnaz Mofakhami
       role: Author
