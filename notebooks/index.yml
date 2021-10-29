@@ -1,4 +1,7 @@
-- notebook: notebooks/logic_programming
 - notebook: notebooks/search_in_continuous_space
+- notebook: notebooks/convex_optimization
+- notebook: notebooks/logic_programming
 - notebook: notebooks/hmm_speech_recognition
+- notebook: notebooks/decision_trees
+- notebook: notebooks/robust_and_trustworthy_machine_learning
 - notebook: notebooks/big_data_intro
