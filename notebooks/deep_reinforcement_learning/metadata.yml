@@ -1,0 +1,26 @@
+title: Deep Reinforcement Learning
+
+header:
+    title: Deep Reinforcement Learning
+    description: In this notebook, the first applications and attemps to use DL in RL are explained. Moreover, there is a practical example of DQN in this notebook.
+
+authors:
+    label:
+        position: top
+    content:
+    # list of notebook authors
+    - name: Mohammad Mohammadi
+      role: Author # change this if you want
+      contact:
+      # list of contact information
+      - link: https://github.com/MhdMohammadi
+        icon: fab fa-github
+      - link: https://www.linkedin.com/in/mohammad-mohammadi-99b0a9155//
+        icon: fab fa-linkedin
+      - link: mailto://m.mohammadi1378@outlook.com
+        icon: fas fa-envelope
+
+comments:
+    # enable comments for your post
+    label: false
+    kind: comments
