@@ -222,6 +222,12 @@ notebooks:
       robust and trustworthy ML, evasion and poisoning attacks, and mechanisms to
       defend against them.</p>
     kind: Content
+  - notebook: notebooks/deep_reinforcement_learning
+    link: /supplementary/notebooks/deep_reinforcement_learning/
+    text: <p>Deep Reinforcement Learning</p>
+    description: <p>In this notebook, the first applications and attemps to use DL
+      in RL are explained. Moreover, there is a practical example of DQN in this notebook.</p>
+    kind: Content
 further-readings:
   label: Further Readings
   background: /supplementary/assets/index/images/supplementary-header.jpg
