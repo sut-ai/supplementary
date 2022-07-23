@@ -1,0 +1,28 @@
+title: Generative Adversarial Networks
+
+meta:
+  - name: keywords
+    content: Artificial Intelligence, Generative Adversarial Networks, GAN, Generative Models
+
+header:
+  title: Generative Adversarial Networks
+  description: In this notebook, we introduce Generative Adversarial Networks. We analyze how it works and see its different applications in various fields. Finally, we implement a GAN to create realistic Anime faces.
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+    - name: Mohammad Jafari
+      role: Author
+      contact:
+        - link: https://github.com/Mohammadjafari80/
+          icon: fab fa-github
+        - link: https://www.linkedin.com/in/mohammadjafari01/
+          icon: fab fa-linkedin
+        - link: mailto://mamad.jafari91@gmail.com
+          icon: fas fa-envelope
+
+comments:
+  label: false
+  kind: comments
