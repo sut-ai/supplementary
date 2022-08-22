@@ -1,0 +1,29 @@
+title: Recurrent Neural Networks
+
+meta:
+  - name: keywords
+    content: Artificial Intelligence, Recurrent Neural Networks
+    
+header:
+  title: Recurrent Neural Networks
+  description: |
+    In this notebook we talk about Recurrent Neural Networks.
+
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+    - name: matinamehdizadeh
+      role: Author
+      contact:
+        - link: https://github.com/matinamehdizadeh
+          icon: fab fa-github
+        - link: mailto://matinamehdizadeh@gmail.com
+          icon: fas fa-envelope
+
+comments:
+  label: false
+  kind: comments
+  
