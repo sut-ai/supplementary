@@ -1,13 +1,13 @@
-title: Adversarial attacks and robustness
+title: MLOps
 
 meta:
   - name: keywords
-    content: Artificial Intelligence, Adversarial attacks, robustness
+    content: Artificial Intelligence, MLOps
     
 header:
-  title: Adversarial attacks and robustness
+  title: MLOps
   description: |
-    In this notebook we talk about diffrent kinds of attacks on machine learning and how to resist them.
+    In this notebook we talk about MLOps with a simple example of model deployment.
 
 authors:
   label:
