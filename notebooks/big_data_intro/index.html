@@ -34,14 +34,14 @@
 <script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
 
 <!-- Loading mathjax macro -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-<script type="text/x-mathjax-config" defer>
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                 displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
                 processEscapes: true,
-                processEnvironments: true
+                processEnvironments: true,
+                skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
             },
             displayAlign: 'center',
             "HTML-CSS": {
@@ -50,9 +50,11 @@
             }
         });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
+<script defer src="/supplementary/assets/js/content-toc.js"></script>
 
 <script>
 (function () {
@@ -296,37 +298,14 @@
         <div class="container-fluid p-0 m-0 no-gutters">
             
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
-                <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+                <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#Introduction">Introduction</a></li><li class="wf-content-toc-level-2"><a href="#Definition">Definition</a></li><li class="wf-content-toc-level-2"><a href="#Architecture">Architecture</a></li><li class="wf-content-toc-level-3"><a href="#MapReduce">MapReduce</a></li><li class="wf-content-toc-level-3"><a href="#Apache-Hadoop">Apache Hadoop</a></li><li class="wf-content-toc-level-3"><a href="#Apache-Spark">Apache Spark</a></li><li class="wf-content-toc-level-4"><a href="#Experience-Spark">Experience Spark</a></li><li class="wf-content-toc-level-2"><a href="#Further-Reading">Further Reading</a></li><li class="wf-content-toc-level-2"><a href="#References">References</a></li></ol></nav>
 <main>
+
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li><a href="#Introduction">Introduction</a></li>
-<li><a href="#Definition">Definition</a></li>
-<li><a href="#Architecture">Architecture</a><ul>
-<li><a href="#MapReduce">MapReduce</a></li>
-<li><a href="#Apache-Hadoop">Apache Hadoop</a></li>
-<li><a href="#Apache-Spark">Apache Spark</a></li>
-</ul>
-</li>
-<li><a href="#Further-Reading">Further Reading</a></li>
-<li><a href="#References">References</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>Have you ever wondered how much data (in the form of texts, phone calls, videos, emails, searches, etc.) do we generate only when using our smartphones? Approximately 40 exabytes (40 million terabytes) of data gets generated every month by a single smartphone user! Now have fun multiplying it by 5 billion (and counting) users :)
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Introduction">Introduction</h2><p>Have you ever wondered how much data (in the form of texts, phone calls, videos, emails, searches, etc.) do we generate only when using our smartphones? Approximately 40 exabytes (40 million terabytes) of data gets generated every month by a single smartphone user! Now have fun multiplying it by 5 billion (and counting) users :)
 <br/><br/>
 Traditional computing systems are no longer capable of handling this amount of data which we call Big Data.
 In the following sections we learn what data should we call Big Data, learn about some applications, and get familiar with some tools and techniques which are utilized to store and process that data.
@@ -341,11 +320,9 @@ In the end, some extra links are provided for <a href="#Further-Reading">further
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Definition">Definition<a class="anchor-link" href="#Definition">¶</a></h2><p>A piece of data is classified as Big Data regarding to the concept of a bunch of <strong>V</strong>s. In order to understand them, consider health care industry and medical records as an example:</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Definition">Definition</h2><p>A piece of data is classified as Big Data regarding to the concept of a bunch of <strong>V</strong>s. In order to understand them, consider health care industry and medical records as an example:</p>
 <ul>
 <li><strong>Volume</strong>: Hospitals and clinics collect massive volume of data (more than 2000 exabytes) every year.</li>
 <li><strong>Velocity</strong>: This data is generated at a very high speed.</li>
@@ -358,16 +335,14 @@ In the end, some extra links are provided for <a href="#Further-Reading">further
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Architecture">Architecture<a class="anchor-link" href="#Architecture">¶</a></h2><p>Various frameworks are developed to ease the processing and storage of Big Data such as Cassandra, Apache Hadoop, and Apache Spark. But first, let's talk about a rather new parallel processing model designed to deal with some of Big Data challenges called <strong>MapReduce</strong>.</p>
-<h3 id="MapReduce">MapReduce<a class="anchor-link" href="#MapReduce">¶</a></h3><p>MapReduce is a software framework and programming model used for processing huge amounts of data which comprises two phases, <strong>Map</strong> and <strong>Reduce</strong>. Map tasks deal with splitting and mapping of data while Reduce tasks shuffle and reduce the data. The following image pretty much sums up the MapReduce architecture in <em>Hadoop</em>.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Architecture">Architecture</h2><p>Various frameworks are developed to ease the processing and storage of Big Data such as Cassandra, Apache Hadoop, and Apache Spark. But first, let's talk about a rather new parallel processing model designed to deal with some of Big Data challenges called <strong>MapReduce</strong>.</p>
+<h3 id="MapReduce">MapReduce</h3><p>MapReduce is a software framework and programming model used for processing huge amounts of data which comprises two phases, <strong>Map</strong> and <strong>Reduce</strong>. Map tasks deal with splitting and mapping of data while Reduce tasks shuffle and reduce the data. The following image pretty much sums up the MapReduce architecture in <em>Hadoop</em>.</p>
 <center>
 <img alt="MapReduce architecture" src="https://www.guru99.com/images/Big_Data/061114_0930_Introductio1.png" width="60%"/>
 </center>
-<h3 id="Apache-Hadoop">Apache Hadoop<a class="anchor-link" href="#Apache-Hadoop">¶</a></h3><p>Apache Hadoop is a software platform that manages data processing and storage for big data applications. Hadoop works by distributing large data sets and analytics jobs across nodes in a computing cluster, breaking them down into smaller workloads that can be run in parallel. Hadoop is capable of running MapReduce programs written in various languages.
+<h3 id="Apache-Hadoop">Apache Hadoop</h3><p>Apache Hadoop is a software platform that manages data processing and storage for big data applications. Hadoop works by distributing large data sets and analytics jobs across nodes in a computing cluster, breaking them down into smaller workloads that can be run in parallel. Hadoop is capable of running MapReduce programs written in various languages.
 <br/>
 The programs of Map Reduce in cloud computing are parallel in nature, thus are very useful for performing large-scale data analysis using multiple machines in the cluster. The benefits of using Hadoop are scalability, resilience and flexibility.</p>
 <p>Hadoop divides the job into tasks. The types of tasks are Map tasks (Splits &amp; Mapping) and Reduce tasks (Shuffling, Reducing) as mentioned above.
@@ -380,7 +355,7 @@ The complete execution process (execution of Map and Reduce tasks) is controlled
 <center>
 <img alt="How Hadoop MapReduce Works" src="https://www.guru99.com/images/Big_Data/061114_0930_Introductio2.png" width="60%"/>
 </center>
-<h3 id="Apache-Spark">Apache Spark<a class="anchor-link" href="#Apache-Spark">¶</a></h3><p>One of the main challenges of Hadoop architecture is <em>performance</em>. Hadoop uses frequent reads and writes to disk to perform computations, which is time-consuming and inefficient compared to frameworks that aim to store and process data <strong>in memory</strong> as much as possible, like Apache Spark™.</p>
+<h3 id="Apache-Spark">Apache Spark</h3><p>One of the main challenges of Hadoop architecture is <em>performance</em>. Hadoop uses frequent reads and writes to disk to perform computations, which is time-consuming and inefficient compared to frameworks that aim to store and process data <strong>in memory</strong> as much as possible, like Apache Spark™.</p>
 <p><a href="https://spark.apache.org/">Apache Spark™</a> is a general-purpose &amp; lightning fast cluster computing platform. In other words, it is an open source, wide range data processing engine. That reveals development API’s, which also qualifies data workers to accomplish streaming, machine learning or SQL workloads which demand repeated access to data sets. However, Spark can perform both batch processing and stream processing.
 The main website provides a very well overview of its capabilities. Spark also has a strong <a href="https://spark.apache.org/docs/latest/">documentation</a> that helps you get started.</p>
 <center>
@@ -388,7 +363,7 @@ The main website provides a very well overview of its capabilities. Spark also h
 </center>
 <p>Moreover, it is designed in such a way that it integrates with all the Big data tools. Like spark can access any Hadoop data source, also can run on Hadoop clusters. Furthermore, Apache Spark extends Hadoop MapReduce to the next level. That also includes iterative queries and stream processing.</p>
 <p>Although, there is one spark’s key feature that it has in-memory cluster computation capability. Also increases the processing speed of an application. <a href="https://data-flair.training/blogs/spark-tutorial/">This blog</a> by Data Flair provides a comprehensive tutorial on Spark which is highly recommended for those interested.</p>
-<h4 id="Experience-Spark">Experience Spark<a class="anchor-link" href="#Experience-Spark">¶</a></h4><p>In this section we finally try to get our hands dirty and gain a perspective on how a spark program is written. There are many options like Scala, Java, R and Python and we naturally choose <a href="https://pypi.org/project/pyspark/">PySpark</a> to proceed. Although some of the resources which we introduce provide examples in all possible languages.</p>
+<h4 id="Experience-Spark">Experience Spark</h4><p>In this section we finally try to get our hands dirty and gain a perspective on how a spark program is written. There are many options like Scala, Java, R and Python and we naturally choose <a href="https://pypi.org/project/pyspark/">PySpark</a> to proceed. Although some of the resources which we introduce provide examples in all possible languages.</p>
 <ul>
 <li>First, we recommend you installing Spark via Docker. It saves you a lot of time and energy.</li>
 <li><a href="https://github.com/cluster-apps-on-docker/spark-standalone-cluster-on-docker">This Repo</a> (among many others) offers Docker images and configuration files which can be used to create a master node and a worker node and also, run jupyter notebook and let you connect to the cluster through the exposed ports. Try to see the differences between these nodes by reading Dockerfiles, and try to find other commands (e.g. <code>spark-submit</code>) which can be useful in the Spark Shell.</li>
@@ -401,11 +376,9 @@ The main website provides a very well overview of its capabilities. Spark also h
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Further-Reading">Further Reading<a class="anchor-link" href="#Further-Reading">¶</a></h2><p>These links and videos below help you get started and learn about basic concepts more deeply and then install and run a framework (e.g. Spark) and experience its cool features afterwards.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Further-Reading">Further Reading</h2><p>These links and videos below help you get started and learn about basic concepts more deeply and then install and run a framework (e.g. Spark) and experience its cool features afterwards.</p>
 <ul>
 <li>Research Topics and Activities:<ul>
 <li><a href="https://towardsdatascience.com/top-20-latest-research-problems-in-big-data-and-data-science-c6fb51e03136">Top 20 Latest Research Problems in Big Data and Data Science | Towards Data Science</a></li>
@@ -446,11 +419,9 @@ The main website provides a very well overview of its capabilities. Spark also h
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2><ul>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="References">References</h2><ul>
 <li><a href="https://www.youtube.com/watch?v=bAyrObl7TYE">What is Big Data? | Simplilearn Youtube</a></li>
 <li><a href="https://www.guru99.com/introduction-to-mapreduce.html">What is MapReduce in Hadoop? | Guru99</a></li>
 <li><a href="https://data-flair.training/blogs/spark-tutorial/">Spark Tutorial – Learn Spark Programming | Data Flair</a></li>
@@ -460,7 +431,7 @@ The main website provides a very well overview of its capabilities. Spark also h
 </div>
 </div>
 </main>
-</body>
+
             </div>
             
                 
@@ -549,19 +520,34 @@ The main website provides a very well overview of its capabilities. Spark also h
                 
                 
                 
-                <a href="https://github.com/AlirezaT99">GitHub</a>
+                <a class="wf-person-link" href="https://github.com/AlirezaT99">
+                    
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    
+                    <span>GitHub</span>
+                </a>
                 
                 
                 
                 
                 
-                <a href="https://www.linkedin.com/in/alireza-tajmirriahi">LinkedIn</a>
+                <a class="wf-person-link" href="https://www.linkedin.com/in/alireza-tajmirriahi">
+                    
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    
+                    <span>LinkedIn</span>
+                </a>
                 
                 
                 
                 
                 
-                <a href="mailto://artajmirriahi99@gmail.com">Email</a>
+                <a class="wf-person-link" href="mailto:artajmirriahi99@gmail.com">
+                    
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    
+                    <span>Email</span>
+                </a>
                 
                 
             </div>
@@ -605,7 +591,7 @@ The main website provides a very well overview of its capabilities. Spark also h
     <div class="wf-page-navigation-inner">
         <div class="wf-page-navigation-slot wf-page-navigation-previous">
             
-            <a class="btn btn-link p-0" href="notebooks/robust_and_trustworthy_machine_learning/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/robust_and_trustworthy_machine_learning/">
                 <span class="d-block small text-muted">Back</span>
                 <span>Robust and Trustworthy Machine Learning</span>
             </a>
@@ -618,7 +604,7 @@ The main website provides a very well overview of its capabilities. Spark also h
         </div>
         <div class="wf-page-navigation-slot wf-page-navigation-next">
             
-            <a class="btn btn-link p-0" href="notebooks/mlops/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/mlops/">
                 <span class="d-block small text-muted">Next</span>
                 <span>MLOps</span>
             </a>

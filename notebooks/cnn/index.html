@@ -34,14 +34,14 @@
 <script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
 
 <!-- Loading mathjax macro -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-<script type="text/x-mathjax-config" defer>
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                 displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
                 processEscapes: true,
-                processEnvironments: true
+                processEnvironments: true,
+                skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
             },
             displayAlign: 'center',
             "HTML-CSS": {
@@ -50,9 +50,11 @@
             }
         });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
+<script defer src="/supplementary/assets/js/content-toc.js"></script>
 
 <script>
 (function () {
@@ -296,52 +298,15 @@
         <div class="container-fluid p-0 m-0 no-gutters">
             
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
-                <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+                <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#Foreword">Foreword</a></li><li class="wf-content-toc-level-2"><a href="#Introduction:-What-is-a-CNN?">Introduction: What is a CNN?</a></li><li class="wf-content-toc-level-3"><a href="#Numerical-representation-of-an-image">Numerical representation of an image</a></li><li class="wf-content-toc-level-2"><a href="#What-is-a-convolution-and-how-do-CNNs-work?">What is a convolution and how do CNNs work?</a></li><li class="wf-content-toc-level-3"><a href="#Other-steps-before-giving-data-to-the-model">Other steps before giving data to the model</a></li><li class="wf-content-toc-level-3"><a href="#CNN-Architecture">CNN Architecture</a></li><li class="wf-content-toc-level-2"><a href="#Train-a-CNN-model-using-Tensorflow">Train a CNN model using Tensorflow</a></li><li class="wf-content-toc-level-2"><a href="#How-to-improve-the-model">How to improve the model</a></li><li class="wf-content-toc-level-3"><a href="#Dropout-regularization">Dropout regularization</a></li><li class="wf-content-toc-level-3"><a href="#Batch-Normalization">Batch Normalization</a></li><li class="wf-content-toc-level-2"><a href="#Conclusion">Conclusion</a></li><li class="wf-content-toc-level-3"><a href="#Extra-suggestion:-Save-the-model">Extra suggestion: Save the model</a></li><li class="wf-content-toc-level-2"><a href="#Further-reading-and-references">Further reading and references</a></li></ol></nav>
 <main>
+
+
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Convolutional-Neural-Network-(CNN)">Convolutional Neural Network (CNN)<a class="anchor-link" href="#Convolutional-Neural-Network-(CNN)">¶</a></h1><p>Compiled by Seyed Parsa Neshaei</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li><p>Foreword</p>
-</li>
-<li><p>Introduction: What is a CNN?</p>
-</li>
-<li><p>What is convolution and how do CNNs work?</p>
-</li>
-<li><p>Train a CNN model using TensorFlow</p>
-</li>
-<li><p>How to improve the model</p>
-</li>
-<li><p>Conclusion</p>
-</li>
-<li><p>Further reading and references</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Foreword">Foreword<a class="anchor-link" href="#Foreword">¶</a></h2><p>CNNs are a type of deep learning models are being used a lot in today's world, especially regarding computer vision applications. They can help users in a wide range of possibilities, from recognizing faces and emotions, helping the medical doctors in healthcare settings, aiding students in their education, supporting self-checkout in retail stores, and many more.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Foreword">Foreword</h2><p>CNNs are a type of deep learning models are being used a lot in today's world, especially regarding computer vision applications. They can help users in a wide range of possibilities, from recognizing faces and emotions, helping the medical doctors in healthcare settings, aiding students in their education, supporting self-checkout in retail stores, and many more.</p>
 <p>Due to their popularity, it seems to be a necessity to learn about how they work and how can we train one using libraries which are now commonplace among researchers and students.</p>
 <p>The structure of this notebook is as follows: first, an introduction to CNN is given, then the concept of convolution is described in further details. Afterwards, a CNN model has been trained step-by-step using TensorFlow - a popular framework for ML and vision related activities. Finally, after concluding what we've learned, links are provided for further reading in case you, as a reader, are interested. We assume you know about deep learning and multi-layered ANNs before you start reading this notebook.</p>
 <p>So, let's dive in!</p>
@@ -351,12 +316,10 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Introduction:-What-is-a-CNN?">Introduction: What is a CNN?<a class="anchor-link" href="#Introduction:-What-is-a-CNN?">¶</a></h2><p>As we know, there are various types of multi-layered artificial neural networks (also called ANNs) available. Specifically, one type of them are called "convolutional neural networks" - or CNNs - which are mostly used in the field of computer vision. They are able to find (or "extract") many features of the images given to them as the training data, and then classify the test dataset by inspecting them for the extracted features.</p>
-<h3 id="Numerical-representation-of-an-image">Numerical representation of an image<a class="anchor-link" href="#Numerical-representation-of-an-image">¶</a></h3><p>It is obvious that computers can't see an "image" as we do; instead, all computer programs work with numbers and digits. As a result, we - as the users of a CNN - should also give it the images we have in a numerical format, or else it won't understand a bit about the image.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Introduction:-What-is-a-CNN?">Introduction: What is a CNN?</h2><p>As we know, there are various types of multi-layered artificial neural networks (also called ANNs) available. Specifically, one type of them are called "convolutional neural networks" - or CNNs - which are mostly used in the field of computer vision. They are able to find (or "extract") many features of the images given to them as the training data, and then classify the test dataset by inspecting them for the extracted features.</p>
+<h3 id="Numerical-representation-of-an-image">Numerical representation of an image</h3><p>It is obvious that computers can't see an "image" as we do; instead, all computer programs work with numbers and digits. As a result, we - as the users of a CNN - should also give it the images we have in a numerical format, or else it won't understand a bit about the image.</p>
 <p>Fortunately, we don't need to implement some fancy algorithm to be able to convert an image to a numerical format used by CNNs, because the numbers are already there in format of pixel values. Each pixel is assigned a value in a picture, which are rendered together on a computer screen.</p>
 <p>The main problem with this approach is the number of pixels in a picture. An example 128*128 image - which is considered so small in modern measurements - contains 16384 pixels which are usually a lot for a model to find features in. To fix this problem which is common in pre-CNN networks, some new concepts are used in this model.</p>
 <p>To continue our discussion onto how the CNNs work, first we should know the concept of convolution. If you know what a convolution is, you may skip the section in which the concept of conclusion and its relation to convolutional neural networks are covered and discussed.</p>
@@ -366,11 +329,9 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="What-is-a-convolution-and-how-do-CNNs-work?">What is a convolution and how do CNNs work?<a class="anchor-link" href="#What-is-a-convolution-and-how-do-CNNs-work?">¶</a></h2><p>As we learned till now, we need a way to somehow select the important features in an image while training the model.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="What-is-a-convolution-and-how-do-CNNs-work?">What is a convolution and how do CNNs work?</h2><p>As we learned till now, we need a way to somehow select the important features in an image while training the model.</p>
 <p>You have possibly seen "filters" in the camera app in your smartphone. Many of these filters focus on special parts of your image; as an example, filters such as the "Stage Light" filter in the Camera app in iOS only focuses on your face and blurs the background while taking a pictures. We want to use a similar idea to find features in images here, too.</p>
 <p>When talking about CNNs, the filters are usually called "kernels". They are a special kind of matrix (usually 3*3) which is "convoluted" with the matrix of all pixels of the original image. The result of the "convolution" process - which is a mathematical operation - is known as a "feature map" or "activation map".</p>
 <p>The details on how the "convolution" is calculated is not necessarily needed in order to understand how to train a CNN using Tensorflow, but an overview is given here.</p>
@@ -378,31 +339,28 @@
 <p>An example is being presented in the animation below:</p>
 <p><img alt="Convolution Example" src="/supplementary/assets/convolution-example.gif"/></p>
 <p>When a convolution is performed, a matrix is transformed into some another matrix. Calculating the weighted some of neighboring cells allows us to only see the input features coming from "about the same" location, instead of exact parameters, which will decrease the number of parameters the model has to train on, to a great extend and as a result, the model can do more iterations or calculations in the same time, possibly leading to a better accuracy on the test data.</p>
-<h3 id="Other-steps-before-giving-data-to-the-model">Other steps before giving data to the model<a class="anchor-link" href="#Other-steps-before-giving-data-to-the-model">¶</a></h3><p>Now that we know the basics of convolution, let's discuss a bit more about CNNs in detail.</p>
+<h3 id="Other-steps-before-giving-data-to-the-model">Other steps before giving data to the model</h3><p>Now that we know the basics of convolution, let's discuss a bit more about CNNs in detail.</p>
 <p>After the convolution result (feature map) is obtained, we apply a ReLU (Rectified Linear Unit) to make the operation non-linear (as we did in many cases in ANNs). Then, we can use "pooling", another technique in CNNs which ensures the network can find features independent from their location.</p>
 <p>A famous type of pooling is called "max pooling" in which the largest value in 2*2 boxes over the picture are selected, as can be inspected in this picture:</p>
 <p><img alt="Max Pooling Example" src="/supplementary/assets/pooling.png"/></p>
 <p>This action will keep the main features while the size of picture is decreased, so possibly there would be less overfitting when the model is being trained.</p>
 <p>After pooling is performed on a picture, the matrix is ready to be flattened into a single vector which is able to help the model train.</p>
-<h3 id="CNN-Architecture">CNN Architecture<a class="anchor-link" href="#CNN-Architecture">¶</a></h3><p>Many architectures regarding CNNs have been previously tried and tested, such as MobileNet, Xception, etc. They have been trained on a dataset of more than a million images, so they include weights in advance which can be used or not (we may use the trained model, or we may only use the architecture and train it again on our own data). Designing a new architecture is also obviously possible.</p>
+<h3 id="CNN-Architecture">CNN Architecture</h3><p>Many architectures regarding CNNs have been previously tried and tested, such as MobileNet, Xception, etc. They have been trained on a dataset of more than a million images, so they include weights in advance which can be used or not (we may use the trained model, or we may only use the architecture and train it again on our own data). Designing a new architecture is also obviously possible.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Train-a-CNN-model-using-Tensorflow">Train a CNN model using Tensorflow<a class="anchor-link" href="#Train-a-CNN-model-using-Tensorflow">¶</a></h2><p>In this notebook, we want to choose Xception as the architecture to go with. First we start by installing and importing the necessary libraries:</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Train-a-CNN-model-using-Tensorflow">Train a CNN model using Tensorflow</h2><p>In this notebook, we want to choose Xception as the architecture to go with. First we start by installing and importing the necessary libraries:</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -417,10 +375,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>We will use Keras to make the model.</p>
 <p>If you wonder what Keras is, it is a API for TensorFlow which gives the developers high level access to TensorFlow features and functions. Keras is also included in TensorFlow and will help us build models faster.</p>
 <p>In other words, Keras depends on TensorFlow (or some other similar library), but not vice-versa. Keras is an abstraction mostly working on top of TensorFlow. While this makes it easier to accomplish the deep learning tasks, we might lose access to more complex functionalities and utilities.</p>
@@ -432,8 +388,7 @@
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -453,18 +408,15 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>The pixel values are from 0 to 255, so we scale them:</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -480,18 +432,15 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Now we create a model:</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -514,11 +463,10 @@
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Model: "sequential_1"
 _________________________________________________________________
@@ -555,10 +503,8 @@ _________________________________________________________________
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Here are what the layers mean (activation is ReLU in all cases except the last which we want a discrete, multi-class output from and Softmax is used instead):</p>
 <ul>
 <li><code>Conv2D</code> is the layer related to the convolution operation.<ul>
@@ -578,18 +524,15 @@ _________________________________________________________________
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Now we train the model. The process is similar to what we have in ANNs in TensorFlow.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -605,8 +548,7 @@ _________________________________________________________________
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -623,18 +565,15 @@ _________________________________________________________________
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>And we can easily plot the loss and accuracy:</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -655,19 +594,16 @@ _________________________________________________________________
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="How-to-improve-the-model">How to improve the model<a class="anchor-link" href="#How-to-improve-the-model">¶</a></h2><p>Although the model works in this state, there are various actions one might perform in order to make it better in real-world problems and tests. In this section, we are discussing various attempts at making the model perform better and with more correct predictions.</p>
-<h3 id="Dropout-regularization">Dropout regularization<a class="anchor-link" href="#Dropout-regularization">¶</a></h3><p>Model architects sometimes add the functionality to drop some of the connections of the model in the training, because this will lead the model to avoid memorizing input data. By removing some connections, a model that has memorized inputs will produce a noticable amount of wrong results, but a model that has really "learned" the data performs well. We can easily add a dropout layer with a certain rate, like the following: (the layer just before the last is the dropout layer)</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="How-to-improve-the-model">How to improve the model</h2><p>Although the model works in this state, there are various actions one might perform in order to make it better in real-world problems and tests. In this section, we are discussing various attempts at making the model perform better and with more correct predictions.</p>
+<h3 id="Dropout-regularization">Dropout regularization</h3><p>Model architects sometimes add the functionality to drop some of the connections of the model in the training, because this will lead the model to avoid memorizing input data. By removing some connections, a model that has memorized inputs will produce a noticable amount of wrong results, but a model that has really "learned" the data performs well. We can easily add a dropout layer with a certain rate, like the following: (the layer just before the last is the dropout layer)</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -696,11 +632,9 @@ _________________________________________________________________
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Batch-Normalization">Batch Normalization<a class="anchor-link" href="#Batch-Normalization">¶</a></h3><p>Normalization, in general, means to transform the data (the numbers) to a pre-set, common scale, while the general shape of the distribution remains the same. The main goal of normalization is to make model able to generalize, or faster. It has been seen that by normalizing the data to have a mean of zero and a standard deviation of one, the model would run faster. This process is called "batch normalization" and will make the model train faster.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Batch-Normalization">Batch Normalization</h3><p>Normalization, in general, means to transform the data (the numbers) to a pre-set, common scale, while the general shape of the distribution remains the same. The main goal of normalization is to make model able to generalize, or faster. It has been seen that by normalizing the data to have a mean of zero and a standard deviation of one, the model would run faster. This process is called "batch normalization" and will make the model train faster.</p>
 <p>The part "batch" in the name refers to the sets of data on which the model is trained. So, the normalization happens on batches and not on single points of input data.</p>
 <p>Batch normalization also offers regularization, so it is advised that we use either batch normalization or dropout regularization and not both simultaneously.</p>
 <p>Adding batch normalization as a layer is so simple. The following example shows how can we do this. (The layer just before the last is the batch normalization layer)</p>
@@ -709,8 +643,7 @@ _________________________________________________________________
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -739,10 +672,8 @@ _________________________________________________________________
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>There is an important note which is nice to know when you are using batch normalization. While we are in the "training" phase, the mean and SD of the current data is used, but when we are in the "predicting" phase, the data obtained from training is used, because those weights are what has made the model and bu changing the weights of this layer on a pre-trained model, the learned data would be lost or damaged.</p>
 </div>
 </div>
@@ -750,11 +681,9 @@ _________________________________________________________________
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">¶</a></h2><p>In this notebook, we learned what a CNN is and why do we need one. In addition, the main concept behind CNNs, which is the convolution, was described. The concept of kernel was also defined, and how can we treat a picture numerically was described in details.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Conclusion">Conclusion</h2><p>In this notebook, we learned what a CNN is and why do we need one. In addition, the main concept behind CNNs, which is the convolution, was described. The concept of kernel was also defined, and how can we treat a picture numerically was described in details.</p>
 <p>Then, we practiced different steps needed in order to train a CNN model, especially using ReLU and also pooling. A dataset called CIFAR10 was introduced, which is a good starting point for who wants to get their hands dirty with CNNs.</p>
 <p>After that, the steps to train a CNN using TensorFlow was mentioned one after another, and finally, some suggestions to improve the results of the prediction (dropout regularization and batch normalization) were defined, described and used in code examples.</p>
 </div>
@@ -763,18 +692,15 @@ _________________________________________________________________
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Extra-suggestion:-Save-the-model">Extra suggestion: Save the model<a class="anchor-link" href="#Extra-suggestion:-Save-the-model">¶</a></h3><p>Because training CNNs takes a lot of time, when experimenting with the results of the model, it's usually better to save the model for further usage.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Extra-suggestion:-Save-the-model">Extra suggestion: Save the model</h3><p>Because training CNNs takes a lot of time, when experimenting with the results of the model, it's usually better to save the model for further usage.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -789,11 +715,9 @@ _________________________________________________________________
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Further-reading-and-references">Further reading and references<a class="anchor-link" href="#Further-reading-and-references">¶</a></h2><ul>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Further-reading-and-references">Further reading and references</h2><ul>
 <li><a href="https://hackr.io/blog/keras-vs-tensorflow">https://hackr.io/blog/keras-vs-tensorflow</a></li>
 <li><a href="https://www.geeksforgeeks.org/cnn-introduction-to-padding/">https://www.geeksforgeeks.org/cnn-introduction-to-padding/</a></li>
 <li><a href="https://www.cs.toronto.edu/~kriz/cifar.html">https://www.cs.toronto.edu/~kriz/cifar.html</a></li>
@@ -807,7 +731,7 @@ _________________________________________________________________
 </div>
 </div>
 </main>
-</body>
+
             </div>
             
                 
@@ -896,7 +820,12 @@ _________________________________________________________________
                 
                 
                 
-                <a href="https://github.com/spneshaei">GitHub</a>
+                <a class="wf-person-link" href="https://github.com/spneshaei">
+                    
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    
+                    <span>GitHub</span>
+                </a>
                 
                 
             </div>
@@ -940,7 +869,7 @@ _________________________________________________________________
     <div class="wf-page-navigation-inner">
         <div class="wf-page-navigation-slot wf-page-navigation-previous">
             
-            <a class="btn btn-link p-0" href="notebooks/keras/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/keras/">
                 <span class="d-block small text-muted">Back</span>
                 <span>Introduction to Keras</span>
             </a>
@@ -953,7 +882,7 @@ _________________________________________________________________
         </div>
         <div class="wf-page-navigation-slot wf-page-navigation-next">
             
-            <a class="btn btn-link p-0" href="notebooks/transformer/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/transformer/">
                 <span class="d-block small text-muted">Next</span>
                 <span>Transformer</span>
             </a>

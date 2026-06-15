@@ -34,14 +34,14 @@
 <script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
 
 <!-- Loading mathjax macro -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-<script type="text/x-mathjax-config" defer>
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                 displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
                 processEscapes: true,
-                processEnvironments: true
+                processEnvironments: true,
+                skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
             },
             displayAlign: 'center',
             "HTML-CSS": {
@@ -50,9 +50,11 @@
             }
         });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
+<script defer src="/supplementary/assets/js/content-toc.js"></script>
 
 <script>
 (function () {
@@ -297,66 +299,33 @@
         <div class="container-fluid p-0 m-0 no-gutters">
             
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
-                <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+                <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#Introduction">Introduction</a></li><li class="wf-content-toc-level-2"><a href="#What-is-Prolog?">What is Prolog?</a></li><li class="wf-content-toc-level-2"><a href="#Why-Learn-Prolog?">Why Learn Prolog?</a></li><li class="wf-content-toc-level-2"><a href="#Installing-Prolog">Installing Prolog</a></li><li class="wf-content-toc-level-2"><a href="#Prolog-101">Prolog 101</a></li><li class="wf-content-toc-level-3"><a href="#Terminologies">Terminologies</a></li><li class="wf-content-toc-level-3"><a href="#Simple-example">Simple example</a></li><li class="wf-content-toc-level-2"><a href="#Interesting-Prolog-Examples">Interesting Prolog Examples</a></li><li class="wf-content-toc-level-3"><a href="#Tower-of-Hanoi">Tower of Hanoi</a></li><li class="wf-content-toc-level-3"><a href="#Coins-Problem">Coins Problem</a></li><li class="wf-content-toc-level-3"><a href="#N-Queens">N-Queens</a></li><li class="wf-content-toc-level-2"><a href="#Good-References-to-Learn-Prolog,-Pyswip,-and-their-applications:">Good References to Learn Prolog, Pyswip, and their applications:</a></li></ol></nav>
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b530eaa2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Table-of-Contents:">Table of Contents:<a class="anchor-link" href="#Table-of-Contents:">¶</a></h4><ul>
-<li><a href="#intro">Introduction</a></li>
-<li><a href="#what-is-prolog">What is Prolog</a></li>
-<li><a href="#why-learn-prolog">Why Learn Prolog?</a></li>
-<li><a href="#installing-prolog">Installing Prolog</a></li>
-<li><a href="#prolog-101">Prolog 101</a><ul>
-<li><a href="#terminologies">Terminologies</a></li>
-<li><a href="#simple-example">Simple example</a></li>
-</ul>
-</li>
-<li><a href="#examples">Instersting Prolog examples</a><ul>
-<li><a href="#hanoi">Tower of Hanoi</a></li>
-<li><a href="#coins-problem">Coins Problem</a></li>
-<li><a href="#n-queens">N-Queens</a></li>
-</ul>
-</li>
-<li><a href="#ref">References</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=43a97f16">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="what-is-prolog"></a></div>
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>because logic was removed from the course’s syllabus and students might be unfamiliar with this topic it’s good to have a prerequisites subsection listing links to required skills and mathematical background such as logic itself, this notebook is trying to fulfill the lack of logic topics in the course.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h2 id="Introduction">Introduction</h2><p>because logic was removed from the course’s syllabus and students might be unfamiliar with this topic it’s good to have a prerequisites subsection listing links to required skills and mathematical background such as logic itself, this notebook is trying to fulfill the lack of logic topics in the course.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c3cf50b9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="what-is-prolog"></a></div>
-<h2 id="What-is-Prolog?">What is Prolog?<a class="anchor-link" href="#What-is-Prolog?">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h2 id="What-is-Prolog?">What is Prolog?</h2>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68874692">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Prolog is a <strong>logic programming</strong> language. It means that it is different in nature from the general-purpose form of languages like C++, Java, Python, Javascript, etc.</p>
 <p>Prolog is based on <a href="https://en.wikipedia.org/wiki/First-order_logic">First-Order Logic</a> and is purely designed as a <a href="https://en.wikipedia.org/wiki/Declarative_programming">declarative programming language</a>. The logic is expressed in terms of relations, and all the computation is initiated by queries.</p>
 <p>The language is used for theorem proving, designing expert systems, term rewriting, automated planning, <a href="https://en.wikipedia.org/wiki/Natural_language_processing">NLP</a>, and many more interesting fields.</p>
@@ -366,22 +335,18 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=63f49b30">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="why-learn-prolog"></a></div>
-<h2 id="Why-Learn-Prolog?">Why Learn Prolog?<a class="anchor-link" href="#Why-Learn-Prolog?">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h2 id="Why-Learn-Prolog?">Why Learn Prolog?</h2>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8eed9f77">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
 <li><p>Do I get a job by solely learning Prolog? The answer is probably not. Prolog is not a general-purpose language and is currently used only in specific fields.</p>
 </li>
@@ -399,22 +364,18 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a707a86b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="installing-prolog"></a></div>
-<h2 id="Installing-Prolog">Installing Prolog<a class="anchor-link" href="#Installing-Prolog">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h2 id="Installing-Prolog">Installing Prolog</h2>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=83a622e6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Actually, Prolog is a standard, and there are different implementations of it. Arguably, the most famous and widely used one is SWI-Prolog. You can download the SWI-Prolog installer from its site.
 <a href="https://www.swi-prolog.org/download/stable">SWI-Prolog Download</a></p>
 <p>If you use Windows, don't forget to <strong>check the 'add swipl to the system PATH for all users' option</strong> during the installation. If you forget to do so, you can manually add <code>C:\Program Files\swipl\bin</code> to the system path, given that you used the default installation path.</p>
@@ -424,18 +385,15 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ce140c75">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>There are some jupyter notebook kernels available, but they mostly work on particular OS builds. Therefore, we use a python package named pyswip that runs code using SWI-Prolog. You can see the full installation guide <a href="https://github.com/yuce/pyswip/blob/master/INSTALL.md">here</a>, but a simple pip install should suffice.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=508c8999">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -448,8 +406,7 @@
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1b7a63a6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -464,22 +421,18 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3e3b247">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="prolog-101"></a></div>
-<h2 id="Prolog-101">Prolog 101<a class="anchor-link" href="#Prolog-101">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h2 id="Prolog-101">Prolog 101</h2>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d45b5fe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Like all programming language tutorials, the first thing is "Hello World"!</p>
 <div class="highlight"><pre><span></span><span class="nf">write</span><span class="p">(</span><span class="s s-Atom">'Hello World'</span><span class="p">),</span><span class="s s-Atom">nl</span><span class="p">,</span><span class="nf">write</span><span class="p">(</span><span class="s s-Atom">'Let\'s</span> <span class="nv">Learn</span> <span class="nv">Prolog</span><span class="p">!</span><span class="err">'</span><span class="p">).</span>
 </pre></div>
@@ -491,12 +444,10 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=43b8c667">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="terminologies"></a></div>
-<h3 id="Terminologies">Terminologies<a class="anchor-link" href="#Terminologies">¶</a></h3><ul>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h3 id="Terminologies">Terminologies</h3><ul>
 <li><strong>Fact</strong>: A fact is a predicate expression that makes a declarative statement about the problem domain. Facts either consist of a particular item or a relation between items.</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="s s-Atom">rainy</span><span class="p">.</span>
@@ -512,15 +463,14 @@
 <li><p><strong>Query</strong>:  In making a query, you ask Prolog whether it can <em>prove</em> that your statement is true. In Prolog, a query is made with <code>?-</code> symbol, but in <code>pyswip</code> we can use <code>query(string)</code>.</p>
 </li>
 </ul>
-<div><a class="anchor" id="simple-example"></a></div>
-<h3 id="Simple-example">Simple example<a class="anchor-link" href="#Simple-example">¶</a></h3><p>Let's see a simple example:</p>
+
+<h3 id="Simple-example">Simple example</h3><p>Let's see a simple example:</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4d18d9f7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -534,8 +484,7 @@
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a8351fa9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -548,11 +497,10 @@
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>jane is child of michael
 </pre>
@@ -563,10 +511,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bdc11e3e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>First line is a <em>fact</em> that says Michael is father of Jane. Second line is a <em>rule</em> that says if Y is a father of X then X is a child of Y. Note that X and Y are variables.</p>
 <p>In the <code>for</code>, we <em>query</em> for all <code>child</code> relationships and <code>print</code> them. Note that the result of <code>query()</code> is a python generator and must be used in a foreach statement or casted into a <code>list</code>.</p>
 </div>
@@ -575,10 +521,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4158e6ac">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><code>consult</code>: You can load a database of prolog statements using <code>consult</code>. It works both in prolog and pyswip. In prolog you can use both    <code>?- consult('file.pl').</code> and <code>['file1.pl'].</code>. In pyswip you can use <code>consult(path)</code> function.</p>
 </div>
 </div>
@@ -586,10 +530,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1132d05a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Let's make a more complicated example and put it in a file named <code>1.pl</code>.</p>
 </div>
 </div>
@@ -597,10 +539,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e46299c4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="c1">% 1.pl</span>
 
 <span class="nf">father</span><span class="p">(</span><span class="s s-Atom">albert</span><span class="p">,</span> <span class="s s-Atom">bob</span><span class="p">).</span>
@@ -625,8 +565,7 @@
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a1913bcc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -639,8 +578,7 @@
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0e005f15">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -655,11 +593,10 @@
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Albert is grandparent of carl
 Albert is grandparent of charlie
@@ -673,34 +610,28 @@ Albert is grandchild of alice
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=255dce9f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="examples"></a></div>
-<h2 id="Interesting-Prolog-Examples">Interesting Prolog Examples<a class="anchor-link" href="#Interesting-Prolog-Examples">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h2 id="Interesting-Prolog-Examples">Interesting Prolog Examples</h2>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e52b0c4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="hanoi"></a></div>
-<h3 id="Tower-of-Hanoi">Tower of Hanoi<a class="anchor-link" href="#Tower-of-Hanoi">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h3 id="Tower-of-Hanoi">Tower of Hanoi</h3>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f45c438e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Tower of Hanoi is a very famous programming problem that is used to teach recursive functions. You can see the problem definition on <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Wikipedia</a>. Here we try to implement it in Prolog and solve a simple instance of it using pyswip.</p>
 </div>
 </div>
@@ -708,10 +639,8 @@ Albert is grandchild of alice
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=402f7b65">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="c1">% hanoi.pl</span>
 
 <span class="nf">hanoi</span><span class="p">(</span><span class="nv">N</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">move</span><span class="p">(</span><span class="nv">N</span><span class="p">,</span> <span class="s s-Atom">left</span><span class="p">,</span> <span class="s s-Atom">right</span><span class="p">,</span> <span class="s s-Atom">center</span><span class="p">).</span>
@@ -728,18 +657,15 @@ Albert is grandchild of alice
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad8a3394">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><code>hanoi(N)</code> will lead to calling <code>move(N)</code>. <code>move (0,_,_,_)</code> is the termination condition of recursive call, and <code>!</code> tells prolog to stop calling the function and backtracking. <code>_</code> matches (unifies) with everything; It is similar to "don't care" in logic circuits. <code>move(N,A,B,C)</code> is the actual recursive formulation of Tower of Hanoi. <code>is</code> operator is the same as <code>=</code> in other languages and here it means "put <code>N-1</code> into <code>M</code>". <code>notify</code> is a function that will be defined in python and we will use pyswip to bind prolog and python code together.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5b7b15e6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -752,8 +678,7 @@ Albert is grandchild of alice
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7f3ebc44">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -772,11 +697,10 @@ Albert is grandchild of alice
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>move disk from left pole to right pole.
 move disk from left pole to center pole.
@@ -793,10 +717,8 @@ move disk from left pole to right pole.
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=750d83ea">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><code>registerForeign</code> is used to make prolog run python's <code>notify</code> function. Also note that as we said before, <code>prolog.query()</code> makes a generator. Generators are not evaluated by default. They must be used in a foreach or casted into list to force python actually evaluate them.</p>
 </div>
 </div>
@@ -804,22 +726,18 @@ move disk from left pole to right pole.
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c1f175f4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="coins-problem"></a></div>
-<h3 id="Coins-Problem">Coins Problem<a class="anchor-link" href="#Coins-Problem">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h3 id="Coins-Problem">Coins Problem</h3>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cbed41db">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>In a country, there are coins of 1,2,5,50 and 100. We want to find all the ways to sum at most <code>max_count</code> of these coins to get to a cumulative sum of <code>total</code>. We solve this in <code>coins.pl</code> file.</p>
 </div>
 </div>
@@ -827,10 +745,8 @@ move disk from left pole to right pole.
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4083492b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="p">:-</span> <span class="nf">use_module</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s s-Atom">'bounds'</span><span class="p">)).</span>
 
 <span class="nf">coins</span><span class="p">(</span><span class="nv">S</span><span class="p">,</span> <span class="nv">Count</span><span class="p">,</span> <span class="nv">Total</span><span class="p">)</span> <span class="p">:-</span>
@@ -872,18 +788,15 @@ move disk from left pole to right pole.
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e831b53">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><code>bound</code> library is used to make the search space limited. For example if sum is <code>1000</code>, we could have at most <code>100</code> coins of value <code>10</code>. So <code>C</code> should be between <code>0</code> to <code>100</code>. <code>#=</code> is same as <code>=</code> for algebraic expressions. <code>sum (S,#=,Count)</code> means that sum of all elements in list <code>S</code> should be equal to <code>Count</code>. Elements of <code>S</code> indicate count of each coin.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=90f7987b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -896,8 +809,7 @@ move disk from left pole to right pole.
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fe40af9f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -916,11 +828,10 @@ move disk from left pole to right pole.
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>0 0x1 100x5 0x10 0x50 0x100 
 1 5x1 91x5 4x10 0x50 0x100 
@@ -1035,22 +946,18 @@ move disk from left pole to right pole.
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8af1546f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="N-Queens"></a></div>
-<h3 id="N-Queens">N-Queens<a class="anchor-link" href="#N-Queens">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h3 id="N-Queens">N-Queens</h3>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57693c63">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>N-Queens is a famous problem that asks how to put N queens in an $N \times N$ checkboard such that none of them threatens each other. As we know, in each column, there must be one queen, so we encode the state as an N-tuple in which element at index $i$ indicates which row the queen at column $i$ resides in. We can simply model this problem in Prolog like this:</p>
 </div>
 </div>
@@ -1058,10 +965,8 @@ move disk from left pole to right pole.
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba325141">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="p">:-</span> <span class="nf">use_module</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s s-Atom">clpfd</span><span class="p">)).</span>
 
 <span class="nf">n_queens</span><span class="p">(</span><span class="nv">N</span><span class="p">,</span> <span class="nv">Qs</span><span class="p">)</span> <span class="p">:-</span>
@@ -1085,8 +990,7 @@ move disk from left pole to right pole.
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d30569d3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1099,8 +1003,7 @@ move disk from left pole to right pole.
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5dfea9fe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1113,11 +1016,10 @@ move disk from left pole to right pole.
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>1 .	 [1, 5, 8, 6, 3, 7, 2, 4]
 2 .	 [1, 6, 8, 3, 7, 4, 2, 5]
@@ -1219,10 +1121,8 @@ move disk from left pole to right pole.
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6df39417">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>As you can see, it has found all 92 unique solutions of 8-Queen. You can test it with other numbers too. The code we wrote for this problem is much less than its implementation in most general purpose langauges and yet, it is very elegant and can be understood with little to no effort if you are familiar with prolog syntax.</p>
 </div>
 </div>
@@ -1230,22 +1130,18 @@ move disk from left pole to right pole.
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=62a87bc2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div><a class="anchor" id="ref"></a></div>
-<h2 id="Good-References-to-Learn-Prolog,-Pyswip,-and-their-applications:">Good References to Learn Prolog, Pyswip, and their applications:<a class="anchor-link" href="#Good-References-to-Learn-Prolog,-Pyswip,-and-their-applications:">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h2 id="Good-References-to-Learn-Prolog,-Pyswip,-and-their-applications:">Good References to Learn Prolog, Pyswip, and their applications:</h2>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34703307">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
 <li><a href="https://www.metalevel.at/prolog">https://www.metalevel.at/prolog</a></li>
 <li><a href="https://github.com/yuce/pyswip">https://github.com/yuce/pyswip</a></li>
@@ -1256,7 +1152,7 @@ move disk from left pole to right pole.
 </div>
 </div>
 </main>
-</body>
+
             </div>
             
                 
@@ -1345,19 +1241,34 @@ move disk from left pole to right pole.
                 
                 
                 
-                <a href="https://github.com/titansarus">GitHub</a>
+                <a class="wf-person-link" href="https://github.com/titansarus">
+                    
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    
+                    <span>GitHub</span>
+                </a>
                 
                 
                 
                 
                 
-                <a href="https://www.linkedin.com/in/amirmahdi-namjoo-23b4b9192/">LinkedIn</a>
+                <a class="wf-person-link" href="https://www.linkedin.com/in/amirmahdi-namjoo-23b4b9192/">
+                    
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    
+                    <span>LinkedIn</span>
+                </a>
                 
                 
                 
                 
                 
-                <a href="mailto://amirm137878@gmail.com">Email</a>
+                <a class="wf-person-link" href="mailto:amirm137878@gmail.com">
+                    
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    
+                    <span>Email</span>
+                </a>
                 
                 
             </div>
@@ -1401,7 +1312,7 @@ move disk from left pole to right pole.
     <div class="wf-page-navigation-inner">
         <div class="wf-page-navigation-slot wf-page-navigation-previous">
             
-            <a class="btn btn-link p-0" href="notebooks/ml_methods_online_semisupervised_fewshot_learning/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/ml_methods_online_semisupervised_fewshot_learning/">
                 <span class="d-block small text-muted">Back</span>
                 <span>Machine Learning Methods</span>
             </a>
@@ -1414,7 +1325,7 @@ move disk from left pole to right pole.
         </div>
         <div class="wf-page-navigation-slot wf-page-navigation-next">
             
-            <a class="btn btn-link p-0" href="notebooks/hmm_speech_recognition/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/hmm_speech_recognition/">
                 <span class="d-block small text-muted">Next</span>
                 <span>HMM Speech Recognition</span>
             </a>

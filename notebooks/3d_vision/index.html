@@ -34,14 +34,14 @@
 <script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
 
 <!-- Loading mathjax macro -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-<script type="text/x-mathjax-config" defer>
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                 displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
                 processEscapes: true,
-                processEnvironments: true
+                processEnvironments: true,
+                skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
             },
             displayAlign: 'center',
             "HTML-CSS": {
@@ -50,9 +50,11 @@
             }
         });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
+<script defer src="/supplementary/assets/js/content-toc.js"></script>
 
 <script>
 (function () {
@@ -296,117 +298,37 @@
         <div class="container-fluid p-0 m-0 no-gutters">
             
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
-                <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+                <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#introduction">Introduction</a></li><li class="wf-content-toc-level-2"><a href="#3d-data-representation">3D Data Representation</a></li><li class="wf-content-toc-level-2"><a href="#deep-learning-on-unsorted-sets-the-rise-of-pointnet">Deep Learning on Unsorted Sets (The rise of Pointnet)</a></li><li class="wf-content-toc-level-2"><a href="#3d-adversarial-attacks">3D Adversarial Attacks</a></li><li class="wf-content-toc-level-2"><a href="#papers-and-labs-regarding-3d-computer-vision">Papers and Labs regarding 3D Computer vision</a></li><li class="wf-content-toc-level-2"><a href="#references">References</a></li></ol></nav>
 <main>
+
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div style="direction:ltr;line-height:300%;">
-<font face="Arial" size="5">
-<div align="center">
-<p></p>
-<p></p>
-In the Name of God
-            <p></p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
 <br/>
-            Sharif University of Technology
-            <br/>
-Computer Engineering Department
-            <p></p>
-Artificial Intelligence Course
-            <br/>
-<br/>
-            MohammadHossein Rohban
-            <br/>
-Fall 2021
-        </div>
+<div id="sec_intro">
+
+<h2 id="introduction">Introduction</h2>
+
 <hr/>
-<div align="center">
-3D Computer Vision
-        </div>
-<br/>
-<div align="center">
-Kimia Noorbakhsh
-        </div>
-<hr/>
-<style scoped="" type="text/css">
-        p{
-        border: 1px solid #a2a9b1;background-color: #f8f9fa;display: inline-block;
-        };
-        </style>
-<div>
-<h3>Table of Contents</h3>
-<ul style="margin-right: 0;">
-<li>
-<a href="#sec_intro">
-                        Introduction
-                    </a>
-</li>
-<li>
-<a href="#sec_1">
-                    3D Data Representation
-                    </a>
-</li>
-<li>
-<a href="#sec_2">
-                Deep Learning on Unsorted Sets (The rise of Pointnet)
-                    </a>
-</li>
-<li>
-<a href="#sec_3">
-                    3D Adversarial Attacks
-                    </a>
-</li>
-<li>
-<a href="#sec_4">
-                    Papers and Labs regarding 3D Computer vision
-                    </a>
-</li>
-</ul>
-</div>
-</font>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p></p>
-<br/>
-<div id="sec_intro" style="direction:ltr;line-height:300%;">
-<font face="Arial" size="5">
-<font color="#888888" size="6">
-Introduction
-        </font>
-<p></p>
-<hr/>
-<p style='box-sizing: border-box; color: rgb(34, 34, 34); font-family: "Roboto Regular", "Helvetica Neue", Helvetica, Arial; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><span style="box-sizing: border-box;">With major recent developments in 3D sensors, large-scale 3D geometry datasets, and advances in deep 3D learning, 3D computer vision is playing an increasingly important role in many fields. This includes a varied range of cutting-edge applications spanning robotics, autonomous navigation and localization, 3D <span style="box-sizing: border-box;">scene reconstruction</span>, 3D <span style="box-sizing: border-box;">scene understanding</span>, 3D <span style="box-sizing: border-box;">tracking and surveillance</span>, <span style="box-sizing: border-box;">digital city modeling</span>, and virtual and <span style="box-sizing: border-box;">augmented reality</span>.</span></p>
-<p style='box-sizing: border-box; color: rgb(34, 34, 34); font-family: "Roboto Regular", "Helvetica Neue", Helvetica, Arial; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><span style="box-sizing: border-box;">The goal of this Research Topic is to present high-quality research on 3D computer vision that addresses challenging problems in 3D data processing, proposes new developments for reliable 3D data acquisition, and advances the state of the art in 3D applications.</span></p>
-<p style='box-sizing: border-box; color: rgb(34, 34, 34); font-family: "Roboto Regular", "Helvetica Neue", Helvetica, Arial; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Some of the areas of focus are:</p>
-<ol style='box-sizing: border-box; color: rgb(34, 34, 34); font-family: "Roboto Regular", "Helvetica Neue", Helvetica, Arial; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>
-<li style="box-sizing: border-box;">3D analysis and modeling (3D deep learning and 3D machine learning, 3D recognition, 3D Segmentation, 3D detection, 3D registration)</li>
-<li style="box-sizing: border-box;">3D acquisition (calibration, structure from motion and SLAM, computational photography, 3D reconstruction)</li>
-<li style="box-sizing: border-box;">3D applications (robotics, medical applications, sports applications, digital fabrication)</li>
+<p style="box-sizing: border-box; color: rgb(34, 34, 34); font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial"><span style="box-sizing: border-box">With major recent developments in 3D sensors, large-scale 3D geometry datasets, and advances in deep 3D learning, 3D computer vision is playing an increasingly important role in many fields. This includes a varied range of cutting-edge applications spanning robotics, autonomous navigation and localization, 3D <span style="box-sizing: border-box">scene reconstruction</span>, 3D <span style="box-sizing: border-box">scene understanding</span>, 3D <span style="box-sizing: border-box">tracking and surveillance</span>, <span style="box-sizing: border-box">digital city modeling</span>, and virtual and <span style="box-sizing: border-box">augmented reality</span>.</span></p>
+<p style="box-sizing: border-box; color: rgb(34, 34, 34); font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial"><span style="box-sizing: border-box">The goal of this Research Topic is to present high-quality research on 3D computer vision that addresses challenging problems in 3D data processing, proposes new developments for reliable 3D data acquisition, and advances the state of the art in 3D applications.</span></p>
+<p style="box-sizing: border-box; color: rgb(34, 34, 34); font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial">Some of the areas of focus are:</p>
+<ol style="box-sizing: border-box; color: rgb(34, 34, 34); font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial">
+<li style="box-sizing: border-box">3D analysis and modeling (3D deep learning and 3D machine learning, 3D recognition, 3D Segmentation, 3D detection, 3D registration)</li>
+<li style="box-sizing: border-box">3D acquisition (calibration, structure from motion and SLAM, computational photography, 3D reconstruction)</li>
+<li style="box-sizing: border-box">3D applications (robotics, medical applications, sports applications, digital fabrication)</li>
 </ol>
-<p style='box-sizing: border-box; color: rgb(34, 34, 34); font-family: "Roboto Regular", "Helvetica Neue", Helvetica, Arial; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>In this notebook, we will focus on the first application.</p>
-</font></div>
+<p style="box-sizing: border-box; color: rgb(34, 34, 34); font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial">In this notebook, we will focus on the first application.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <img alt="No description has been provided for this image" height="400" src="/supplementary/assets/FIG/3D.jpeg" width="800"/>
 </div>
 </div>
@@ -414,18 +336,14 @@ Introduction
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p></p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
 <br/>
-<div id="sec_1" style="direction:ltr;line-height:300%;">
-<font face="Arial" size="5">
-<font color="#888888" size="6">
-3D Data Representation
-        </font>
-<p></p>
+<div id="sec_1">
+
+<h2 id="3d-data-representation">3D Data Representation</h2>
+
 <hr/>
 <ol>
 <li>3D Point Clouds</li>
@@ -435,24 +353,21 @@ Introduction
 <li>Parametric Model (CAD)</li>
 <li>Other representations</li>
 </ol>
-</font></div>
+</div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Show a code to read the ModelNet40 dataset and visualize some of its samples.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -466,41 +381,34 @@ Introduction
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p></p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
 <br/>
-<div id="sec_2" style="direction:ltr;line-height:300%;">
-<font face="Arial" size="5">
-<font color="#888888" size="6">
-Deep Learning on Unsorted Sets (The rise of Pointnet)
-        </font>
-<p></p>
+<div id="sec_2">
+
+<h2 id="deep-learning-on-unsorted-sets-the-rise-of-pointnet">Deep Learning on Unsorted Sets (The rise of Pointnet)</h2>
+
 <hr/>
 <p>From a data structure point of view, a point cloud is an unordered set of vectors. While most works in deep learning focus on regular input representations like sequences (in speech and language processing), images, and volumes (video or 3D data), not much work has been done in deep learning on point sets.</p>
-<p><strong><span style="font-size: 24px;">Pointnet Architecture:</span></strong></p>
+<p><strong><span style="font-size: 24px">Pointnet Architecture:</span></strong></p>
 <p>Pointnet is a deep learning framework that directly consumes unordered point sets as inputs. A point cloud is represented as a set of 3D points ${P_i| i = 1, \dots, n}$, where each point $P_i$ is a vector of its ($x, y, z$) coordinate plus extra feature channels such as color, normal, etc. For simplicity and clarity, unless otherwise noted, we only use the ($x, y, z$) coordinate as our point’s channels.</p>
 <p>For the object classification task, the input point cloud is either directly sampled from a shape or pre-segmented from a scene point cloud. Our proposed deep network outputs $k$ scores for all the $k$ candidate classes. For semantic segmentation, the input can be a single object for part region segmentation or a sub-volume from a 3D scene for object region segmentation. Our model will output $n \times m$ scores for each of the n points and each of the $m$ semantic subcategories.</p>
-</font></div>
+</div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <img alt="No description has been provided for this image" height="400" src="/supplementary/assets/FIG/pointnet.PNG" width="800"/>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -514,10 +422,8 @@ Deep Learning on Unsorted Sets (The rise of Pointnet)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Introduce other useful point cloud models and link to their papers.</p>
 </div>
 </div>
@@ -525,30 +431,24 @@ Deep Learning on Unsorted Sets (The rise of Pointnet)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p></p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
 <br/>
-<div id="sec_3" style="direction:ltr;line-height:300%;">
-<font face="Arial" size="5">
-<font color="#888888" size="6">
-3D Adversarial Attacks
-        </font>
-<p></p>
+<div id="sec_3">
+
+<h2 id="3d-adversarial-attacks">3D Adversarial Attacks</h2>
+
 <hr/>
 <p>Reference to the original 3D adversarial attack paper and introduce the procedure.</p>
-</font></div>
+</div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <img alt="No description has been provided for this image" height="400" src="/supplementary/assets/FIG/adv.PNG" width="800"/>
 </div>
 </div>
@@ -556,21 +456,17 @@ Deep Learning on Unsorted Sets (The rise of Pointnet)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p></p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
 <br/>
-<div id="sec_4" style="direction:ltr;line-height:300%;">
-<font face="Arial" size="5">
-<font color="#888888" size="6">
-Papers and Labs regarding 3D Computer vision
-        </font>
-<p></p>
+<div id="sec_4">
+
+<h2 id="papers-and-labs-regarding-3d-computer-vision">Papers and Labs regarding 3D Computer vision</h2>
+
 <hr/>
 <p>List of papers:</p>
-<p><br/></p>
+
 <p>Labs and groups working on 3D Computer Vision:</p>
 <ol>
 <li><a href="http://ipl.ce.sharif.edu/" rel="noopener noreferrer" target="_blank">IPL Lab (Sharif)</a></li>
@@ -579,23 +475,19 @@ Papers and Labs regarding 3D Computer vision
 <li><a href="http://www.cs.cmu.edu/~abhinavg/affordances/" rel="noopener noreferrer" target="_blank">3D Scene Geometry</a></li>
 <li><a href="https://www.crcv.ucf.edu/" rel="noopener noreferrer" target="_blank">Center for Research in Computer Vision, University of Central Florida (UCF)</a></li>
 </ol>
-</font></div>
+</div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p></p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
 <br/>
-<div id="sec_refs" style="direction:ltr;line-height:300%;">
-<font face="Arial" size="5">
-<font color="#888888" size="6">
-References
-        </font>
+<div id="sec_refs">
+
+<h2 id="references">References</h2>
 <hr/>
 <ul>
 <li>
@@ -605,28 +497,22 @@ https://towardsdatascience.com/how-to-represent-3d-data-66a0f6376afb
 Reference 2
             </li>
 </ul>
-</font>
+
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
+
 </div>
 </div>
 </div>
 </div></div></div></div></div></main>
-</body>
+
             </div>
             
                 
@@ -715,7 +601,12 @@ Reference 2
                 
                 
                 
-                <a href="https://github.com/kimianoorbakhsh">GitHub</a>
+                <a class="wf-person-link" href="https://github.com/kimianoorbakhsh">
+                    
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    
+                    <span>GitHub</span>
+                </a>
                 
                 
             </div>
@@ -747,7 +638,12 @@ Reference 2
                 
                 
                 
-                <a href="https://github.com/sarakh1999">GitHub</a>
+                <a class="wf-person-link" href="https://github.com/sarakh1999">
+                    
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    
+                    <span>GitHub</span>
+                </a>
                 
                 
             </div>
@@ -791,7 +687,7 @@ Reference 2
     <div class="wf-page-navigation-inner">
         <div class="wf-page-navigation-slot wf-page-navigation-previous">
             
-            <a class="btn btn-link p-0" href="notebooks/transformer/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/transformer/">
                 <span class="d-block small text-muted">Back</span>
                 <span>Transformer</span>
             </a>
@@ -804,7 +700,7 @@ Reference 2
         </div>
         <div class="wf-page-navigation-slot wf-page-navigation-next">
             
-            <a class="btn btn-link p-0" href="notebooks/generative_adversarial_networks/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/generative_adversarial_networks/">
                 <span class="d-block small text-muted">Next</span>
                 <span>Generative Adversarial Networks</span>
             </a>

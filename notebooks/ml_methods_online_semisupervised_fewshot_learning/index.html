@@ -34,14 +34,14 @@
 <script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
 
 <!-- Loading mathjax macro -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-<script type="text/x-mathjax-config" defer>
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                 displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
                 processEscapes: true,
-                processEnvironments: true
+                processEnvironments: true,
+                skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
             },
             displayAlign: 'center',
             "HTML-CSS": {
@@ -50,9 +50,11 @@
             }
         });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
+<script defer src="/supplementary/assets/js/content-toc.js"></script>
 
 <script>
 (function () {
@@ -296,63 +298,25 @@
         <div class="container-fluid p-0 m-0 no-gutters">
             
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
-                <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+                <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#Introduction">Introduction</a></li><li class="wf-content-toc-level-2"><a href="#Online-Learning">Online Learning</a></li><li class="wf-content-toc-level-2"><a href="#Continual-learning">Continual learning</a></li><li class="wf-content-toc-level-2"><a href="#Semi-Supervised-Learning">Semi-Supervised Learning</a></li><li class="wf-content-toc-level-2"><a href="#Few-Shot-Learning">Few-Shot Learning</a></li><li class="wf-content-toc-level-2"><a href="#Meta-Learning">Meta-Learning</a></li><li class="wf-content-toc-level-3"><a href="#Model-Agnostic-Meta-Learning">Model-Agnostic Meta-Learning</a></li><li class="wf-content-toc-level-2"><a href="#Finally...">Finally...</a></li></ol></nav>
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=growing-black">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=272f7c2e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h1><ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#online-learning">Online Learning</a><ul>
-<li><a href="##continual-learning">Continual Learning</a></li>
-</ul>
-</li>
-<li><a href="#semi-suipervised-learning">Semi-Supervised Learning</a></li>
-<li><a href="#few-shot-learning">Few-Shot Learning</a><ul>
-<li><a href="##meta-learning">Meta-Learning</a><ul>
-<li><a href="###model-agnostic-meta-learning">Model-Agnostic Meta-Learning</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#Finally...">Other useful links</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+
+
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=gBGkgt81cn2i">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h1><p>In this notebook, we take a brief look at different Machine Learning methods such as online learning, semi-supervised learning, and few-shot learning. The ultimate goal of this content is to provide a shallow knowledge of the aforementioned topics and helpful resources for further studies.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Introduction">Introduction</h2><p>In this notebook, we take a brief look at different Machine Learning methods such as online learning, semi-supervised learning, and few-shot learning. The ultimate goal of this content is to provide a shallow knowledge of the aforementioned topics and helpful resources for further studies.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=sudden-theology">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Online-Learning">Online Learning<a class="anchor-link" href="#Online-Learning">¶</a></h1><p>Online machine learning is a machine learning method in which data becomes available in sequential order and is used to update the best predictor for future data at each step, as opposed to batch learning techniques that generate the best predictor by learning on the entire training data set at once. <a href="https://www.youtube.com/watch?v=O3gd6elZOlA">Here</a> is a youtube tutorial that might help with getting more familiar with this group of ML methods.</p>
-<h2 id="Continual-learning">Continual learning<a class="anchor-link" href="#Continual-learning">¶</a></h2><ul>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Online-Learning">Online Learning</h2><p>Online machine learning is a machine learning method in which data becomes available in sequential order and is used to update the best predictor for future data at each step, as opposed to batch learning techniques that generate the best predictor by learning on the entire training data set at once. <a href="https://www.youtube.com/watch?v=O3gd6elZOlA">Here</a> is a youtube tutorial that might help with getting more familiar with this group of ML methods.</p>
+<h2 id="Continual-learning">Continual learning</h2><ul>
 <li><p>Continual learning means constantly improving the learned model by processing continuous streams of information. Continual learning capabilities are essential for software systems and autonomous agents interacting in an ever changing real world.</p>
 </li>
 <li><p>Many refer to continual learning and online learning as synonyms, but people have different opinions on this. Some believe that continual learning is a subset of online learning that deals with <a href="https://en.wikipedia.org/wiki/Catastrophic_interference">catastrophic forgetting</a>, whereas standard “online learning” is more naive and incurs forgetting.</p>
@@ -368,10 +332,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=utility-shark">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><img alt="No description has been provided for this image" height="650" src="https://www.analyticsvidhya.com/wp-content/uploads/2015/01/schematics.png" width="650"/></p>
 </div>
 </div>
@@ -379,21 +341,17 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=authorized-scotland">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Semi-Supervised-Learning">Semi-Supervised Learning<a class="anchor-link" href="#Semi-Supervised-Learning">¶</a></h1><p>Semi-supervised learning is an approach to machine learning that combines a small amount of labeled data with many unlabeled data during training. Semi-supervised learning falls between unsupervised learning (with no labeled training data) and supervised learning (with only labeled training data). More specifically, it is a particular instance of weak supervision.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Semi-Supervised-Learning">Semi-Supervised Learning</h2><p>Semi-supervised learning is an approach to machine learning that combines a small amount of labeled data with many unlabeled data during training. Semi-supervised learning falls between unsupervised learning (with no labeled training data) and supervised learning (with only labeled training data). More specifically, it is a particular instance of weak supervision.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=colonial-ticket">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
 <li>Pseudo Labeling: Assume that only a small portion of our training data is labeled. To get the most out of our training data, we should assign correct labels to unlabeled data. We train a supervised model with our labeled data in pseudo labeling and utilize its predictions for setting labels for the unlabeled data. <a href="https://www.youtube.com/watch?v=b-yhKUINb7o">This youtube tutorial</a> might help with a better understanding.</li>
 </ul>
@@ -403,10 +361,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=younger-netherlands">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><img alt="No description has been provided for this image" height="650" src="https://www.researchgate.net/publication/345432485/figure/fig1/AS:955199128608771@1604748627675/Pseudo-Labeling-Learning-Architecture.png" width="650"/></p>
 </div>
 </div>
@@ -414,11 +370,9 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=potential-chick">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Few-Shot-Learning">Few-Shot Learning<a class="anchor-link" href="#Few-Shot-Learning">¶</a></h1><p>Few-shot learning is the problem of making predictions based on a limited number of samples. Few-shot learning is different from standard supervised learning. The general model should adapt efficiently with a small number of training data for a given task. In most cases, we need to prepare a model capable of this fast adaptation.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Few-Shot-Learning">Few-Shot Learning</h2><p>Few-shot learning is the problem of making predictions based on a limited number of samples. Few-shot learning is different from standard supervised learning. The general model should adapt efficiently with a small number of training data for a given task. In most cases, we need to prepare a model capable of this fast adaptation.</p>
 <ul>
 <li><p><strong>Support Set</strong>: Support set is meta learning’s jargon. The small set of labeled data (e.g., images) is called a support set. Note the differences between the training set and the support set. The training set is extensive. Every class in the training set has many samples. The training set is big enough for the learning process of a deep neural network. In contrast, the support set is small. Every class has at most a few samples. If every class has only one sample in the training set, it is impossible to train a deep neural network. Thus, we have support sets instead of training sets in few-shot learning.</p>
 </li>
@@ -435,10 +389,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cd116482">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><img alt="No description has been provided for this image" height="600" src="https://i0.wp.com/neptune.ai/wp-content/uploads/few-shot-classification-problem.jpeg?resize=684%2C483&amp;ssl=1" width="600"/></p>
 </div>
 </div>
@@ -446,32 +398,26 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=expected-waterproof">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Meta-Learning">Meta-Learning<a class="anchor-link" href="#Meta-Learning">¶</a></h2><p>Few-shot learning is a kind of meta-learning. Meta-learning is different from traditional supervised learning. Conventional supervised learning asks the model to recognize the training data and then generalize to unseen test data. Differently, meta learning’s goal is to learn. In other words, in meta-learning, the goal is to find a set of parameters that can adapt as quickly as possible for a new given task. We discuss one of the essential meta-learning platforms in the following section.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Meta-Learning">Meta-Learning</h2><p>Few-shot learning is a kind of meta-learning. Meta-learning is different from traditional supervised learning. Conventional supervised learning asks the model to recognize the training data and then generalize to unseen test data. Differently, meta learning’s goal is to learn. In other words, in meta-learning, the goal is to find a set of parameters that can adapt as quickly as possible for a new given task. We discuss one of the essential meta-learning platforms in the following section.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=manufactured-novel">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Model-Agnostic-Meta-Learning">Model-Agnostic Meta-Learning<a class="anchor-link" href="#Model-Agnostic-Meta-Learning">¶</a></h3><p>MAML, or Model-Agnostic Meta-Learning, is a model and task-agnostic algorithm for meta-learning that trains a model’s parameters such that a small number of gradient updates will lead to fast learning on a new task.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Model-Agnostic-Meta-Learning">Model-Agnostic Meta-Learning</h3><p>MAML, or Model-Agnostic Meta-Learning, is a model and task-agnostic algorithm for meta-learning that trains a model’s parameters such that a small number of gradient updates will lead to fast learning on a new task.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=yxtWWHKsa4k8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><img alt="No description has been provided for this image" height="400" src="http://bair.berkeley.edu/static/blog/maml/maml.png" width="400"/></p>
 </div>
 </div>
@@ -479,10 +425,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=partial-feeling">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>In this algorithm, which can be used in federated learning, each agent adapts the general set of parameters (known as theta) independently for its task using the support set. Subsequently, the gradient of the loss function using the query set (which is also labeled because it is in the learning section) is computed and transferred to the root. Then, the root updates the general theta concerning all the received gradients of different agents (tasks).</p>
 </div>
 </div>
@@ -490,10 +434,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=treated-stick">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><a href="https://www.youtube.com/watch?v=wT45v8sIMDM&amp;t=1286s">Here</a> is a youtube tutorial that could help with a better understanding of MAML. If you are more into text sources, <a href="https://www.instadeep.com/research/blog/model-agnostic-meta-learning-made-simple/">here</a> is a good one.</p>
 </div>
 </div>
@@ -501,10 +443,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=palestinian-trigger">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><a href="https://arxiv.org/abs/1703.03400">Here</a> is the link to the original paper proposing MAML.</p>
 </div>
 </div>
@@ -512,10 +452,8 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=reflected-amino">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>MAML is easily implemented on the <a href="https://github.com/learnables/learn2learn">learn2learn</a> GitHub repository. A simple experiment could be running <a href="https://github.com/learnables/learn2learn/blob/master/examples/vision/meta_mnist.py">this python file</a>, which executes MAML for MNIST image classification tasks. You can manage input parameters by providing proper arguments to this python code.</p>
 </div>
 </div>
@@ -523,11 +461,9 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dense-nudist">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Finally...">Finally...<a class="anchor-link" href="#Finally...">¶</a></h2><p>Check these links out for more information on topics covered in this notebook.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Finally...">Finally...</h2><p>Check these links out for more information on topics covered in this notebook.</p>
 <ul>
 <li><p><a href="https://www.borealisai.com/en/blog/tutorial-3-few-shot-learning-and-meta-learning-ii/">More about few-shot learning and meta-learning</a></p>
 </li>
@@ -549,7 +485,7 @@
 </div>
 </div>
 </main>
-</body>
+
             </div>
             
                 
@@ -638,13 +574,23 @@
                 
                 
                 
-                <a href="https://github.com/aliash98">GitHub</a>
+                <a class="wf-person-link" href="https://github.com/aliash98">
+                    
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    
+                    <span>GitHub</span>
+                </a>
                 
                 
                 
                 
                 
-                <a href="mailto://alialaee98@gmail.com">Email</a>
+                <a class="wf-person-link" href="mailto:alialaee98@gmail.com">
+                    
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    
+                    <span>Email</span>
+                </a>
                 
                 
             </div>
@@ -688,7 +634,7 @@
     <div class="wf-page-navigation-inner">
         <div class="wf-page-navigation-slot wf-page-navigation-previous">
             
-            <a class="btn btn-link p-0" href="notebooks/dimensionality_reduction/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/dimensionality_reduction/">
                 <span class="d-block small text-muted">Back</span>
                 <span>Dimensionality Reduction</span>
             </a>
@@ -701,7 +647,7 @@
         </div>
         <div class="wf-page-navigation-slot wf-page-navigation-next">
             
-            <a class="btn btn-link p-0" href="notebooks/logic_programming/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/logic_programming/">
                 <span class="d-block small text-muted">Next</span>
                 <span>Prolog and Logic Programming</span>
             </a>

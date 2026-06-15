@@ -34,14 +34,14 @@
 <script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
 
 <!-- Loading mathjax macro -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-<script type="text/x-mathjax-config" defer>
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                 displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
                 processEscapes: true,
-                processEnvironments: true
+                processEnvironments: true,
+                skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
             },
             displayAlign: 'center',
             "HTML-CSS": {
@@ -50,9 +50,11 @@
             }
         });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
+<script defer src="/supplementary/assets/js/content-toc.js"></script>
 
 <script>
 (function () {
@@ -296,22 +298,20 @@
         <div class="container-fluid p-0 m-0 no-gutters">
             
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
-                <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+                <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#introduction">Introduction</a></li><li class="wf-content-toc-level-2"><a href="#Challenges">Challenges</a></li><li class="wf-content-toc-level-3"><a href="#Similar-Words-and-Homophones">Similar Words and Homophones</a></li><li class="wf-content-toc-level-3"><a href="#Sentence-Boundary-Detection">Sentence Boundary Detection</a></li><li class="wf-content-toc-level-3"><a href="#Ambiguity">Ambiguity</a></li><li class="wf-content-toc-level-2"><a href="#Approaches">Approaches</a></li><li class="wf-content-toc-level-3"><a href="#Rule-based-Methods">Rule-based Methods</a></li><li class="wf-content-toc-level-3"><a href="#Machine-Learning-Methods">Machine Learning Methods</a></li><li class="wf-content-toc-level-3"><a href="#Deep-Learning-Methods">Deep Learning Methods</a></li><li class="wf-content-toc-level-2"><a href="#Useful-Links">Useful Links</a></li></ol></nav>
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<h2 id="introduction">Introduction</h2><div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Natural-Language-Processing">Natural Language Processing<a class="anchor-link" href="#Natural-Language-Processing">¶</a></h1><p><strong>Natural Language Processing (NLP)</strong> is a confluence of Artificial Intelligence and Linguistics which tries to enable computers to understand natural language data, including text, speech, etc. Tasks like <a href="https://en.wikipedia.org/wiki/Speech_recognition">Speech Recognition</a>, <a href="https://en.wikipedia.org/wiki/Machine_translation">Machine Translation</a>, <a href="https://en.wikipedia.org/wiki/Speech_synthesis">Text-to-speech</a> and <a href="https://en.wikipedia.org/wiki/Part-of-speech_tagging">Part-of-speech Tagging</a> are just some of NLP's branches.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Natural Language Processing (NLP)</strong> is a confluence of Artificial Intelligence and Linguistics which tries to enable computers to understand natural language data, including text, speech, etc. Tasks like <a href="https://en.wikipedia.org/wiki/Speech_recognition">Speech Recognition</a>, <a href="https://en.wikipedia.org/wiki/Machine_translation">Machine Translation</a>, <a href="https://en.wikipedia.org/wiki/Speech_synthesis">Text-to-speech</a> and <a href="https://en.wikipedia.org/wiki/Part-of-speech_tagging">Part-of-speech Tagging</a> are just some of NLP's branches.</p>
 <p align="center">
 <img alt="No description has been provided for this image" src="https://miro.medium.com/max/866/1*Ldc8IUYbFiAU83HIfJbtNQ.png"/>
 </p>
 <p>Historically, <a href="">Turing test</a> can be considered as a starting point in the realm of Natural Language Processing. Some single-purpose systems like <a href="https://en.wikipedia.org/wiki/SHRDLU">SHRDLU</a> and <a href="https://en.wikipedia.org/wiki/PARRY">PARRY</a> were developed by rule-based methods.</p>
 <p>There are two revolutions in NLP, the first one happened in late 1980's with introduction of machine learning which came up with statistical models and caused remarkable successes especially in machine translation. Deep learning methods which were introduced in 2010's outperformed previous methods and thus they are considered as second revoloution in NLP.</p>
 <p>Through this notebook, we will study main challenges and problem-solving approaches in NLP and introduce some related libraries in Python.</p>
-<h5 id="Contents:">Contents:<a class="anchor-link" href="#Contents:">¶</a></h5><ul>
+<h5 id="Contents:">Contents:</h5><ul>
 <li><a href="#challenges">Challenges</a><ul>
 <li><a href="#homophones">Similar Words and Homophones</a></li>
 <li><a href="#sbd">Sentence Boundary Detection</a></li>
@@ -332,22 +332,18 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="challenges"></a></p>
-<h2 id="Challenges">Challenges<a class="anchor-link" href="#Challenges">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h2 id="Challenges">Challenges</h2>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>There are number of challenges and limitations in NLP that we should be aware of. Throughout this section, we will study some of these challenges. Some of these challenges are not completely solved yet.</p>
 </div>
 </div>
@@ -355,12 +351,10 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="homophones"></a></p>
-<h3 id="Similar-Words-and-Homophones">Similar Words and Homophones<a class="anchor-link" href="#Similar-Words-and-Homophones">¶</a></h3><p>Same words can have different meanings according the context of the context of a sentence. For example, consider <em>apple</em> which can refer to both the fruit and the company. Or another example is "<em>He can can a can!</em>" which contains same word "<em>can</em>" with three different meanings. Humans can understand the meaning related to the context but differentiating between these meanings for a computer may be challenging.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h3 id="Similar-Words-and-Homophones">Similar Words and Homophones</h3><p>Same words can have different meanings according the context of the context of a sentence. For example, consider <em>apple</em> which can refer to both the fruit and the company. Or another example is "<em>He can can a can!</em>" which contains same word "<em>can</em>" with three different meanings. Humans can understand the meaning related to the context but differentiating between these meanings for a computer may be challenging.</p>
 <p>As another case, consider <a href="https://en.wikipedia.org/wiki/Homophone">homophones</a> which are words or phrases sharing same pronounciation while having different meanings, words like "<em>by</em>", "<em>bye</em>" and "<em>buy</em>" and phrases like "<em>some others</em>" and "<em>some mothers</em>". Detecting these homophones are sometimes hard even for people.</p>
 </div>
 </div>
@@ -368,24 +362,20 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="sbd"></a></p>
-<h3 id="Sentence-Boundary-Detection">Sentence Boundary Detection<a class="anchor-link" href="#Sentence-Boundary-Detection">¶</a></h3><p>One of challenges in NLP is deciding where sentences begin and end. This is mostly because of using punctuation marks which can create ambiguity. As an example, if we simply define full stop as the end of a sentence, then we may face counterexamples as this character may refer to an abbreviation or a decimal number. Rule-based and deep learning approaches are used to solve this problem.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h3 id="Sentence-Boundary-Detection">Sentence Boundary Detection</h3><p>One of challenges in NLP is deciding where sentences begin and end. This is mostly because of using punctuation marks which can create ambiguity. As an example, if we simply define full stop as the end of a sentence, then we may face counterexamples as this character may refer to an abbreviation or a decimal number. Rule-based and deep learning approaches are used to solve this problem.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="ambiguity"></a></p>
-<h3 id="Ambiguity">Ambiguity<a class="anchor-link" href="#Ambiguity">¶</a></h3><p>Sometimes group of words can have two or more interpretations. Consider the following statement:
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h3 id="Ambiguity">Ambiguity</h3><p>Sometimes group of words can have two or more interpretations. Consider the following statement:
 <strong><center>I saw a man on a hill with a telescope.</center></strong></p>
 <p>which can means "<em>There was a man on the hill and I saw him using my telescope</em>" while it can be interpreted as "<em>I saw a man on the hill and he had a telescope</em>". These ambiguities are sometimes hard to be cleared up since they should be interpreted according to the context. Part-of-speech tagging is one NLP soloution which can help solving this problem.</p>
 <p>Above challenges were just some examples of existing challenges in NLP. Irony and sarcasm, colloquialisms and slang, etc. are some other examples of problems in NLP. For further information you can checkout links provided in <a href="#links">Useful Links</a> section.</p>
@@ -395,24 +385,20 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="approaches"></a></p>
-<h2 id="Approaches">Approaches<a class="anchor-link" href="#Approaches">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h2 id="Approaches">Approaches</h2>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="rule-based"></a></p>
-<h3 id="Rule-based-Methods">Rule-based Methods<a class="anchor-link" href="#Rule-based-Methods">¶</a></h3><p><a href="https://en.wikipedia.org/wiki/Regular_expression">Regular expressions</a> and <a href="https://en.wikipedia.org/wiki/Context-free_grammar">context free grammars</a> are famous rule-based methods which can be beneficial for some tasks like <a href="https://en.wikipedia.org/wiki/Parsing">parsing</a>. Let's contemplate search queries for plane tickets. A suggested context free grammar for parsing these queries is provided below:</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h3 id="Rule-based-Methods">Rule-based Methods</h3><p><a href="https://en.wikipedia.org/wiki/Regular_expression">Regular expressions</a> and <a href="https://en.wikipedia.org/wiki/Context-free_grammar">context free grammars</a> are famous rule-based methods which can be beneficial for some tasks like <a href="https://en.wikipedia.org/wiki/Parsing">parsing</a>. Let's contemplate search queries for plane tickets. A suggested context free grammar for parsing these queries is provided below:</p>
 <p align="center">
 <img alt="No description has been provided for this image" src="https://cdn.builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/national/parsing-natural-language-processing.png"/>
 </p>
@@ -429,20 +415,17 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="machine-learning"></a></p>
-<h3 id="Machine-Learning-Methods">Machine Learning Methods<a class="anchor-link" href="#Machine-Learning-Methods">¶</a></h3><p>This is exactly like what you've seen before in other machine learning tasks. So, first we should have a dataset which is usually a corpus. Then we should do some feature engineering to find features related to our desired task. For example <em>Does this word begin with a capital letter?</em> or <em>What words came before and after this word?</em>. Next a model like <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">naive Bayes classifier</a>, <a href="https://en.wikipedia.org/wiki/Random_forest">random forest</a> or etc. should be trained.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h3 id="Machine-Learning-Methods">Machine Learning Methods</h3><p>This is exactly like what you've seen before in other machine learning tasks. So, first we should have a dataset which is usually a corpus. Then we should do some feature engineering to find features related to our desired task. For example <em>Does this word begin with a capital letter?</em> or <em>What words came before and after this word?</em>. Next a model like <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">naive Bayes classifier</a>, <a href="https://en.wikipedia.org/wiki/Random_forest">random forest</a> or etc. should be trained.</p>
 <p>In following cells we will build a <a href="https://en.wikipedia.org/wiki/Sentiment_analysis">sentiment analysis</a> classifier using Python. Throughout these codes, we will introduce <a href="https://www.nltk.org/"><strong>Natural Language Toolkit (NLTK)</strong></a> that contains many useful classes and functions related to NLP tasks.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -466,11 +449,10 @@
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>[nltk_data] Downloading package movie_reviews to /root/nltk_data...
 [nltk_data]   Package movie_reviews is already up-to-date!
@@ -487,8 +469,7 @@
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -505,11 +486,10 @@
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>[nltk_data] Downloading package stopwords to /root/nltk_data...
 [nltk_data]   Package stopwords is already up-to-date!
@@ -526,8 +506,7 @@
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -546,8 +525,7 @@
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -563,8 +541,7 @@
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -576,8 +553,7 @@
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
@@ -590,18 +566,15 @@
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>As you see, we achieved accuracy of 84% using simple features and without any parameter tuning! Now let's see which words are most informative features.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -613,11 +586,10 @@
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Most Informative Features
         contains (sucks) = True              neg : pos    =     10.0 : 1.0
@@ -638,12 +610,10 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="deep-learning"></a></p>
-<h3 id="Deep-Learning-Methods">Deep Learning Methods<a class="anchor-link" href="#Deep-Learning-Methods">¶</a></h3><p>Neural networks architectures are now widely used in different NLP tasks. <a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">Recurrent Neural Networks (RNNs)</a> are able to process sequential information. Many-to-one RNNs can be used for text classification problems, one-to-many RNNs are good for text generation tasks and many-to-many RNNs are useful in machine translation.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h3 id="Deep-Learning-Methods">Deep Learning Methods</h3><p>Neural networks architectures are now widely used in different NLP tasks. <a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">Recurrent Neural Networks (RNNs)</a> are able to process sequential information. Many-to-one RNNs can be used for text classification problems, one-to-many RNNs are good for text generation tasks and many-to-many RNNs are useful in machine translation.</p>
 <p align="center">
 <img alt="No description has been provided for this image" src="https://miro.medium.com/max/875/1*rqPCvf3mRrl9pGKW76wcTw.jpeg"/>
 </p>
@@ -654,10 +624,8 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Now it's time to see how deep models can be useful in representing words. In NLP tasks we usually need to show words numerically, e.g., using vectors. <a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf">TF-IDF</a> approach -which doesn't use neural networks- can show significance of each word in the document using its frequency in the given document and whole corpus. But it doesn't capture similarities between words. Furthermore, vectors are high dimensional since every word is a feature.</p>
 </div>
 </div>
@@ -665,10 +633,8 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Word2Vec is an alternative approach which uses neural networks to find word embeddings. It can discover similarities between words such that words which are semantically close together have similar embeddings. Vector size is much less than vocabulary size and is usually selected according to corpus size.</p>
 <p>Two famous Word2Vec architectures are <a href="https://en.wikipedia.org/wiki/Bag-of-words_model#CBOW">continuous bag-of-words (CBOW)</a> and <a href="https://en.wikipedia.org/wiki/N-gram#Skip-gram">skip-gram</a>. CBOW uses surrounding words to predict current word while skip-gram aims to predict surrounding words using current word.</p>
 <p align="center">
@@ -680,8 +646,7 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -698,18 +663,15 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Now let's see which words are mostly similar to the word <em>ship</em> using Word2Vec.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -722,8 +684,7 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
@@ -736,10 +697,8 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Interesting! As we expected, we see words which are semantically close to the word <em>ship</em>, such as <em>island</em>, <em>boat</em>, <em>plane</em>, <em>room</em>, etc.</p>
 <p>You can test other words using same syntax.</p>
 </div>
@@ -748,12 +707,10 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="links"></a></p>
-<h2 id="Useful-Links">Useful Links<a class="anchor-link" href="#Useful-Links">¶</a></h2><ul>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<h2 id="Useful-Links">Useful Links</h2><ul>
 <li><p><a href="https://monkeylearn.com/blog/natural-language-processing-challenges/">Major challenges of Natural Language Processing (NLP)</a></p>
 </li>
 <li><p><a href="https://medium.com/friendly-data/machine-learning-vs-rule-based-systems-in-nlp-5476de53c3b8">Machine Learning vs. Rule Based Systems in NLP</a></p>
@@ -772,7 +729,7 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
 </div>
 </div>
 </main>
-</body>
+
             </div>
             
                 
@@ -861,19 +818,34 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
                 
                 
                 
-                <a href="https://github.com/nimajam41">GitHub</a>
+                <a class="wf-person-link" href="https://github.com/nimajam41">
+                    
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    
+                    <span>GitHub</span>
+                </a>
                 
                 
                 
                 
                 
-                <a href="https://www.linkedin.com/in/nima-jamali-5b1521195/">LinkedIn</a>
+                <a class="wf-person-link" href="https://www.linkedin.com/in/nima-jamali-5b1521195/">
+                    
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    
+                    <span>LinkedIn</span>
+                </a>
                 
                 
                 
                 
                 
-                <a href="mailto://nimxj4141@gmail.com">Email</a>
+                <a class="wf-person-link" href="mailto:nimxj4141@gmail.com">
+                    
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    
+                    <span>Email</span>
+                </a>
                 
                 
             </div>
@@ -905,7 +877,12 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
                 
                 
                 
-                <a href="https://github.com/sarakh1999">GitHub</a>
+                <a class="wf-person-link" href="https://github.com/sarakh1999">
+                    
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    
+                    <span>GitHub</span>
+                </a>
                 
                 
             </div>
@@ -949,7 +926,7 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
     <div class="wf-page-navigation-inner">
         <div class="wf-page-navigation-slot wf-page-navigation-previous">
             
-            <a class="btn btn-link p-0" href="notebooks/recurrent_neural_networks/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/recurrent_neural_networks/">
                 <span class="d-block small text-muted">Back</span>
                 <span>Recurrent Neural Networks</span>
             </a>
@@ -962,7 +939,7 @@ contains (unimaginative) = True              neg : pos    =      8.5 : 1.0
         </div>
         <div class="wf-page-navigation-slot wf-page-navigation-next">
             
-            <a class="btn btn-link p-0" href="notebooks/keras/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/keras/">
                 <span class="d-block small text-muted">Next</span>
                 <span>Introduction to Keras</span>
             </a>

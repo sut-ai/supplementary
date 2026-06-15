@@ -33,14 +33,14 @@
 <script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
 
 <!-- Loading mathjax macro -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-<script type="text/x-mathjax-config" defer>
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                 displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
                 processEscapes: true,
-                processEnvironments: true
+                processEnvironments: true,
+                skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
             },
             displayAlign: 'center',
             "HTML-CSS": {
@@ -49,9 +49,11 @@
             }
         });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
+<script defer src="/supplementary/assets/js/content-toc.js"></script>
 
 <script>
 (function () {
@@ -663,13 +665,23 @@ operations.</p>
                 
                 
                 
-                <a href="https://vahidz.com">Website</a>
+                <a class="wf-person-link" href="https://vahidz.com">
+                    
+                    <i class="fas fa-globe" aria-hidden="true"></i>
+                    
+                    <span>Website</span>
+                </a>
                 
                 
                 
                 
                 
-                <a href="https://github.com/vahidzee">GitHub</a>
+                <a class="wf-person-link" href="https://github.com/vahidzee">
+                    
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    
+                    <span>GitHub</span>
+                </a>
                 
                 
             </div>
@@ -703,7 +715,7 @@ operations.</p>
         </div>
         <div class="wf-page-navigation-slot wf-page-navigation-next">
             
-            <a class="btn btn-link p-0" href="notebooks/search_in_continuous_space/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/search_in_continuous_space/">
                 <span class="d-block small text-muted">Next</span>
                 <span>Gradient Descent in Machine Learning</span>
             </a>

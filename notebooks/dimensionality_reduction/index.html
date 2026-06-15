@@ -34,14 +34,14 @@
 <script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
 
 <!-- Loading mathjax macro -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-<script type="text/x-mathjax-config" defer>
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                 displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
                 processEscapes: true,
-                processEnvironments: true
+                processEnvironments: true,
+                skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
             },
             displayAlign: 'center',
             "HTML-CSS": {
@@ -50,9 +50,11 @@
             }
         });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
+<script defer src="/supplementary/assets/js/content-toc.js"></script>
 
 <script>
 (function () {
@@ -296,26 +298,14 @@
         <div class="container-fluid p-0 m-0 no-gutters">
             
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
-                <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+                <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#Introduction-">Introduction</a></li><li class="wf-content-toc-level-2"><a href="#Main-Approaches-for-Dimensionality-Reduction-">Main Approaches for Dimensionality Reduction</a></li><li class="wf-content-toc-level-3"><a href="#PCA-(Principal-Component-Analysis)-">PCA (Principal Component Analysis)</a></li><li class="wf-content-toc-level-3"><a href="#t-SNE-(-T-distributed-stochastic-neighbour-embedding-)-">t-SNE ( T-distributed stochastic neighbour embedding )</a></li><li class="wf-content-toc-level-4"><a href="#What-is-t-SNE?">What is t-SNE?</a></li><li class="wf-content-toc-level-4"><a href="#Hyperparameter-Tuning">Hyperparameter Tuning</a></li><li class="wf-content-toc-level-4"><a href="#How-does-t-SNE-work?">How does t-SNE work?</a></li><li class="wf-content-toc-level-4"><a href="#How-to-effectively-use-t-SNE?">How to effectively use t-SNE?</a></li><li class="wf-content-toc-level-3"><a href="#UMAP-(-Uniform-Manifold-Approximation-and-Projection-)-">UMAP ( Uniform Manifold Approximation and Projection )</a></li><li class="wf-content-toc-level-4"><a href="#Comparison-between-UMAP-and-t-SNE">Comparison between UMAP and t-SNE</a></li><li class="wf-content-toc-level-3"><a href="#LDA-(-Linear-Discriminant-Analysis-)-">LDA ( Linear Discriminant Analysis )</a></li><li class="wf-content-toc-level-4"><a href="#How-does-LDA-find-the-right-axis?">How does LDA find the right axis?</a></li><li class="wf-content-toc-level-2"><a href="#Imports-">Imports</a></li><li class="wf-content-toc-level-2"><a href="#Prepare-Dataset">Prepare Dataset</a></li><li class="wf-content-toc-level-3"><a href="#Normalize-Data">Normalize Data</a></li><li class="wf-content-toc-level-2"><a href="#PCA-">PCA</a></li><li class="wf-content-toc-level-3"><a href="#Plot-2d">Plot 2d</a></li><li class="wf-content-toc-level-3"><a href="#Plot-3d">Plot 3d</a></li><li class="wf-content-toc-level-2"><a href="#t-SNE-">t-SNE</a></li><li class="wf-content-toc-level-3"><a href="#Plot-2d-2">Plot 2d</a></li><li class="wf-content-toc-level-3"><a href="#Plot-3d-2">Plot 3d</a></li><li class="wf-content-toc-level-2"><a href="#UMAP-">UMAP</a></li><li class="wf-content-toc-level-3"><a href="#Plot-2d-3">Plot 2d</a></li><li class="wf-content-toc-level-3"><a href="#Plot-3d-3">Plot 3d</a></li><li class="wf-content-toc-level-2"><a href="#LDA-">LDA</a></li><li class="wf-content-toc-level-3"><a href="#Plot-2d-4">Plot 2d</a></li><li class="wf-content-toc-level-3"><a href="#Plot-3d-4">Plot 3d</a></li><li class="wf-content-toc-level-2"><a href="#Comparison-">Comparison</a></li><li class="wf-content-toc-level-3"><a href="#2d-Visualization">2d Visualization</a></li><li class="wf-content-toc-level-3"><a href="#3d-Visualization">3d Visualization</a></li><li class="wf-content-toc-level-3"><a href="#3d-Visualization-with-Digits">3d Visualization with Digits</a></li><li class="wf-content-toc-level-2"><a href="#Conclusion-">Conclusion</a></li><li class="wf-content-toc-level-2"><a href="#References-">References</a></li></ol></nav>
 <main>
+
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Dimensionality-Reduction">Dimensionality Reduction<a class="anchor-link" href="#Dimensionality-Reduction">¶</a></h1><hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Introduction-">Introduction <a name="introduction"></a><a class="anchor-link" href="#Introduction-">¶</a></h2><p>When dealing with real problems and real data we often deal with high dimensional data that can go up to millions. In the Big Data era, data is not only becoming bigger and bigger; it is also becoming more and more complex. This translates into a spectacular increase of the dimensionality of the data.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Introduction-">Introduction <a name="introduction"></a></h2><p>When dealing with real problems and real data we often deal with high dimensional data that can go up to millions. In the Big Data era, data is not only becoming bigger and bigger; it is also becoming more and more complex. This translates into a spectacular increase of the dimensionality of the data.</p>
 <p>While in its original high dimensional structure the data represents itself best sometimes we might need to reduce its dimensionality.
 The need to reduce dimensionality is often associated with visualizations (reducing to 2–3 dimensions so we can plot it) but that is not always the case.</p>
 <p>Sometimes we might value performance over precision so we could reduce 1,000 dimensional data to 10 dimensions so we can manipulate it faster (eg. calculate distances).</p>
@@ -324,44 +314,12 @@ The need to reduce dimensionality is often associated with visualizations (reduc
 </div>
 </div>
 </div>
+
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Table-of-contents">Table of contents<a class="anchor-link" href="#Table-of-contents">¶</a></h2><ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#what-is">What is dimensionality reduction?</a></li>
-<li><a href="#main-approaches">Main Approaches for Dimensionality Reduction</a><ul>
-<li><a href="#pca-explain">PCA (Principal Component Analysis)</a></li>
-<li><a href="#t-sne-explain">t-SNE ( T-distributed stochastic neighbour embedding )</a></li>
-<li><a href="#umap-explain">UMAP ( Uniform Manifold Approximation and Projection )</a></li>
-<li><a href="#lda-explain">LDA ( Linear Discriminant Analysis )</a></li>
-</ul>
-</li>
-<li><a href="#implementation">Implementation</a><ul>
-<li><a href="#pca-code">PCA</a></li>
-<li><a href="#t-sne-code">t-SNE</a></li>
-<li><a href="#umap-code">UMAP</a></li>
-<li><a href="#lda-code">LDA</a></li>
-</ul>
-</li>
-<li><a href="#comparison">Comparison</a></li>
-<li><a href="#conclusion">Conclusion</a></li>
-<li><a href="#references">References</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="What-is-dimensionality-reduction?-">What is dimensionality reduction? <a id="what-is"></a><a class="anchor-link" href="#What-is-dimensionality-reduction?-">¶</a></h2><hr/>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
 <p>Dimensionality reduction is transforming high dimension data space into a lower dimension data space still maintaining the essence of the data.</p>
 <p>A higher dimension space creates a <em><strong>Curse of dimensionality</strong></em>, which challenges data analysis, visualization, and machine learning model training due to data sparsity and concentration.</p>
 <p>When a dataset has 100s of input features, additional training samples are required to capture all possible combinations for the model to generalize better. However, it also leads to data sparsity, where many input features have zero value.</p>
@@ -399,11 +357,9 @@ The need to reduce dimensionality is often associated with visualizations (reduc
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Main-Approaches-for-Dimensionality-Reduction-">Main Approaches for Dimensionality Reduction <a id="main-approaches"></a><a class="anchor-link" href="#Main-Approaches-for-Dimensionality-Reduction-">¶</a></h2><hr/>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Main-Approaches-for-Dimensionality-Reduction-">Main Approaches for Dimensionality Reduction <a id="main-approaches"></a></h2><hr/>
 <p>The two main approaches to reducing dimensionality:
 <strong>Projection and Manifold Learning.</strong></p>
 <ul>
@@ -420,11 +376,9 @@ The need to reduce dimensionality is often associated with visualizations (reduc
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="PCA-(Principal-Component-Analysis)-">PCA (Principal Component Analysis) <a id="pca-explain"></a><a class="anchor-link" href="#PCA-(Principal-Component-Analysis)-">¶</a></h3><hr/>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="PCA-(Principal-Component-Analysis)-">PCA (Principal Component Analysis) <a id="pca-explain"></a></h3><hr/>
 <p>One of the most known dimensionality reduction “unsupervised” algorithms is PCA(Principal Component Analysis).</p>
 <p>This works by identifying the hyperplane which lies closest to the data and then projects the data on that hyperplane while retaining most of the variation in the data set.</p>
 <p><strong>Principal Components</strong>:
@@ -441,14 +395,12 @@ The axis that explains the maximum variance in the training set is called the Pr
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="t-SNE-(-T-distributed-stochastic-neighbour-embedding-)-">t-SNE ( T-distributed stochastic neighbour embedding ) <a id="t-sne-explain"></a><a class="anchor-link" href="#t-SNE-(-T-distributed-stochastic-neighbour-embedding-)-">¶</a></h3><hr/>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="t-SNE-(-T-distributed-stochastic-neighbour-embedding-)-">t-SNE ( T-distributed stochastic neighbour embedding ) <a id="t-sne-explain"></a></h3><hr/>
 <p>Though PCA is great, it does have some drawbacks. One of the major drawbacks of PCA is that it does not retain non-linear variance. This means PCA will not be able to get results for figures like this.</p>
 <p>In simple terms, PCA works on retaining only global variance, and thus retaining local variance was the motivation behind t-SNE.</p>
-<h4 id="What-is-t-SNE?">What is t-SNE?<a class="anchor-link" href="#What-is-t-SNE?">¶</a></h4><p>t-SNE is a nonlinear dimensionality reduction technique that is well suited for embedding high dimension data into lower dimensional data (2D or 3D) for data visualization.</p>
+<h4 id="What-is-t-SNE?">What is t-SNE?</h4><p>t-SNE is a nonlinear dimensionality reduction technique that is well suited for embedding high dimension data into lower dimensional data (2D or 3D) for data visualization.</p>
 <p>t-SNE stands for t-distributed Stochastic Neighbor Embedding, which tells the following :</p>
 <ul>
 <li><p><strong>t-Distributed</strong> → probability distribution used by the algorithm to calculate similarity scores in the lower-dimensional embedding.</p>
@@ -461,19 +413,19 @@ The axis that explains the maximum variance in the training set is called the Pr
 </li>
 </ul>
 <p>In short, t-SNE is a machine learning algorithm that generates slightly different results each time on the same data set, focusing on retaining the structure of neighbor points.</p>
-<h4 id="Hyperparameter-Tuning">Hyperparameter Tuning<a class="anchor-link" href="#Hyperparameter-Tuning">¶</a></h4><p>Two parameters that can highly influence the results are</p>
+<h4 id="Hyperparameter-Tuning">Hyperparameter Tuning</h4><p>Two parameters that can highly influence the results are</p>
 <ol>
 <li><em>n_iter:</em> The number of iterations that the algorithm runs.</li>
 <li><em>perplexity:</em> This can be thought of as the number of neighboring points t-SNE must consider.</li>
 </ol>
-<h4 id="How-does-t-SNE-work?">How does t-SNE work?<a class="anchor-link" href="#How-does-t-SNE-work?">¶</a></h4><ol>
+<h4 id="How-does-t-SNE-work?">How does t-SNE work?</h4><ol>
 <li><p>t-SNE constructs a probability distribution on pairs in higher dimensions such that similar objects are assigned a higher probability and dissimilar objects are assigned lower probability.</p>
 </li>
 <li><p>Then, t-SNE replicates the same probability distribution on lower dimensions iteratively till the Kullback-Leibler divergence is minimized.</p>
 </li>
 </ol>
 <p><em><strong>Kullback-Leibler</strong></em> divergence is a measure of the difference between the probability distributions from Step 1 and Step 2. KL divergence is mathematically given as the expected value of the logarithm of the difference of these probability distributions.</p>
-<h4 id="How-to-effectively-use-t-SNE?">How to effectively use t-SNE?<a class="anchor-link" href="#How-to-effectively-use-t-SNE?">¶</a></h4><ol>
+<h4 id="How-to-effectively-use-t-SNE?">How to effectively use t-SNE?</h4><ol>
 <li>t-SNE plots are highly influenced by parameters. Thus it is necessary to perform t-SNE using different parameter values before analyzing results.</li>
 <li>Since t-SNE is stochastic, each run may lead to slightly different output. This can be solved by fixing the value of random_state parameter for all the runs.</li>
 <li>t-SNE doesn’t retain the distance between clusters from the raw data. Distance between clusters might vary post dimensionality reduction in t-SNE. It is recommended not to obtain any conclusions solely from the distance between the clusters.</li>
@@ -487,11 +439,9 @@ The axis that explains the maximum variance in the training set is called the Pr
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="UMAP-(-Uniform-Manifold-Approximation-and-Projection-)-">UMAP ( Uniform Manifold Approximation and Projection ) <a id="umap-explain"></a><a class="anchor-link" href="#UMAP-(-Uniform-Manifold-Approximation-and-Projection-)-">¶</a></h3><hr/>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="UMAP-(-Uniform-Manifold-Approximation-and-Projection-)-">UMAP ( Uniform Manifold Approximation and Projection ) <a id="umap-explain"></a></h3><hr/>
 <p>Uniform Manifold Approximation and Projection, created in 2018 by (Leland McInnes, John Healy, James Melville) is a general-purpose manifold learning and dimension reduction algorithm.</p>
 <p>UMAP is a non-linear dimensionality reduction method. It effectively visualizes clusters or groups of data points and their relative proximities.</p>
 <p>The significant difference with TSNE is scalability. It can be applied directly to sparse matrices, thereby eliminating the need to use any Dimensionality reduction such as PCA or Truncated SVD(Singular Value Decomposition) as a prior pre-processing step.</p>
@@ -509,7 +459,7 @@ The axis that explains the maximum variance in the training set is called the Pr
 <li>A weighted k-neighbor graph is constructed.</li>
 <li>A low dimensional layout of the weighted k-neighbor graph is computed</li>
 </ol>
-<h4 id="Comparison-between-UMAP-and-t-SNE">Comparison between UMAP and t-SNE<a class="anchor-link" href="#Comparison-between-UMAP-and-t-SNE">¶</a></h4><p><img alt="UMAP vs. t-SNE" src="/supplementary/assets/./images/fig3.png"/></p>
+<h4 id="Comparison-between-UMAP-and-t-SNE">Comparison between UMAP and t-SNE</h4><p><img alt="UMAP vs. t-SNE" src="/supplementary/assets/./images/fig3.png"/></p>
 <ul>
 <li>UMAP and t-SNE are non-linear dimensionality reduction techniques useful for visualization though the quality of UMAP is better than t-SNE.</li>
 <li>UMAP preserves more of the global structure than t-SNE</li>
@@ -524,16 +474,14 @@ The axis that explains the maximum variance in the training set is called the Pr
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="LDA-(-Linear-Discriminant-Analysis-)-">LDA ( Linear Discriminant Analysis ) <a id="lda-explain"></a><a class="anchor-link" href="#LDA-(-Linear-Discriminant-Analysis-)-">¶</a></h3><hr/>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="LDA-(-Linear-Discriminant-Analysis-)-">LDA ( Linear Discriminant Analysis ) <a id="lda-explain"></a></h3><hr/>
 <p>Linear Discriminant Analysis (LDA) is a commonly used dimensionality reduction technique. However, despite the similarities to Principal Component Analysis (PCA), it differs in one crucial aspect.</p>
 <p>Instead of finding new axes (dimensions) that maximize the variation in the data, it focuses on maximizing the separability among the known categories (classes) in the target variable.t the axes that maximize the separation between multiple classes.</p>
 <p><img alt="PCA vs. LDA" src="/supplementary/assets/./images/fig4.png"/></p>
 <p>Unlike Principal Component Analysis (PCA), LDA requires you to provide features and class labels for your target. Hence, despite being a dimensionality reduction technique similar to PCA, it sits within the supervised branch of Machine Learning.</p>
-<h4 id="How-does-LDA-find-the-right-axis?">How does LDA find the right axis?<a class="anchor-link" href="#How-does-LDA-find-the-right-axis?">¶</a></h4><ol>
+<h4 id="How-does-LDA-find-the-right-axis?">How does LDA find the right axis?</h4><ol>
 <li>Maximizing the distance (d²).</li>
 </ol>
 <ul>
@@ -553,18 +501,15 @@ The axis that explains the maximum variance in the training set is called the Pr
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Imports-">Imports <a id="implementation"></a><a class="anchor-link" href="#Imports-">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Imports-">Imports <a id="implementation"></a></h2>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -577,8 +522,7 @@ The axis that explains the maximum variance in the training set is called the Pr
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -594,8 +538,7 @@ The axis that explains the maximum variance in the training set is called the Pr
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -615,18 +558,15 @@ The axis that explains the maximum variance in the training set is called the Pr
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Prepare-Dataset">Prepare Dataset<a class="anchor-link" href="#Prepare-Dataset">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Prepare-Dataset">Prepare Dataset</h2>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -659,11 +599,10 @@ The axis that explains the maximum variance in the training set is called the Pr
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Shape of digit images:  (1797, 8, 8)
 Shape of X (main data):  (1797, 64)
@@ -672,7 +611,7 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
 <img alt="No description has been provided for this image" class="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA1gAAAGKCAYAAAAR9uClAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjQuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/MnkTPAAAACXBIWXMAAAsTAAALEwEAmpwYAAAajklEQVR4nO3dfazXdf3/8SeCAgJyTiDDRD1ehDo3OQ6sNi2PZptTkxObbpXGcW5aXkysNnV5gcs/cGWcptPJvk2ILDeyDmtpJE3Q1V+aHzIvwknHlplGnoN4mQfP74/v4jt+gqU94H083m6b/zB4nBeHN+/3597ndBgzPDw8XAAAAPzX9mr6AAAAAKOFwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrB2o5deeqk+//nP16RJk+qQQw6pH/3oR00fCd7h1ltvrXnz5tX48eOrp6en6ePATr355pt1wQUX1CGHHFJTpkypzs7Ouu+++5o+FuzUueeeWwcccEDtt99+NXv27Pqf//mfpo8Eu/T000/XhAkT6txzz236KKPGuKYPMJpdcskltc8++9QLL7xQrVarzjjjjJozZ04dc8wxTR8NtvvoRz9a11xzTa1Zs6Zef/31po8DOzU0NFQHHXRQrV+/vg4++OC6995765xzzqnHHnusOjo6mj4e7ODqq6+u73//+zV+/Ph66qmnqqurq4477riaO3du00eDd7jkkkvq+OOPb/oYo4p3sHaTV199te6555761re+VZMnT64TTzyxzjrrrFq5cmXTR4MdLFiwoLq7u2vatGlNHwV2adKkSbV48eLq6Oiovfbaq84888w69NBD65FHHmn6aPAOxxxzTI0fP76qqsaMGVNjxoypZ555puFTwTvdfffd1dbWVp/5zGeaPsqoIrB2k40bN9a4ceNq9uzZ239szpw59fjjjzd4KoDR4YUXXqiNGzf6igBGrIsvvrj23XffOuqoo+qAAw6o008/vekjwQ5efvnluu666+q73/1u00cZdQTWbvLKK6/Ufvvtt8OPTZ06tbZu3drQiQBGh7feequ+9KUv1cKFC+uoo45q+jiwU7fddltt3bq1HnrooVqwYMH2d7RgpLj22mvrggsuqFmzZjV9lFFHYO0mkydPrpdffnmHH3v55ZdrypQpDZ0I4IPv7bffrvPOO6/22WefuvXWW5s+DryrsWPH1oknnlh/+ctf6vbbb2/6OLBdq9WqtWvX1hVXXNH0UUYl3+RiN5k9e3YNDQ3V008/XR/72MeqqmrDhg2+nAXgfRoeHq4LLrigXnjhhbr33ntr7733bvpI8B8ZGhry/8FiRFm3bl319/fXwQcfXFX/+5VX27ZtqyeeeKJ+97vfNXy6Dz7vYO0mkyZNqgULFtR1111Xr776av3mN7+p1atX13nnndf00WAHQ0ND9cYbb9S2bdtq27Zt9cYbb9TQ0FDTx4J3+OpXv1pPPvlk/fznP6+JEyc2fRzYqRdffLHuvvvu7S9Y16xZUz/+8Y99EwFGlAsvvLCeeeaZarVa1Wq16itf+UqdccYZtWbNmqaPNioIrN3otttuq9dff71mzJhRX/jCF+r222/3DhYjzo033lgTJ06sJUuW1A9/+MOaOHFi3XjjjU0fC3bw7LPP1h133FGtVqtmzpxZkydPrsmTJ9ddd93V9NFgB2PGjKnbb7+9Zs2aVe3t7fWNb3yjent766yzzmr6aLDdvvvuWzNnztz+3+TJk2vChAm1//77N320UWHM8PDwcNOHAAAAGA28gwUAABAisAAAAEIEFgAAQIjAAgAACBFYAAAAIe/pHxoeM2bM7jrHf629vT26d+CBB8a2Xn755dhWVdVzzz0X3du2bVt0L+n9fJPLkXydps2ePTu2NW5c9t8dT1+nW7Zsie4lTZs2rTZv3vyef92H6VqdPHlybOuII46IbVVVvfbaa9G9jRs3RveS3u83Dh7J1+rMmTOje8nn/5tvvhnbqqp68skno3ue/x9cY8eOjW11dHTEtqrqQ/WPau/q+Z99RdWgU089Nbq3ZMmS2NbatWtjW1VVV111VXRvYGAgusees2zZsthWW1tbbKuq6vrrr4/urV69OrqXlH44jUbz5s2LbfX19cW2qqparVZ0r6urK7rHu1u4cGF0L/n837RpU2yrKvv3qMrz/4NsypQpsa2bb745tlVV1d3dHd0byXb1/PclggAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACHjmj5AypIlS6J7hx12WGyrvb09tlVV9dJLL0X3zjnnnNjWqlWrYlv8e4ODg7Gtk046KbZVVXXyySdH91avXh3d4911dnZG9x544IHY1pYtW2JbVVUdHR3RPf695DP77LPPjm1VVV100UWxrTvuuCO2VVU1d+7c6N7atWuje+w5PT09sa1WqxXb4n95BwsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAISMa/KDz507N7Z12GGHxbaqqg4//PDY1qZNm2JbVVX3339/dC/557Bq1arY1mjU2dkZ3evq6oruJbVaraaPwH+hu7s7urdhw4bYVl9fX2yrqur666+P7vHvLVu2LLZ10003xbaqqh5++OHYVvr5v3bt2ugee05bW1t0r6enJ7bV29sb26qq6ujoiO4l9ff375GP4x0sAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCxjX5wdvb22NbjzzySGyrqmrTpk3RvaT075V3t2jRotjW4sWLY1tVVVOnTo3uJa1bt67pI/Bf6O3tje719/fHttJnW716dXSPfy/5jD3ssMNiW+m9tWvXxraqsq+bqqoGBgaie+xaT09PdK+joyO2tXz58thWVf4ePTg4GNtKvw7bFe9gAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAkHFNfvD29vbY1tq1a2NbI13y81ZVNTAwEN0bbXp7e2Nby5cvj21Vjew/u7a2tqaP8KGT/JwvWrQotlVV1d3dHd1L6unpafoI/Bc2bdoU3fvIRz4S27r//vtjW7tj77Of/WxsayQ/j96v+fPnx7aWLl0a26qqWrFiRXQv6fLLL4/unX/++dG9PcE7WAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhIxr8oMPDAzEtubOnRvbSmtvb4/upX+vq1atiu5BVVVnZ2d0r9VqRfdGo8WLF8e2Lr/88thWWnd3d3RvcHAwuscHW/K1yWc/+9nYVlXVHXfcEd278sorY1tXXXVVbGuk2LJly4jcqqpauHBhbCv9vE7r6+tr+gjvmXewAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIGdfkB9+0aVNsa+7cubGtqqqzzz57RG7tDjfddFPTRwACli9fHtvq6uqKbVVVzZkzJ7bV19cX26qqWr16dXTvzjvvjG2lzzYaLVmyJLq3du3a2FZ7e3tsq6rq1FNPje6tWrUqujfarFu3LrbV1tYW26qq6uzsjG0lf59VVStWrIjuDQ4ORvf2BO9gAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAkHFNfvBNmzbFtq666qrYVlXVkiVLYluPPPJIbKuqat68edE99pzBwcHo3urVq2Nb8+fPj21VVXV1dUX3li9fHt0bjVqtVmyrs7MztpXeW7x4cWyrKn/t9/f3x7aSf8dHq4GBgejeHXfcEd1LWrVqVXTvoosuiu6x5yRfT0ydOjW2VeV5XeUdLAAAgBiBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQsYMDw8P/6c/efr06dXR0bEbjwP/p7+/vzZv3vyef53rlD3NtcoHwfu9Tqtcq+xZ7ql8UOzqWn1PgQUAAMCu+RJBAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERg7UZdXV01YcKEmjx5ck2ePLmOPPLIpo8Eu3T33XfX0UcfXZMmTarDDz+8HnrooaaPBNv96z76r//Gjh1bl112WdPHgp3q7++v008/vdrb22vmzJl16aWX1tDQUNPHgh08+eSTdcopp9TUqVPriCOOqJ/97GdNH2nUEFi72a233lqvvPJKvfLKK/XHP/6x6ePATt1///115ZVX1p133llbt26tBx98sA477LCmjwXb/es++sorr9Tf/va3mjhxYp199tlNHwt26uKLL64ZM2bU888/X61Wq9avX1+33XZb08eC7YaGhmr+/Pl15pln1ksvvVTLli2rc889tzZu3Nj00UYFgQXU9ddfX9ddd1198pOfrL322qsOPPDAOvDAA5s+FuzUPffcUzNmzKhPfepTTR8FdupPf/pTnXPOOTVhwoSaOXNmnXbaafX44483fSzY7qmnnqq//vWvdcUVV9TYsWPrlFNOqRNOOKFWrlzZ9NFGBYG1m1199dU1ffr0OuGEE2rdunVNHwfeYdu2bfXwww/X3//+9zriiCNq1qxZdemll9brr7/e9NFgp1asWFFf/vKXa8yYMU0fBXZq0aJFdffdd9drr71Wzz33XN1333112mmnNX0seFfDw8P1hz/8oeljjAoCaze66aabatOmTfXcc8/VhRdeWJ/73OfqmWeeafpYsIMXXnih3nrrrfrJT35SDz30ULVarXr00UfrxhtvbPpo8A7PPvtsrV+/vhYuXNj0UWCXPv3pT9fjjz9e++23X82aNavmzZtX3d3dTR8LtjvyyCNrxowZ9e1vf7veeuut+tWvflXr16+v1157remjjQoCazf6xCc+UVOmTKnx48fXwoUL64QTTqh777236WPBDiZOnFhVVZdddlkdcMABNX369Pra177mWmVEWrlyZZ144ol16KGHNn0U2Km33367TjvttFqwYEG9+uqrtXnz5hoYGKgrr7yy6aPBdnvvvXf19fXVL37xi5o5c2bdfPPNdc4559SsWbOaPtqoILD2oDFjxtTw8HDTx4AdtLe316xZs3b4citfesVI9YMf/MC7V4xoL730Uv35z3+uSy+9tMaPH1/Tpk2r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"/>
 </div>
@@ -681,8 +620,7 @@ Shape of y (true labels):  (1797,)
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -705,8 +643,7 @@ Shape of y (true labels):  (1797,)
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -736,8 +673,7 @@ Shape of y (true labels):  (1797,)
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -768,8 +704,7 @@ Shape of y (true labels):  (1797,)
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -783,18 +718,15 @@ Shape of y (true labels):  (1797,)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Normalize-Data">Normalize Data<a class="anchor-link" href="#Normalize-Data">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Normalize-Data">Normalize Data</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -810,18 +742,15 @@ Shape of y (true labels):  (1797,)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="PCA-">PCA <a id="pca-code"></a><a class="anchor-link" href="#PCA-">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="PCA-">PCA <a id="pca-code"></a></h2>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -839,11 +768,10 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Duration: 0.02001357078552246 seconds
 </pre>
@@ -854,18 +782,15 @@ Shape of y (true labels):  (1797,)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Plot-2d">Plot 2d<a class="anchor-link" href="#Plot-2d">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-2d">Plot 2d</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -876,30 +801,19 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Plot-3d">Plot 3d<a class="anchor-link" href="#Plot-3d">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-3d">Plot 3d</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -910,30 +824,19 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="t-SNE-">t-SNE <a id="t-sne-code"></a><a class="anchor-link" href="#t-SNE-">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="t-SNE-">t-SNE <a id="t-sne-code"></a></h2>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -966,11 +869,10 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Duration: 85.79078960418701 seconds
 </pre>
@@ -981,18 +883,15 @@ Shape of y (true labels):  (1797,)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Plot-2d">Plot 2d<a class="anchor-link" href="#Plot-2d">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-2d-2">Plot 2d</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1003,30 +902,19 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Plot-3d">Plot 3d<a class="anchor-link" href="#Plot-3d">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-3d-2">Plot 3d</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1037,30 +925,19 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="UMAP-">UMAP <a id="umap-code"></a><a class="anchor-link" href="#UMAP-">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="UMAP-">UMAP <a id="umap-code"></a></h2>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1105,11 +982,10 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Duration: 24.376087188720703 seconds
 </pre>
@@ -1120,18 +996,15 @@ Shape of y (true labels):  (1797,)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Plot-2d">Plot 2d<a class="anchor-link" href="#Plot-2d">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-2d-3">Plot 2d</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1142,30 +1015,19 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Plot-3d">Plot 3d<a class="anchor-link" href="#Plot-3d">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-3d-3">Plot 3d</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1176,30 +1038,19 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="LDA-">LDA <a id="lda-code"></a><a class="anchor-link" href="#LDA-">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="LDA-">LDA <a id="lda-code"></a></h2>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1216,11 +1067,10 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Duration: 0.05424618721008301 seconds
 </pre>
@@ -1231,18 +1081,15 @@ Shape of y (true labels):  (1797,)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Plot-2d">Plot 2d<a class="anchor-link" href="#Plot-2d">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-2d-4">Plot 2d</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1253,30 +1100,19 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Plot-3d">Plot 3d<a class="anchor-link" href="#Plot-3d">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-3d-4">Plot 3d</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1287,30 +1123,19 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Comparison-">Comparison <a id="comparison"></a><a class="anchor-link" href="#Comparison-">¶</a></h2>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Comparison-">Comparison <a id="comparison"></a></h2>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1323,8 +1148,7 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 <div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
@@ -1345,7 +1169,7 @@ Shape of y (true labels):  (1797,)
 </style>
 <table border="1" class="dataframe">
 <thead>
-<tr style="text-align: right;">
+<tr style="text-align: right">
 <th></th>
 <th>PCA</th>
 <th>t-SNE</th>
@@ -1370,8 +1194,7 @@ Shape of y (true labels):  (1797,)
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1421,8 +1244,7 @@ Shape of y (true labels):  (1797,)
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1437,18 +1259,15 @@ Shape of y (true labels):  (1797,)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2d-Visualization">2d Visualization<a class="anchor-link" href="#2d-Visualization">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="2d-Visualization">2d Visualization</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1463,30 +1282,19 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3d-Visualization">3d Visualization<a class="anchor-link" href="#3d-Visualization">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="3d-Visualization">3d Visualization</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1501,30 +1309,19 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3d-Visualization-with-Digits">3d Visualization with Digits<a class="anchor-link" href="#3d-Visualization-with-Digits">¶</a></h3>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="3d-Visualization-with-Digits">3d Visualization with Digits</h3>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1569,8 +1366,7 @@ Shape of y (true labels):  (1797,)
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
+
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -1588,22 +1384,12 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-</div>
-</div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
 <li><p>PCA could not do such an excellent job in differentiating the signs. The main drawback of PCA is that it is highly influenced by outliers present in the data. PCA is a linear projection, which means it can’t capture non-linear dependencies; its goal is to find the directions (the so-called principal components) that maximize the variance in a dataset.</p>
 </li>
@@ -1623,11 +1409,9 @@ Shape of y (true labels):  (1797,)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Conclusion-">Conclusion <a id="conclusion"></a><a class="anchor-link" href="#Conclusion-">¶</a></h2><p>We have explored four dimensionality reduction techniques for data visualization : (PCA, t-SNE, UMAP, and LDA) and tried to use them to visualize a high-dimensional dataset in 2d and 3d plots.</p>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Conclusion-">Conclusion <a id="conclusion"></a></h2><p>We have explored four dimensionality reduction techniques for data visualization : (PCA, t-SNE, UMAP, and LDA) and tried to use them to visualize a high-dimensional dataset in 2d and 3d plots.</p>
 <blockquote>
 <p>Note: It is not difficult to fall into the trap of considering one technique better than the other. At the end of the day, there is no way to map high-dimensional data into low dimensions and preserve the whole structure simultaneously; there is always a trade-off of qualities one technique will have compared to the other.</p>
 </blockquote>
@@ -1637,11 +1421,9 @@ Shape of y (true labels):  (1797,)
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="References-">References <a id="references"></a><a class="anchor-link" href="#References-">¶</a></h2><ol>
+
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="References-">References <a id="references"></a></h2><ol>
 <li><a href="https://medium.com/buzzrobot/using-t-sne-to-visualise-how-your-deep-model-thinks-4ba6da0c63a0">Using T-SNE to Visualise how your Model thinks</a></li>
 <li><a href="https://towardsdatascience.com/t-sne-machine-learning-algorithm-a-great-tool-for-dimensionality-reduction-in-python-ec01552f1a1e">t-SNE Machine Learning Algorithm — A Great Tool for Dimensionality Reduction in Python</a></li>
 <li><a href="https://arshren.medium.com/a-comprehensive-guide-to-dimensionality-reduction-851624b7377d">A Comprehensive Guide to Dimensionality Reduction</a></li>
@@ -1661,7 +1443,7 @@ Shape of y (true labels):  (1797,)
 </div>
 </div>
 </main>
-</body>
+
             </div>
             
                 
@@ -1750,19 +1532,34 @@ Shape of y (true labels):  (1797,)
                 
                 
                 
-                <a href="https://github.com/Mohammadjafari80">GitHub</a>
+                <a class="wf-person-link" href="https://github.com/Mohammadjafari80">
+                    
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    
+                    <span>GitHub</span>
+                </a>
                 
                 
                 
                 
                 
-                <a href="https://www.linkedin.com/in/mohammadjafari01/">LinkedIn</a>
+                <a class="wf-person-link" href="https://www.linkedin.com/in/mohammadjafari01/">
+                    
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    
+                    <span>LinkedIn</span>
+                </a>
                 
                 
                 
                 
                 
-                <a href="mailto://mamad.jafari91@gmail.com">Email</a>
+                <a class="wf-person-link" href="mailto:mamad.jafari91@gmail.com">
+                    
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    
+                    <span>Email</span>
+                </a>
                 
                 
             </div>
@@ -1806,7 +1603,7 @@ Shape of y (true labels):  (1797,)
     <div class="wf-page-navigation-inner">
         <div class="wf-page-navigation-slot wf-page-navigation-previous">
             
-            <a class="btn btn-link p-0" href="notebooks/clustering/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/clustering/">
                 <span class="d-block small text-muted">Back</span>
                 <span>Clustering in Machine Learning</span>
             </a>
@@ -1819,7 +1616,7 @@ Shape of y (true labels):  (1797,)
         </div>
         <div class="wf-page-navigation-slot wf-page-navigation-next">
             
-            <a class="btn btn-link p-0" href="notebooks/ml_methods_online_semisupervised_fewshot_learning/index.ipynb">
+            <a class="btn btn-link p-0" href="/supplementary/notebooks/ml_methods_online_semisupervised_fewshot_learning/">
                 <span class="d-block small text-muted">Next</span>
                 <span>Machine Learning Methods</span>
             </a>
