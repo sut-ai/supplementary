@@ -13,14 +13,15 @@ authors:
   kind: people
   content:
     - name: Mehrnaz Mofakhami
+      github: mhrnz
       role: Author
-      contact:
-        - link: https://github.com/mhrnz
-          icon: fab fa-github
-        - link: https://www.linkedin.com/in/mehrnazmofakhami98/
-          icon: fab fa-linkedin
-        - link: mailto://m.mofakhami.77@gmail.com
-          icon: fas fa-envelope
+      links:
+        - text: GitHub
+          link: https://github.com/mhrnz
+        - text: LinkedIn
+          link: https://www.linkedin.com/in/mehrnazmofakhami98/
+        - text: Email
+          link: mailto://m.mofakhami.77@gmail.com
 
 comments:
   label: false

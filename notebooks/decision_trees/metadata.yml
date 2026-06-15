@@ -15,12 +15,13 @@ authors:
   kind: people
   content:
     - name: Alireza (Sina) Tavakkoli
+      github: sinatav
       role: Author
-      contact:
-        - icon: fab fa-github
+      links:
+        - text: GitHub
           link: https://github.com/sinatav
-        - link: mailto://stavakkoli1999@gmail.com
-          icon: fas fa-envelope
+        - text: Email
+          link: mailto://stavakkoli1999@gmail.com
           
 comments:
   label: false

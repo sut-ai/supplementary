@@ -7,18 +7,20 @@ header:
 authors:
     label:
         position: top
+        text: Authors
+    kind: people
     content:
     # list of notebook authors
     - name: Mohammad Mohammadi
+      github: MhdMohammadi
       role: Author # change this if you want
-      contact:
-      # list of contact information
-      - link: https://github.com/MhdMohammadi
-        icon: fab fa-github
-      - link: https://www.linkedin.com/in/mohammad-mohammadi-99b0a9155//
-        icon: fab fa-linkedin
-      - link: mailto://m.mohammadi1378@outlook.com
-        icon: fas fa-envelope
+      links:
+      - text: GitHub
+        link: https://github.com/MhdMohammadi
+      - text: LinkedIn
+        link: https://www.linkedin.com/in/mohammad-mohammadi-99b0a9155/
+      - text: Email
+        link: mailto://m.mohammadi1378@outlook.com
 
 comments:
     # enable comments for your post

@@ -1,0 +1,85 @@
+title: Prerequisites
+
+header:
+  title: Prerequisites
+  description: Background material for getting the most out of the SUT-AI supplementary notebooks.
+
+overview:
+  label: Overview
+  content: |
+    The supplementary notebooks are meant to be readable, practical, and useful
+    as side material for artificial intelligence topics. You do not need to
+    master everything below before opening a notebook, but these are the areas
+    that make the material much easier to follow.
+
+mathematics:
+  label: Mathematics
+  content: |
+    Artificial intelligence leans heavily on mathematical notation. A working
+    comfort with calculus and linear algebra is enough for many notebooks, and a
+    deeper review helps when the material moves toward optimization,
+    probabilistic models, or deep learning.
+
+    Good review options:
+
+    - [MIT 18.01 Single Variable Calculus](https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/)
+    - [MIT 18.02SC Multivariable Calculus](https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/)
+    - [MIT 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
+    - [Mathematics for Machine Learning](https://mml-book.github.io/)
+
+probability:
+  label: Probability and Statistics
+  content: |
+    Many AI topics assume probability, random variables, estimation,
+    expectation, conditioning, likelihoods, and uncertainty. You do not need to
+    know every theorem by heart, but you should be able to follow probabilistic
+    notation and basic statistical reasoning.
+
+    Good review options:
+
+    - [MIT 6.041 Probabilistic Systems Analysis and Applied Probability](https://ocw.mit.edu/courses/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/)
+    - [MIT 18.650 Statistics for Applications](https://ocw.mit.edu/courses/18-650-statistics-for-applications-fall-2016/)
+    - [A First Course in Probability, Sheldon Ross](https://www.pearson.com/en-us/subject-catalog/p/first-course-in-probability/P200000006937)
+    - [All of Statistics, Larry Wasserman](https://link.springer.com/book/10.1007/978-0-387-21736-9)
+
+algorithms:
+  label: Data Structures and Algorithms
+  content: |
+    Some notebooks touch search, dynamic programming, graph structure,
+    complexity, or implementation details. A standard undergraduate algorithms
+    background is more than enough.
+
+    Good review options:
+
+    - [MIT 6.006 Introduction to Algorithms](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/)
+    - [MIT 6.046J Design and Analysis of Algorithms](https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/)
+    - [Algorithms, Jeff Erickson](https://jeffe.cs.illinois.edu/teaching/algorithms/)
+
+python:
+  label: Python and Scientific Computing
+  content: |
+    The notebooks are written in Python. You should be comfortable reading
+    Python, running notebooks, and understanding basic NumPy-style array
+    operations.
+
+    Good review options:
+
+    - [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
+    - [NumPy quickstart](https://numpy.org/doc/stable/user/quickstart.html)
+    - [Matplotlib tutorials](https://matplotlib.org/stable/tutorials/index.html)
+
+authors:
+  kind: people
+  label: Authors
+  layout:
+    min_width: 14rem
+    max_width: 18rem
+  people:
+    - name: Vahid Zehtab
+      github: vahidzee
+      role: Author
+      links:
+        - text: Website
+          link: https://vahidz.com
+        - text: GitHub
+          link: https://github.com/vahidzee

@@ -17,14 +17,15 @@ authors:
   kind: people
   content:
     - name: Amirmahdi Namjoo
+      github: titansarus
       role: Author
-      contact:
-        - link: https://github.com/titansarus
-          icon: fab fa-github
-        - link: https://www.linkedin.com/in/amirmahdi-namjoo-23b4b9192/
-          icon: fab fa-linkedin
-        - link: mailto://amirm137878@gmail.com
-          icon: fas fa-envelope
+      links:
+        - text: GitHub
+          link: https://github.com/titansarus
+        - text: LinkedIn
+          link: https://www.linkedin.com/in/amirmahdi-namjoo-23b4b9192/
+        - text: Email
+          link: mailto://amirm137878@gmail.com
 
 comments:
   label: false

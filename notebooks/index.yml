@@ -1,7 +1,21 @@
-- notebook: notebooks/search_in_continuous_space
-- notebook: notebooks/convex_optimization
-- notebook: notebooks/logic_programming
-- notebook: notebooks/hmm_speech_recognition
-- notebook: notebooks/decision_trees
-- notebook: notebooks/robust_and_trustworthy_machine_learning
-- notebook: notebooks/deep_reinforcement_learning
+- src: notebooks/search_in_continuous_space/index.ipynb
+  text: Gradient Descent in Machine Learning
+  kind: Notebook
+- src: notebooks/convex_optimization/index.ipynb
+  text: Convex Optimization
+  kind: Notebook
+- src: notebooks/logic_programming/index.ipynb
+  text: Prolog and Logic Programming
+  kind: Notebook
+- src: notebooks/hmm_speech_recognition/index.ipynb
+  text: HMM Speech Recognition
+  kind: Notebook
+- src: notebooks/decision_trees/index.ipynb
+  text: Decision Trees
+  kind: Notebook
+- src: notebooks/robust_and_trustworthy_machine_learning/index.ipynb
+  text: Robust and Trustworthy Machine Learning
+  kind: Notebook
+- src: notebooks/deep_reinforcement_learning/index.ipynb
+  text: Deep Reinforcement Learning
+  kind: Notebook
