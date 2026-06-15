@@ -25,9 +25,6 @@
 - src: notebooks/recurrent_neural_networks/index.ipynb
   text: Recurrent Neural Networks
   kind: Notebook
-- src: notebooks/transformer/index.ipynb
-  text: Transformer
-  kind: Notebook
 - src: notebooks/natural_language_processing/index.ipynb
   text: Natural Language Processing
   kind: Notebook
@@ -36,6 +33,9 @@
   kind: Notebook
 - src: notebooks/cnn/index.ipynb
   text: Convolutional Neural Networks
+  kind: Notebook
+- src: notebooks/transformer/index.ipynb
+  text: Transformer
   kind: Notebook
 - src: notebooks/3d_vision/index.ipynb
   text: 3D Computer Vision

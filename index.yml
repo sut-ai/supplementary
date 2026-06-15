@@ -50,13 +50,13 @@ notebooks:
     - [Prolog and Logic Programming](notebook=notebooks/logic_programming/index.ipynb): Prolog basics and how to use logic programming ideas from Python.
     - [HMM Speech Recognition](notebook=notebooks/hmm_speech_recognition/index.ipynb): Hidden Markov Models for speech recognition, with useful automatic speech recognition tools.
     - [Recurrent Neural Networks](notebook=notebooks/recurrent_neural_networks/index.ipynb): Sequence modeling with recurrent neural networks.
-    - [Transformer](notebook=notebooks/transformer/index.ipynb): Attention, positional encoding, encoder-decoder structure, and transformer sequence modeling.
     - [Natural Language Processing](notebook=notebooks/natural_language_processing/index.ipynb): NLP challenges and approaches for working with text.
 
     **Deep Learning, Vision, and Generative Models**
 
     - [Introduction to Keras](notebook=notebooks/keras/index.ipynb): A practical introduction to Keras for deep learning workflows.
     - [Convolutional Neural Networks](notebook=notebooks/cnn/index.ipynb): CNNs, convolution, pooling, image classification, and TensorFlow training.
+    - [Transformer](notebook=notebooks/transformer/index.ipynb): Attention, positional encoding, encoder-decoder structure, and transformer sequence modeling.
     - [3D Computer Vision](notebook=notebooks/3d_vision/index.ipynb): Point clouds, 3D vision neural networks, and adversarial attacks.
     - [Generative Adversarial Networks](notebook=notebooks/generative_adversarial_networks/index.ipynb): GAN fundamentals, applications, and an anime face generation example.
     - [Generative Adversarial Networks with WGANs](notebook=notebooks/generative_adversarial_networks_wgan/index.ipynb): GANs, conditional GANs, WGAN variants, and PyTorch implementations.
