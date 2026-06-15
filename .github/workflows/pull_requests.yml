@@ -15,5 +15,6 @@ jobs:
       - name: Webify
         uses: webifier/build@v1.0.2
         with:
+          python-version: "3.13"
           index: index.yml
           baseurl: /supplementary
