@@ -1,25 +1,28 @@
-title: Transformer 
-
+title: Transformer
+meta:
+- name: keywords
+  content: Artificial Intelligence, Transformers, Attention, Deep Learning, Sequence
+    Models
 header:
-    title: Transformer 
-    description: Transformer Tutorial
-
+  title: Transformer
+  description: A tutorial on transformer architecture, attention, positional encoding,
+    encoder-decoder structure, and the ideas behind modern sequence models.
 authors:
-    label: 
-        position: top
-    content:
-    - name: Zahra TehraniNasab
-      role: Author
-      contact:
-      - link: https://github.com/realmarv
-        icon: fab fa-github
-      - link: https://www.linkedin.com/in/zahra-tehraninasab
-        icon: fab fa-linkedin
-      - link: mailto://zahratehraninasab@gmail.com
-        icon: fas fa-envelope
-
-
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+  - name: Zahra TehraniNasab
+    github: tehraninasab
+    role: Author
+    links:
+    - text: GitHub
+      link: https://github.com/tehraninasab
+    - text: LinkedIn
+      link: https://www.linkedin.com/in/zahra-tehraninasab
+    - text: Email
+      link: mailto://zahratehraninasab@gmail.com
 comments:
-    # enable comments for your post
-    label: false
-    kind: comments
+  label: false
+  kind: comments

@@ -1,29 +1,26 @@
 title: Recurrent Neural Networks
-
 meta:
-  - name: keywords
-    content: Artificial Intelligence, Recurrent Neural Networks
-    
+- name: keywords
+  content: Artificial Intelligence, Recurrent Neural Networks, RNN, Sequence Models,
+    Deep Learning
 header:
   title: Recurrent Neural Networks
-  description: |
-    In this notebook we talk about Recurrent Neural Networks.
-
+  description: In this notebook, we introduce recurrent neural networks and the sequence
+    modeling ideas behind them.
 authors:
   label:
     position: top
     text: Authors
   kind: people
   content:
-    - name: matinamehdizadeh
-      role: Author
-      contact:
-        - link: https://github.com/matinamehdizadeh
-          icon: fab fa-github
-        - link: mailto://matinamehdizadeh@gmail.com
-          icon: fas fa-envelope
-
+  - name: matinamehdizadeh
+    github: matinamehdizadeh
+    role: Author
+    links:
+    - text: GitHub
+      link: https://github.com/matinamehdizadeh
+    - text: Email
+      link: mailto://matinamehdizadeh@gmail.com
 comments:
   label: false
   kind: comments
-  

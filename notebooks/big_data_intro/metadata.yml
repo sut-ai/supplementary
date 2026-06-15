@@ -1,30 +1,27 @@
-title: Big Data Intro
-
+title: Introduction to Big Data
 meta:
-  - name: keywords
-    content: Big Data, ML
-
+- name: keywords
+  content: Big Data, Machine Learning, Apache Spark, Distributed Computing
 header:
   title: Introduction to Big Data
-  description: |
-    <change this>
-
+  description: A short introduction to big data concepts, distributed data processing,
+    and the role of tools such as Apache Spark in machine learning workflows.
 authors:
   label:
     position: top
     text: Authors
   kind: people
   content:
-    - name: Alireza Tajmirriahi
-      role: Author
-      contact:
-      - link: https://github.com/AlirezaT99
-        icon: fab fa-github
-      - link: https://www.linkedin.com/in/alireza-tajmirriahi
-        icon: fab fa-linkedin
-      - link: mailto://artajmirriahi99@gmail.com
-        icon: fas fa-envelope
-
+  - name: Alireza Tajmirriahi
+    github: AlirezaT99
+    role: Author
+    links:
+    - text: GitHub
+      link: https://github.com/AlirezaT99
+    - text: LinkedIn
+      link: https://www.linkedin.com/in/alireza-tajmirriahi
+    - text: Email
+      link: mailto://artajmirriahi99@gmail.com
 comments:
   label: false
   kind: comments

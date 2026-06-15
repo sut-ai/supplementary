@@ -1,30 +1,39 @@
 title: Clustering in Machine Learning
-
 meta:
-  - name: keywords
-    content: Artificial Intelligence, Prolog, Clustering
-    
+- name: keywords
+  content: Artificial Intelligence, Machine Learning, Clustering, Unsupervised Learning
 header:
   title: Clustering in Machine Learning
-  description: |
-    In this notebook we talk about clustering, its variants and explain those variants.
+  description: In this notebook, we talk about clustering, its variants, and how those
+    variants behave in machine learning workflows.
 authors:
   label:
     position: top
     text: Authors
   kind: people
   content:
-    - name: Sepehr Amini Afshar
-      role: Author
-      contact:
-        - link: https://github.com/sepehrAmini
-          icon: fab fa-github
-        - link: https://www.linkedin.com/in/sepehr-amini-afshar-2201381b8
-          icon: fab fa-linkedin
-        - link: mailto://sepehraminiafshar@gmail.com
-          icon: fas fa-envelope
-
+  - name: Sepehr Amini Afshar
+    github: sepehrAmini
+    role: Author
+    links:
+    - text: GitHub
+      link: https://github.com/sepehrAmini
+    - text: LinkedIn
+      link: https://www.linkedin.com/in/sepehr-amini-afshar-2201381b8
+    - text: Email
+      link: mailto://sepehraminiafshar@gmail.com
+reviewers:
+  label:
+    position: top
+    text: Reviewers
+  kind: people
+  content:
+  - name: sarakh1999
+    github: sarakh1999
+    role: Reviewer
+    links:
+    - text: GitHub
+      link: https://github.com/sarakh1999
 comments:
   label: false
   kind: comments
-  

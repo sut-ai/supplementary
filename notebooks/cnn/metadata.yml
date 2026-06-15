@@ -1,0 +1,24 @@
+title: Convolutional Neural Networks
+meta:
+- name: keywords
+  content: Artificial Intelligence, Convolutional Neural Networks, CNN, Computer Vision,
+    TensorFlow
+header:
+  title: Convolutional Neural Networks
+  description: A tutorial on CNNs, convolution, pooling, image classification, and
+    training a CNN model with TensorFlow.
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+  - name: Seyed Parsa Neshaei
+    github: spneshaei
+    role: Author
+    links:
+    - text: GitHub
+      link: https://github.com/spneshaei
+comments:
+  label: false
+  kind: comments

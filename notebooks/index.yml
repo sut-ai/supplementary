@@ -19,3 +19,45 @@
 - src: notebooks/deep_reinforcement_learning/index.ipynb
   text: Deep Reinforcement Learning
   kind: Notebook
+- src: notebooks/transformer/index.ipynb
+  text: Transformer
+  kind: Notebook
+- src: notebooks/dimensionality_reduction/index.ipynb
+  text: Dimensionality Reduction
+  kind: Notebook
+- src: notebooks/generative_adversarial_networks/index.ipynb
+  text: Generative Adversarial Networks
+  kind: Notebook
+- src: notebooks/ml_methods_online_semisupervised_fewshot_learning/index.ipynb
+  text: Machine Learning Methods
+  kind: Notebook
+- src: notebooks/keras/index.ipynb
+  text: Introduction to Keras
+  kind: Notebook
+- src: notebooks/big_data_intro/index.ipynb
+  text: Introduction to Big Data
+  kind: Notebook
+- src: notebooks/mlops/index.ipynb
+  text: MLOps
+  kind: Notebook
+- src: notebooks/recurrent_neural_networks/index.ipynb
+  text: Recurrent Neural Networks
+  kind: Notebook
+- src: notebooks/cnn/index.ipynb
+  text: Convolutional Neural Networks
+  kind: Notebook
+- src: notebooks/global_warming/index.ipynb
+  text: AI Applications in Global Warming
+  kind: Notebook
+- src: notebooks/3d_vision/index.ipynb
+  text: 3D Computer Vision
+  kind: Notebook
+- src: notebooks/generative_adversarial_networks_wgan/index.ipynb
+  text: Generative Adversarial Networks with WGANs
+  kind: Notebook
+- src: notebooks/clustering/index.ipynb
+  text: Clustering in Machine Learning
+  kind: Notebook
+- src: notebooks/natural_language_processing/index.ipynb
+  text: Natural Language Processing
+  kind: Notebook

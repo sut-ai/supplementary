@@ -1,0 +1,24 @@
+title: AI Applications in Global Warming
+meta:
+- name: keywords
+  content: Artificial Intelligence, Climate Change, Global Warming, CO2 Emissions,
+    Machine Learning
+header:
+  title: AI Applications in Global Warming
+  description: A tutorial on global warming and ways AI can support climate analysis,
+    including an example around predicting CO2 emissions.
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+  - name: Seyed Parsa Neshaei
+    github: spneshaei
+    role: Author
+    links:
+    - text: GitHub
+      link: https://github.com/spneshaei
+comments:
+  label: false
+  kind: comments

@@ -1,29 +1,25 @@
 title: MLOps
-
 meta:
-  - name: keywords
-    content: Artificial Intelligence, MLOps
-    
+- name: keywords
+  content: Artificial Intelligence, MLOps, Model Deployment, Machine Learning Engineering
 header:
   title: MLOps
-  description: |
-    In this notebook we talk about MLOps with a simple example of model deployment.
-
+  description: In this notebook, we talk about MLOps and walk through a simple example
+    of model deployment.
 authors:
   label:
     position: top
     text: Authors
   kind: people
   content:
-    - name: matinamehdizadeh
-      role: Author
-      contact:
-        - link: https://github.com/matinamehdizadeh
-          icon: fab fa-github
-        - link: mailto://matinamehdizadeh@gmail.com
-          icon: fas fa-envelope
-
+  - name: matinamehdizadeh
+    github: matinamehdizadeh
+    role: Author
+    links:
+    - text: GitHub
+      link: https://github.com/matinamehdizadeh
+    - text: Email
+      link: mailto://matinamehdizadeh@gmail.com
 comments:
   label: false
   kind: comments
-  
