@@ -1,0 +1,27 @@
+title: Introduction to Keras
+
+meta:
+  - name: keywords
+    content: Artificial Intelligence, Keras, Tensorflow
+    
+header:
+  title: Introduction to Keras
+  description: |
+    In this notebook, we will introduce you to Keras, an important library in AI.
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+    - name: Ali Ghorbanpour
+      role: Author
+      contact:
+        - icon: fab fa-github
+          link: https://github.com/Aliiiqbp
+        - link: mailto://aliiiqbp@gmail.com
+          icon: fas fa-envelope
+          
+comments:
+  label: false
+  kind: comments
