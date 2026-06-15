@@ -12,14 +12,9 @@ config:
 header:
   title: Supplementary
   description: Additional contents and supplementary materials!
-  background: index/images/supplementary-header.jpg
-
-footer:
-  background: index/images/supplementary-header.jpg
 
 prerequisites:
   label: Prerequisites
-  background: index/images/supplementary-header.jpg
   content: |
     The supplementary notebooks are written to be approachable, but they assume
     some comfort with the usual mathematical and programming background for an
@@ -30,7 +25,6 @@ prerequisites:
 
 notebooks:
   label: Notebooks
-  background: index/images/supplementary-header.jpg
   content: |
     These notebooks are gateway tutorials for selected artificial intelligence
     topics: short enough to browse, but practical enough to include code,
@@ -71,7 +65,6 @@ notebooks:
 
 further-readings:
   label: Further Readings
-  background: index/images/supplementary-header.jpg
   content: |
     If you want to go deeper than the notebooks, we keep a curated list of
     major public courses and references across computer vision, unsupervised

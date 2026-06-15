@@ -24,6 +24,13 @@ comments:
   theme: preferred-color-scheme
   crossorigin: anonymous
 
+content_pages:
+  cleanup: true
+  toc: true
+  comments:
+    label: false
+    kind: comments
+
 page_navigation:
   home:
     title: Supplementary
