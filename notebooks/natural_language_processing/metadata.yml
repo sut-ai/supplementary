@@ -1,0 +1,29 @@
+title: Natural Language Processing
+
+meta:
+  - name: keywords
+    content: Artificial Intelligence, NLP, Deep Learning, Word2Vec
+    
+header:
+  title: Natural Language Processing
+  description: |
+    In this notebook we talk about Natural Language Processing, potential challenges and different approaches.
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+    - name: Nima Jamali
+      role: Author
+      contact:
+        - link: https://github.com/nimajam41
+          icon: fab fa-github
+        - link: https://www.linkedin.com/in/nima-jamali-5b1521195/
+          icon: fab fa-linkedin
+        - link: mailto://nimxj4141@gmail.com
+          icon: fas fa-envelope
+
+comments:
+  label: false
+  kind: comments
