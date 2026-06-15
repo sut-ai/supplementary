@@ -1,0 +1,27 @@
+title: ML Methods 
+
+meta:
+  - name: keywords
+    content: Artificial Intelligence, Machine Learning, Online Learning, Few-shot Learning, Meta-Learning, Semi-supervised Learning 
+    
+header:
+  title: Machine Learning Methods 
+  description: |
+    In this notebook, we will study machine learnings methods such as online learning, semi-supervised learning and few-shot learning.
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+    - name: Ali J. Alaee
+      role: Author
+      contact:
+        - icon: fab fa-github
+          link: https://github.com/aliash98
+        - link: mailto://alialaee98@gmail.com
+          icon: fas fa-envelope
+          
+comments:
+  label: false
+  kind: comments
