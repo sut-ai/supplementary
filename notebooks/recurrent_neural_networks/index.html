@@ -865,7 +865,7 @@ Target Sequence: ave a nice day
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span> <span class="c1"># Does backpropagation and calculates gradients</span>
     <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> <span class="c1"># Updates the weights accordingly</span>
     
-    <span class="k">if</span> <span class="n">epoch</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">epoch</span><span class="o">%</span><span class="k">10</span> == 0:
         <span class="nb">print</span><span class="p">(</span><span class="s1">'Epoch: </span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">.............'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">n_epochs</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Loss: </span><span class="si">{:.4f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
 </pre></div>
