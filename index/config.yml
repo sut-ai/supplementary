@@ -23,3 +23,57 @@ comments:
   issue_label: comments
   theme: preferred-color-scheme
   crossorigin: anonymous
+
+page_navigation:
+  home:
+    title: Supplementary
+    href: /supplementary/
+  items:
+    - title: Prerequisites
+      href: /supplementary/pages/prerequisites.html
+      src: pages/prerequisites.yml
+    - title: Gradient Descent in Machine Learning
+      src: notebooks/search_in_continuous_space/index.ipynb
+    - title: Convex Optimization
+      src: notebooks/convex_optimization/index.ipynb
+    - title: Decision Trees
+      src: notebooks/decision_trees/index.ipynb
+    - title: Clustering in Machine Learning
+      src: notebooks/clustering/index.ipynb
+    - title: Dimensionality Reduction
+      src: notebooks/dimensionality_reduction/index.ipynb
+    - title: Machine Learning Methods
+      src: notebooks/ml_methods_online_semisupervised_fewshot_learning/index.ipynb
+    - title: Prolog and Logic Programming
+      src: notebooks/logic_programming/index.ipynb
+    - title: HMM Speech Recognition
+      src: notebooks/hmm_speech_recognition/index.ipynb
+    - title: Recurrent Neural Networks
+      src: notebooks/recurrent_neural_networks/index.ipynb
+    - title: Natural Language Processing
+      src: notebooks/natural_language_processing/index.ipynb
+    - title: Introduction to Keras
+      src: notebooks/keras/index.ipynb
+    - title: Convolutional Neural Networks
+      src: notebooks/cnn/index.ipynb
+    - title: Transformer
+      src: notebooks/transformer/index.ipynb
+    - title: 3D Computer Vision
+      src: notebooks/3d_vision/index.ipynb
+    - title: Generative Adversarial Networks
+      src: notebooks/generative_adversarial_networks/index.ipynb
+    - title: Generative Adversarial Networks with WGANs
+      src: notebooks/generative_adversarial_networks_wgan/index.ipynb
+    - title: Robust and Trustworthy Machine Learning
+      src: notebooks/robust_and_trustworthy_machine_learning/index.ipynb
+    - title: Introduction to Big Data
+      src: notebooks/big_data_intro/index.ipynb
+    - title: MLOps
+      src: notebooks/mlops/index.ipynb
+    - title: Deep Reinforcement Learning
+      src: notebooks/deep_reinforcement_learning/index.ipynb
+    - title: AI Applications in Global Warming
+      src: notebooks/global_warming/index.ipynb
+    - title: Further Readings
+      href: /supplementary/pages/further-reading.html
+      src: pages/further-reading.yml
