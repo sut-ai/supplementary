@@ -67,6 +67,20 @@ a {
     color: var(--wf-text, var(--bs-body-color)) !important;
 }
 
+.wf-colab-link {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    min-height: 2.25rem;
+    padding-inline: 0.45rem;
+}
+
+.wf-colab-link img {
+    display: block;
+    height: 1.25rem;
+    width: auto;
+}
+
 .wf-section-label {
     align-items: center;
     overflow-wrap: anywhere;
@@ -125,6 +139,15 @@ a {
 
 .wf-page-navigation-next a {
     text-align: right;
+}
+
+.wf-content-page-body {
+    min-width: 0;
+    overflow-x: auto;
+}
+
+.wf-content-page-body > :first-child {
+    margin-top: 0;
 }
 
 footer {
