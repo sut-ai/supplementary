@@ -1,12 +1,304 @@
----
-layout: content
-metadata: notebooks_logic_programming_metadata
-colab: https://colab.research.google.com/github/sut-ai/supplementary/blob/master/notebooks/logic_programming/index.ipynb
----
 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+
+
+
+
+
+
+
+<html>
+
+
+
+
+
+<head>
+    <title>Prolog | Logic Programming</title>
+    
+<!-- viewport meta-tag for responsiveness -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+<!-- Bootstrap v5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- FontAwesome JS -->
+<script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
+
+<!-- Loading mathjax macro -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+<script type="text/x-mathjax-config" defer>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+</script>
+<link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
+<link rel="stylesheet" href="/supplementary/assets/css/main.css">
+<script defer src="/supplementary/assets/js/codeblocks.js"></script>
+
+<script>
+(function () {
+  const switcherEnabled = true;
+  const stored = switcherEnabled ? localStorage.getItem("webifier-theme") : null;
+  const selected = stored || "system";
+  const systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const resolved = selected === "system" ? (systemDark ? "dark" : "light") : selected;
+  document.documentElement.dataset.wfTheme = selected;
+  document.documentElement.dataset.wfResolvedTheme = resolved;
+  document.documentElement.dataset.bsTheme = resolved === "dark" ? "dark" : "light";
+})();
+</script>
+<link rel="stylesheet" href="/supplementary/assets/css/theme.css">
+<script defer src="/supplementary/assets/js/theme.js"></script>
+<link rel="stylesheet" href="/supplementary/assets/webifier/people/css/people.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VZRZHCJ5V0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VZRZHCJ5V0');
+</script>
+
+
+
+    
+
+    
+        <meta
+        
+            name="keywords"
+        
+            content="Artificial Intelligence, Prolog, Logic Programming"
+        
+        >
+    
+
+
+    
+</head>
+
+<body class="bg-body-tertiary">
+<div class="app-content container-fluid">
+    
+    
+
+
+
+
+
+
+<header class="container-fluid wf-page-chrome text-center align-items-center p-0"
+        
+        style="min-height: 5vh;"
+        
+>
+    <div
+            
+            class="wf-page-chrome-panel p-3 m-auto text-center"
+            
+    >
+        <h1>Prolog - Gateway to Logic Programming</h1>
+        
+        <p class="mt-3">In this notebook we talk about Prolog basics. We also learn how to benefit from Prolog's power using Python.
+</p>
+        
+    </div>
+</header>
+
+
+    
+
+
+
+
+
+    
+
+
+
+
+
+
+<nav class="px-2 navbar navbar-expand-sm bg-body-tertiary m-0 p-2 sticky-top shadow wf-navbar">
+    
+    
+    
+
+
+
+
+
+
+
+    <a href="https://github.com/sut-ai" class="btn navbar-brand"
+       
+    >
+    
+    
+    
+        SUT-AI
+    
+    </a>
+
+
+    
+
+    <div
+            
+            class="collapse navbar-collapse p-0 m-0"
+            id="navbarSupportedContent"
+            
+    >
+        <ul class="navbar-nav me-auto my-1 p-0">
+            
+            <li class="nav-item">
+                
+                
+                
+
+
+
+
+
+
+
+    <a href="/supplementary/" class="btn nav-link"
+       
+    >
+    
+    
+    
+        Supplementary
+    
+    </a>
+
+
+                
+            </li>
+            
+            <li class="nav-item">
+                
+                
+                
+
+
+
+
+
+
+
+    <a href="/notes/" class="btn nav-link"
+       
+    >
+    
+    
+    
+        Notes
+    
+    </a>
+
+
+                
+            </li>
+            
+        </ul>
+        
+    </div>
+    <div class="d-flex my-1 ms-auto">
+        
+        <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        <button
+                class="btn nav-item mt-1 webifier-theme-toggle"
+                type="button"
+                id="webifier-theme-toggle"
+                title="Switch color theme"
+                aria-label="Switch color theme"
+                data-theme-default="system"
+                data-theme-modes="system,light,dark"
+        >
+            <svg class="webifier-theme-symbol webifier-theme-symbol-system" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="13" rx="2"></rect>
+                <path d="M8 21h8"></path>
+                <path d="M12 17v4"></path>
+            </svg>
+            <svg class="webifier-theme-symbol webifier-theme-symbol-light" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="M4.93 4.93l1.41 1.41"></path>
+                <path d="M17.66 17.66l1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="M6.34 17.66l-1.41 1.41"></path>
+                <path d="M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="webifier-theme-symbol webifier-theme-symbol-dark" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+            </svg>
+            <span class="visually-hidden webifier-theme-label">Theme</span>
+        </button>
+        
+
+        
+        <a class="btn nav-item mt-1 wf-colab-link" href="https://colab.research.google.com/github/sut-ai/supplementary/blob/master/notebooks/logic_programming/index.ipynb" aria-label="Open in Colab" title="Open in Colab">
+            <img src="/supplementary/assets/images/colab-badge.svg" alt="Open in Colab">
+        </a>
+        
+    </div>
+</nav>
+
+
+
+
+
+
+    <div id="app-body"
+         class="app-body container-fluid bg-body justify-content-center align-items-center d-flex shadow">
+        <div class="container-fluid p-0 m-0 no-gutters">
+            
+            <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
+                <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+<main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b530eaa2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="Table-of-Contents:">Table of Contents:<a class="anchor-link" href="#Table-of-Contents:">¶</a></h4><ul>
 <li><a href="#intro">Introduction</a></li>
 <li><a href="#what-is-prolog">What is Prolog</a></li>
@@ -28,39 +320,62 @@ colab: https://colab.research.google.com/github/sut-ai/supplementary/blob/master
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="what-is-prolog"></a></div><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>because logic was removed from the course’s syllabus and students might be unfamiliar with this topic it’s good to have a prerequisites subsection listing links to required skills and mathematical background such as logic itself, this notebook is trying to fulfill the lack of logic topics in the course.</p>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=43a97f16">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="what-is-prolog"></a></div>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>because logic was removed from the course’s syllabus and students might be unfamiliar with this topic it’s good to have a prerequisites subsection listing links to required skills and mathematical background such as logic itself, this notebook is trying to fulfill the lack of logic topics in the course.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="what-is-prolog"></a></div><h2 id="What-is-Prolog?">What is Prolog?<a class="anchor-link" href="#What-is-Prolog?">¶</a></h2>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c3cf50b9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="what-is-prolog"></a></div>
+<h2 id="What-is-Prolog?">What is Prolog?<a class="anchor-link" href="#What-is-Prolog?">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68874692">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Prolog is a <strong>logic programming</strong> language. It means that it is different in nature from the general-purpose form of languages like C++, Java, Python, Javascript, etc.</p>
 <p>Prolog is based on <a href="https://en.wikipedia.org/wiki/First-order_logic">First-Order Logic</a> and is purely designed as a <a href="https://en.wikipedia.org/wiki/Declarative_programming">declarative programming language</a>. The logic is expressed in terms of relations, and all the computation is initiated by queries.</p>
 <p>The language is used for theorem proving, designing expert systems, term rewriting, automated planning, <a href="https://en.wikipedia.org/wiki/Natural_language_processing">NLP</a>, and many more interesting fields.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="why-learn-prolog"></a></div><h2 id="Why-Learn-Prolog?">Why Learn Prolog?<a class="anchor-link" href="#Why-Learn-Prolog?">¶</a></h2>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=63f49b30">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="why-learn-prolog"></a></div>
+<h2 id="Why-Learn-Prolog?">Why Learn Prolog?<a class="anchor-link" href="#Why-Learn-Prolog?">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8eed9f77">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
 <li><p>Do I get a job by solely learning Prolog? The answer is probably not. Prolog is not a general-purpose language and is currently used only in specific fields.</p>
 </li>
@@ -75,62 +390,90 @@ colab: https://colab.research.google.com/github/sut-ai/supplementary/blob/master
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="installing-prolog"></a></div><h2 id="Installing-Prolog">Installing Prolog<a class="anchor-link" href="#Installing-Prolog">¶</a></h2>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a707a86b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="installing-prolog"></a></div>
+<h2 id="Installing-Prolog">Installing Prolog<a class="anchor-link" href="#Installing-Prolog">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=83a622e6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Actually, Prolog is a standard, and there are different implementations of it. Arguably, the most famous and widely used one is SWI-Prolog. You can download the SWI-Prolog installer from its site.
 <a href="https://www.swi-prolog.org/download/stable">SWI-Prolog Download</a></p>
 <p>If you use Windows, don't forget to <strong>check the 'add swipl to the system PATH for all users' option</strong> during the installation. If you forget to do so, you can manually add <code>C:\Program Files\swipl\bin</code> to the system path, given that you used the default installation path.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ce140c75">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>There are some jupyter notebook kernels available, but they mostly work on particular OS builds. Therefore, we use a python package named pyswip that runs code using SWI-Prolog. You can see the full installation guide <a href="https://github.com/yuce/pyswip/blob/master/INSTALL.md">here</a>, but a simple pip install should suffice.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install pyswip
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=508c8999">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyswip</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [2]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyswip</span> <span class="kn">import</span> <span class="n">Prolog</span><span class="p">,</span> <span class="n">registerForeign</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1b7a63a6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyswip</span><span class="w"> </span><span class="kn">import</span> <span class="n">Prolog</span><span class="p">,</span> <span class="n">registerForeign</span>
 <span class="n">prolog</span> <span class="o">=</span> <span class="n">Prolog</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="prolog-101"></a></div><h2 id="Prolog-101">Prolog 101<a class="anchor-link" href="#Prolog-101">¶</a></h2>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3e3b247">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="prolog-101"></a></div>
+<h2 id="Prolog-101">Prolog 101<a class="anchor-link" href="#Prolog-101">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d45b5fe">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Like all programming language tutorials, the first thing is "Hello World"!</p>
 <div class="highlight"><pre><span></span><span class="nf">write</span><span class="p">(</span><span class="s s-Atom">'Hello World'</span><span class="p">),</span><span class="s s-Atom">nl</span><span class="p">,</span><span class="nf">write</span><span class="p">(</span><span class="s s-Atom">'Let\'s</span> <span class="nv">Learn</span> <span class="nv">Prolog</span><span class="p">!</span><span class="err">'</span><span class="p">).</span>
 </pre></div>
@@ -139,10 +482,15 @@ colab: https://colab.research.google.com/github/sut-ai/supplementary/blob/master
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="terminologies"></a></div><h3 id="Terminologies">Terminologies<a class="anchor-link" href="#Terminologies">¶</a></h3><ul>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=43b8c667">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="terminologies"></a></div>
+<h3 id="Terminologies">Terminologies<a class="anchor-link" href="#Terminologies">¶</a></h3><ul>
 <li><strong>Fact</strong>: A fact is a predicate expression that makes a declarative statement about the problem domain. Facts either consist of a particular item or a relation between items.</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="s s-Atom">rainy</span><span class="p">.</span>
@@ -158,15 +506,19 @@ colab: https://colab.research.google.com/github/sut-ai/supplementary/blob/master
 <li><p><strong>Query</strong>:  In making a query, you ask Prolog whether it can <em>prove</em> that your statement is true. In Prolog, a query is made with <code>?-</code> symbol, but in <code>pyswip</code> we can use <code>query(string)</code>.</p>
 </li>
 </ul>
-<div><a class="anchor" id="simple-example"></a></div><h3 id="Simple-examle">Simple examle<a class="anchor-link" href="#Simple-examle">¶</a></h3><p>Let's see a simple example:</p>
+<div><a class="anchor" id="simple-example"></a></div>
+<h3 id="Simple-examle">Simple examle<a class="anchor-link" href="#Simple-examle">¶</a></h3><p>Let's see a simple example:</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [3]:</div>
-<div class="inner_cell">
-<div class="input_area">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4d18d9f7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">prolog</span><span class="o">.</span><span class="n">assertz</span><span class="p">(</span><span class="s2">"father(michael,jane)"</span><span class="p">)</span> 
 <span class="n">prolog</span><span class="o">.</span><span class="n">assertz</span><span class="p">(</span><span class="s2">"child(X,Y) :- father(Y,X)"</span><span class="p">)</span>
 </pre></div>
@@ -174,22 +526,28 @@ colab: https://colab.research.google.com/github/sut-ai/supplementary/blob/master
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [4]:</div>
-<div class="inner_cell">
-<div class="input_area">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a8351fa9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">solns</span> <span class="ow">in</span> <span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"child(X , Y)"</span><span class="p">):</span> <span class="c1">#X and Y are prolog variables. This two lines simply print all child relationships.</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">solns</span><span class="p">[</span><span class="s2">"X"</span><span class="p">]</span> <span class="p">,</span> <span class="s2">"is child of"</span> <span class="p">,</span> <span class="n">solns</span><span class="p">[</span><span class="s2">"Y"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>jane is child of michael
 </pre>
 </div>
@@ -197,41 +555,56 @@ colab: https://colab.research.google.com/github/sut-ai/supplementary/blob/master
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bdc11e3e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>First line is a <em>fact</em> that says Michael is father of Jane. Second line is a <em>rule</em> that says if Y is a father of X then X is a child of Y. Note that X and Y are variables.</p>
 <p>In the <code>for</code>, we <em>query</em> for all <code>child</code> relationships and <code>print</code> them. Note that the result of <code>query()</code> is a python generator and must be used in a foreach statement or casted into a <code>list</code>.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4158e6ac">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><code>consult</code>: You can load a database of prolog statements using <code>consult</code>. It works both in prolog and pyswip. In prolog you can use both    <code>?- consult('file.pl').</code> and <code>['file1.pl'].</code>. In pyswip you can use <code>consult(path)</code> function.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1132d05a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Let's make a more complicated example and put it in a file named <code>1.pl</code>.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e46299c4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="c1">% 1.pl</span>
 
 <span class="nf">father</span><span class="p">(</span><span class="s s-Atom">albert</span><span class="p">,</span> <span class="s s-Atom">bob</span><span class="p">).</span>
 <span class="nf">father</span><span class="p">(</span><span class="s s-Atom">albert</span><span class="p">,</span> <span class="s s-Atom">betsy</span><span class="p">).</span>
 <span class="nf">father</span><span class="p">(</span><span class="s s-Atom">albert</span><span class="p">,</span> <span class="s s-Atom">bill</span><span class="p">).</span>
-
+ 
 <span class="nf">mother</span><span class="p">(</span><span class="s s-Atom">alice</span><span class="p">,</span> <span class="s s-Atom">bob</span><span class="p">).</span>
 <span class="nf">mother</span><span class="p">(</span><span class="s s-Atom">alice</span><span class="p">,</span> <span class="s s-Atom">betsy</span><span class="p">).</span>
 <span class="nf">mother</span><span class="p">(</span><span class="s s-Atom">alice</span><span class="p">,</span> <span class="s s-Atom">bill</span><span class="p">).</span>
-
+ 
 <span class="nf">father</span><span class="p">(</span><span class="s s-Atom">bob</span><span class="p">,</span> <span class="s s-Atom">carl</span><span class="p">).</span>
 <span class="nf">father</span><span class="p">(</span><span class="s s-Atom">bob</span><span class="p">,</span> <span class="s s-Atom">charlie</span><span class="p">).</span>
 
@@ -244,22 +617,28 @@ colab: https://colab.research.google.com/github/sut-ai/supplementary/blob/master
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [5]:</div>
-<div class="inner_cell">
-<div class="input_area">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a1913bcc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">prolog</span><span class="o">.</span><span class="n">consult</span><span class="p">(</span><span class="s2">"prolog_files/1.pl"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [6]:</div>
-<div class="inner_cell">
-<div class="input_area">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0e005f15">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">solns</span> <span class="ow">in</span> <span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"grandparent(albert , X)"</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Albert"</span> <span class="p">,</span> <span class="s2">"is grandparent of"</span> <span class="p">,</span> <span class="n">solns</span><span class="p">[</span><span class="s2">"X"</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">solns</span> <span class="ow">in</span> <span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"grandchild(carl , X)"</span><span class="p">):</span>
@@ -268,11 +647,14 @@ colab: https://colab.research.google.com/github/sut-ai/supplementary/blob/master
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Albert is grandparent of carl
 Albert is grandparent of charlie
 Albert is grandchild of albert
@@ -283,30 +665,47 @@ Albert is grandchild of alice
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="examples"></a></div><h2 id="Interesting-Prolog-Examples">Interesting Prolog Examples<a class="anchor-link" href="#Interesting-Prolog-Examples">¶</a></h2>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=255dce9f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="examples"></a></div>
+<h2 id="Interesting-Prolog-Examples">Interesting Prolog Examples<a class="anchor-link" href="#Interesting-Prolog-Examples">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="hanoi"></a></div><h3 id="Tower-of-Hanoi">Tower of Hanoi<a class="anchor-link" href="#Tower-of-Hanoi">¶</a></h3>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e52b0c4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="hanoi"></a></div>
+<h3 id="Tower-of-Hanoi">Tower of Hanoi<a class="anchor-link" href="#Tower-of-Hanoi">¶</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f45c438e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Tower of Hanoi is a very famous programming problem that is used to teach recursive functions. You can see the problem definition on <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Wikipedia</a>. Here we try to implement it in Prolog and solve a simple instance of it using pyswip.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=402f7b65">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="c1">% hanoi.pl</span>
 
 <span class="nf">hanoi</span><span class="p">(</span><span class="nv">N</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">move</span><span class="p">(</span><span class="nv">N</span><span class="p">,</span> <span class="s s-Atom">left</span><span class="p">,</span> <span class="s s-Atom">right</span><span class="p">,</span> <span class="s s-Atom">center</span><span class="p">).</span>
@@ -320,32 +719,42 @@ Albert is grandchild of alice
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad8a3394">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><code>hanoi(N)</code> will lead to calling <code>move(N)</code>. <code>move (0,_,_,_)</code> is the termination condition of recursive call, and <code>!</code> tells prolog to stop calling the function and backtracking. <code>_</code> matches (unifies) with everything; It is similar to "don't care" in logic circuits. <code>move(N,A,B,C)</code> is the actual recursive formulation of Tower of Hanoi. <code>is</code> operator is the same as <code>=</code> in other languages and here it means "put <code>N-1</code> into <code>M</code>". <code>notify</code> is a function that will be defined in python and we will use pyswip to bind prolog and python code together.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [7]:</div>
-<div class="inner_cell">
-<div class="input_area">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5b7b15e6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">prolog</span><span class="o">.</span><span class="n">consult</span><span class="p">(</span><span class="s2">"prolog_files/hanoi.pl"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [8]:</div>
-<div class="inner_cell">
-<div class="input_area">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7f3ebc44">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">N</span><span class="o">=</span> <span class="mi">3</span>
 
-<span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">notify</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"move disk from </span><span class="si">%s</span><span class="s2"> pole to </span><span class="si">%s</span><span class="s2"> pole."</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 <span class="n">notify</span><span class="o">.</span><span class="n">arity</span> <span class="o">=</span> <span class="mi">1</span>
         
@@ -355,11 +764,14 @@ Albert is grandchild of alice
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>move disk from left pole to right pole.
 move disk from left pole to center pole.
 move disk from right pole to center pole.
@@ -373,91 +785,117 @@ move disk from left pole to right pole.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=750d83ea">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><code>registerForeign</code> is used to make prolog run python's <code>notify</code> function. Also note that as we said before, <code>prolog.query()</code> makes a generator. Generators are not evaluated by default. They must be used in a foreach or casted into list to force python actually evaluate them.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="coins-problem"></a></div><h3 id="Coins-Problem">Coins Problem<a class="anchor-link" href="#Coins-Problem">¶</a></h3>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c1f175f4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="coins-problem"></a></div>
+<h3 id="Coins-Problem">Coins Problem<a class="anchor-link" href="#Coins-Problem">¶</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cbed41db">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>In a country, there are coins of 1,2,5,50 and 100. We want to find all the ways to sum at most <code>max_count</code> of these coins to get to a cumulative sum of <code>total</code>. We solve this in <code>coins.pl</code> file.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4083492b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="p">:-</span> <span class="nf">use_module</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s s-Atom">'bounds'</span><span class="p">)).</span>
 
 <span class="nf">coins</span><span class="p">(</span><span class="nv">S</span><span class="p">,</span> <span class="nv">Count</span><span class="p">,</span> <span class="nv">Total</span><span class="p">)</span> <span class="p">:-</span>
-    <span class="c1">% A=1, B=5, C=10, D=50, E=100</span>
-    <span class="nv">S</span> <span class="o">=</span> <span class="p">[</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">,</span> <span class="nv">C</span><span class="p">,</span> <span class="nv">D</span><span class="p">,</span> <span class="nv">E</span><span class="p">],</span>
-
-    <span class="nv">Av</span> <span class="o">is</span>   <span class="mi">1</span><span class="p">,</span>
-    <span class="nv">Bv</span> <span class="o">is</span>   <span class="mi">5</span><span class="p">,</span>
-    <span class="nv">Cv</span> <span class="o">is</span>  <span class="mi">10</span><span class="p">,</span>
-    <span class="nv">Dv</span> <span class="o">is</span>  <span class="mi">50</span><span class="p">,</span>
-    <span class="nv">Ev</span> <span class="o">is</span> <span class="mi">100</span><span class="p">,</span>
-
-    <span class="nv">Aup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Av</span><span class="p">,</span> <span class="c1">% // means integer division</span>
-    <span class="nv">Bup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Bv</span><span class="p">,</span>
-    <span class="nv">Cup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Cv</span><span class="p">,</span>
-    <span class="nv">Dup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Dv</span><span class="p">,</span>
-    <span class="nv">Eup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Ev</span><span class="p">,</span>
-
-    <span class="nv">A</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Aup</span><span class="p">,</span>
-    <span class="nv">B</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Bup</span><span class="p">,</span>
-    <span class="nv">C</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Cup</span><span class="p">,</span>
-    <span class="nv">D</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Dup</span><span class="p">,</span>
-    <span class="nv">E</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Eup</span><span class="p">,</span>
-
-    <span class="nv">VA</span> <span class="s s-Atom">#=</span> <span class="nv">A</span><span class="o">*</span><span class="nv">Av</span><span class="p">,</span>
-    <span class="nv">VB</span> <span class="s s-Atom">#=</span> <span class="nv">B</span><span class="o">*</span><span class="nv">Bv</span><span class="p">,</span>
-    <span class="nv">VC</span> <span class="s s-Atom">#=</span> <span class="nv">C</span><span class="o">*</span><span class="nv">Cv</span><span class="p">,</span>
-    <span class="nv">VD</span> <span class="s s-Atom">#=</span> <span class="nv">D</span><span class="o">*</span><span class="nv">Dv</span><span class="p">,</span>
-    <span class="nv">VE</span> <span class="s s-Atom">#=</span> <span class="nv">E</span><span class="o">*</span><span class="nv">Ev</span><span class="p">,</span>
-
-    <span class="nf">sum</span><span class="p">(</span><span class="nv">S</span><span class="p">,</span> <span class="s s-Atom">#=</span><span class="p">,</span> <span class="nv">Count</span><span class="p">),</span>
-    <span class="nv">VA</span> <span class="o">+</span> <span class="nv">VB</span> <span class="o">+</span> <span class="nv">VC</span> <span class="o">+</span> <span class="nv">VD</span> <span class="o">+</span> <span class="nv">VE</span> <span class="s s-Atom">#=</span> <span class="nv">Total</span><span class="p">,</span>
-
-    <span class="nf">label</span><span class="p">(</span><span class="nv">S</span><span class="p">).</span>
+ 	<span class="c1">% A=1, B=5, C=10, D=50, E=100</span>
+	<span class="nv">S</span> <span class="o">=</span> <span class="p">[</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">,</span> <span class="nv">C</span><span class="p">,</span> <span class="nv">D</span><span class="p">,</span> <span class="nv">E</span><span class="p">],</span>
+	
+	<span class="nv">Av</span> <span class="o">is</span>   <span class="mi">1</span><span class="p">,</span>
+	<span class="nv">Bv</span> <span class="o">is</span>   <span class="mi">5</span><span class="p">,</span>
+	<span class="nv">Cv</span> <span class="o">is</span>  <span class="mi">10</span><span class="p">,</span>
+	<span class="nv">Dv</span> <span class="o">is</span>  <span class="mi">50</span><span class="p">,</span>
+	<span class="nv">Ev</span> <span class="o">is</span> <span class="mi">100</span><span class="p">,</span>
+	
+	<span class="nv">Aup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Av</span><span class="p">,</span> <span class="c1">% // means integer division</span>
+	<span class="nv">Bup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Bv</span><span class="p">,</span>
+	<span class="nv">Cup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Cv</span><span class="p">,</span>
+	<span class="nv">Dup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Dv</span><span class="p">,</span>
+	<span class="nv">Eup</span> <span class="o">is</span> <span class="nv">Total</span> <span class="o">//</span> <span class="nv">Ev</span><span class="p">,</span>
+	
+	<span class="nv">A</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Aup</span><span class="p">,</span>
+	<span class="nv">B</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Bup</span><span class="p">,</span>
+	<span class="nv">C</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Cup</span><span class="p">,</span>
+	<span class="nv">D</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Dup</span><span class="p">,</span>
+	<span class="nv">E</span> <span class="s s-Atom">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nv">Eup</span><span class="p">,</span>
+	
+	<span class="nv">VA</span> <span class="s s-Atom">#=</span> <span class="nv">A</span><span class="o">*</span><span class="nv">Av</span><span class="p">,</span>
+	<span class="nv">VB</span> <span class="s s-Atom">#=</span> <span class="nv">B</span><span class="o">*</span><span class="nv">Bv</span><span class="p">,</span>
+	<span class="nv">VC</span> <span class="s s-Atom">#=</span> <span class="nv">C</span><span class="o">*</span><span class="nv">Cv</span><span class="p">,</span>
+	<span class="nv">VD</span> <span class="s s-Atom">#=</span> <span class="nv">D</span><span class="o">*</span><span class="nv">Dv</span><span class="p">,</span>
+	<span class="nv">VE</span> <span class="s s-Atom">#=</span> <span class="nv">E</span><span class="o">*</span><span class="nv">Ev</span><span class="p">,</span>
+	
+	<span class="nf">sum</span><span class="p">(</span><span class="nv">S</span><span class="p">,</span> <span class="s s-Atom">#=</span><span class="p">,</span> <span class="nv">Count</span><span class="p">),</span>
+	<span class="nv">VA</span> <span class="o">+</span> <span class="nv">VB</span> <span class="o">+</span> <span class="nv">VC</span> <span class="o">+</span> <span class="nv">VD</span> <span class="o">+</span> <span class="nv">VE</span> <span class="s s-Atom">#=</span> <span class="nv">Total</span><span class="p">,</span>
+	
+	<span class="nf">label</span><span class="p">(</span><span class="nv">S</span><span class="p">).</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e831b53">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><code>bound</code> library is used to make the search space limited. For example if sum is <code>1000</code>, we could have at most <code>100</code> coins of value <code>10</code>. So <code>C</code> should be between <code>0</code> to <code>100</code>. <code>#=</code> is same as <code>=</code> for algebraic expressions. <code>sum (S,#=,Count)</code> means that sum of all elements in list <code>S</code> should be equal to <code>Count</code>. Elements of <code>S</code> indicate count of each coin.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [9]:</div>
-<div class="inner_cell">
-<div class="input_area">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=90f7987b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">prolog</span><span class="o">.</span><span class="n">consult</span><span class="p">(</span><span class="s2">"prolog_files/coins.pl"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [10]:</div>
-<div class="inner_cell">
-<div class="input_area">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fe40af9f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">max_count</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">total</span> <span class="o">=</span> <span class="mi">500</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">soln</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"coins(S, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">)."</span> <span class="o">%</span> <span class="p">(</span><span class="n">max_count</span><span class="p">,</span><span class="n">total</span><span class="p">))):</span>
@@ -470,11 +908,14 @@ move disk from left pole to right pole.
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>0 0x1 100x5 0x10 0x50 0x100 
 1 5x1 91x5 4x10 0x50 0x100 
 2 10x1 82x5 8x10 0x50 0x100 
@@ -586,30 +1027,42 @@ move disk from left pole to right pole.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="N-Queens"></a></div><h3 id="N-Queens">N-Queens<a class="anchor-link" href="#N-Queens">¶</a></h3>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8af1546f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="N-Queens"></a></div>
+<h3 id="N-Queens">N-Queens<a class="anchor-link" href="#N-Queens">¶</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57693c63">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>N-Queens is a famous problem that asks how to put N queens in an $N \times N$ checkboard such that none of them threatens each other. As we know, in each column, there must be one queen, so we encode the state as an N-tuple in which element at index $i$ indicates which row the queen at column $i$ resides in. We can simply model this problem in Prolog like this:</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba325141">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="p">:-</span> <span class="nf">use_module</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s s-Atom">clpfd</span><span class="p">)).</span>
 
 <span class="nf">n_queens</span><span class="p">(</span><span class="nv">N</span><span class="p">,</span> <span class="nv">Qs</span><span class="p">)</span> <span class="p">:-</span>
         <span class="nf">length</span><span class="p">(</span><span class="nv">Qs</span><span class="p">,</span> <span class="nv">N</span><span class="p">),</span>
         <span class="nv">Qs</span> <span class="s s-Atom">ins</span> <span class="mf">1.</span><span class="p">.</span><span class="nv">N</span><span class="p">,</span> <span class="c1">%ins is in clpfd library. It check that "each" element of Qs is in range 1 to N</span>
         <span class="nf">safe_queens</span><span class="p">(</span><span class="nv">Qs</span><span class="p">),</span>
-        <span class="nf">label</span><span class="p">(</span><span class="nv">Qs</span><span class="p">).</span>
+		<span class="nf">label</span><span class="p">(</span><span class="nv">Qs</span><span class="p">).</span>
 
 <span class="nf">safe_queens</span><span class="p">([]).</span> <span class="c1">%Empty list is a good combination.</span>
 <span class="nf">safe_queens</span><span class="p">([</span><span class="nv">Q</span><span class="p">|</span><span class="nv">Qs</span><span class="p">])</span> <span class="p">:-</span> <span class="nf">safe_queens</span><span class="p">(</span><span class="nv">Qs</span><span class="p">,</span> <span class="nv">Q</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nf">safe_queens</span><span class="p">(</span><span class="nv">Qs</span><span class="p">).</span>
@@ -624,33 +1077,42 @@ move disk from left pole to right pole.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [2]:</div>
-<div class="inner_cell">
-<div class="input_area">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d30569d3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">prolog</span><span class="o">.</span><span class="n">consult</span><span class="p">(</span><span class="s2">"prolog_files/queens.pl"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [3]:</div>
-<div class="inner_cell">
-<div class="input_area">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5dfea9fe">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">soln</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prolog</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"n_queens(</span><span class="si">%d</span><span class="s2">, Qs)."</span> <span class="o">%</span> <span class="p">(</span><span class="mi">8</span><span class="p">))):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s2">".</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span><span class="n">soln</span><span class="p">[</span><span class="s2">"Qs"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>1 .	 [1, 5, 8, 6, 3, 7, 2, 4]
 2 .	 [1, 6, 8, 3, 7, 4, 2, 5]
 3 .	 [1, 7, 4, 6, 8, 2, 5, 3]
@@ -749,23 +1211,35 @@ move disk from left pole to right pole.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6df39417">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>As you can see, it has found all 92 unique solutions of 8-Queen. You can test it with other numbers too. The code we wrote for this problem is much less than its implementation in most general purpose langauges and yet, it is very elegant and can be understood with little to no effort if you are familiar with prolog syntax.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div><a class="anchor" id="ref"></a></div><h2 id="Good-References-to-Learn-Prolog,-Pyswip,-and-their-applications:">Good References to Learn Prolog, Pyswip, and their applications:<a class="anchor-link" href="#Good-References-to-Learn-Prolog,-Pyswip,-and-their-applications:">¶</a></h2>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=62a87bc2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div><a class="anchor" id="ref"></a></div>
+<h2 id="Good-References-to-Learn-Prolog,-Pyswip,-and-their-applications:">Good References to Learn Prolog, Pyswip, and their applications:<a class="anchor-link" href="#Good-References-to-Learn-Prolog,-Pyswip,-and-their-applications:">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34703307">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
 <li><a href="https://www.metalevel.at/prolog">https://www.metalevel.at/prolog</a></li>
 <li><a href="https://github.com/yuce/pyswip">https://github.com/yuce/pyswip</a></li>
@@ -774,3 +1248,178 @@ move disk from left pole to right pole.
 </div>
 </div>
 </div>
+</div>
+</main>
+</body>
+            </div>
+            
+                
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+<div id="authors"
+    
+        class="hover-shadow row align-items-start my-2 px-xs-0
+            px-sm-0 px-md-1
+         px-lg-2 px-xlg-2 px-xxlg-2"
+        style="min-height: 5vh;"
+    
+>
+    
+    
+        
+            <div class="wf-section-label text-center col-12 py-3">
+                <span class="shadow-lg p-3 px-5 w-100"><strong>Authors</strong></span>
+            </div>
+        
+    
+
+    <div
+        
+            class="rounded  bg-body shadow col-12 px-4 p-4
+            justify-content-center"
+        
+    >
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="wf-people"
+     style="--wf-people-card-min: 14rem;
+            --wf-people-card-max: 18rem;
+            --wf-people-gap: 1rem;
+            --wf-people-avatar-size: 4.25rem;">
+    
+    <div class="wf-people-grid wf-people-grid-center wf-people-density-comfortable">
+        
+        
+        
+        <article class="wf-person-card wf-person-card-center">
+            
+            <div class="wf-person-avatar-wrap">
+                <img class="wf-person-avatar" src="https://github.com/titansarus.png" alt="Amirmahdi Namjoo">
+            </div>
+            
+            <div class="wf-person-main">
+                
+                <h3 class="wf-person-name">Amirmahdi Namjoo</h3>
+                
+                
+                <p class="wf-person-title">Author</p>
+                
+                
+                
+                
+            </div>
+            
+            <div class="wf-person-links">
+                
+                
+                
+                
+                <a href="https://github.com/titansarus">GitHub</a>
+                
+                
+                
+                
+                
+                <a href="https://www.linkedin.com/in/amirmahdi-namjoo-23b4b9192/">LinkedIn</a>
+                
+                
+                
+                
+                
+                <a href="mailto://amirm137878@gmail.com">Email</a>
+                
+                
+            </div>
+            
+        </article>
+        
+    </div>
+</div>
+
+        
+    </div>
+
+    
+    
+</div>
+            
+                
+
+
+    
+
+
+<div class="p-2">
+    <script src="https://utteranc.es/client.js"
+            repo="sut-ai/comments"
+            issue-term="pathname"
+            label="comments"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+            
+        </div>
+    </div>
+    
+
+
+    
+
+
+
+
+    
+
+
+<footer class="container-fluid wf-page-chrome shadow text-center align-items-center p-0 hidden-print"
+        
+        style="min-height: 2vh;
+          background-image: url('/supplementary/assets/index/images/supplementary-header.jpg');
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;"
+        
+>
+    <div
+            
+            class="wf-header-panel w-100 p-3 m-auto text-center"
+            
+    >
+        
+        © Powered by <a class="link-primary" href="https://webifier.github.io/">Webifier</a>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>

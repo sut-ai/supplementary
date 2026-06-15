@@ -1,0 +1,1830 @@
+
+
+
+
+
+
+
+
+<html>
+
+
+
+
+
+<head>
+    <title>Dimensionality Reduction</title>
+    
+<!-- viewport meta-tag for responsiveness -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+<!-- Bootstrap v5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- FontAwesome JS -->
+<script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
+
+<!-- Loading mathjax macro -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+<script type="text/x-mathjax-config" defer>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+</script>
+<link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
+<link rel="stylesheet" href="/supplementary/assets/css/main.css">
+<script defer src="/supplementary/assets/js/codeblocks.js"></script>
+
+<script>
+(function () {
+  const switcherEnabled = true;
+  const stored = switcherEnabled ? localStorage.getItem("webifier-theme") : null;
+  const selected = stored || "system";
+  const systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const resolved = selected === "system" ? (systemDark ? "dark" : "light") : selected;
+  document.documentElement.dataset.wfTheme = selected;
+  document.documentElement.dataset.wfResolvedTheme = resolved;
+  document.documentElement.dataset.bsTheme = resolved === "dark" ? "dark" : "light";
+})();
+</script>
+<link rel="stylesheet" href="/supplementary/assets/css/theme.css">
+<script defer src="/supplementary/assets/js/theme.js"></script>
+<link rel="stylesheet" href="/supplementary/assets/webifier/people/css/people.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VZRZHCJ5V0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VZRZHCJ5V0');
+</script>
+
+
+
+    
+
+    
+        <meta
+        
+            name="keywords"
+        
+            content="Artificial Intelligence, Dimensionality Reduction, PCA, t-SNE, UMAP, LDA"
+        
+        >
+    
+
+
+    
+</head>
+
+<body class="bg-body-tertiary">
+<div class="app-content container-fluid">
+    
+    
+
+
+
+
+
+
+<header class="container-fluid wf-page-chrome text-center align-items-center p-0"
+        
+        style="min-height: 5vh;"
+        
+>
+    <div
+            
+            class="wf-page-chrome-panel p-3 m-auto text-center"
+            
+    >
+        <h1>Dimensionality Reduction</h1>
+        
+        <p class="mt-3">In this notebook, we talk about dimensionality reduction fundamentals and reduce MNIST using PCA, t-SNE, UMAP, and LDA to visualize how the methods behave.</p>
+        
+    </div>
+</header>
+
+
+    
+
+
+
+
+
+    
+
+
+
+
+
+
+<nav class="px-2 navbar navbar-expand-sm bg-body-tertiary m-0 p-2 sticky-top shadow wf-navbar">
+    
+    
+    
+
+
+
+
+
+
+
+    <a href="https://github.com/sut-ai" class="btn navbar-brand"
+       
+    >
+    
+    
+    
+        SUT-AI
+    
+    </a>
+
+
+    
+
+    <div
+            
+            class="collapse navbar-collapse p-0 m-0"
+            id="navbarSupportedContent"
+            
+    >
+        <ul class="navbar-nav me-auto my-1 p-0">
+            
+            <li class="nav-item">
+                
+                
+                
+
+
+
+
+
+
+
+    <a href="/supplementary/" class="btn nav-link"
+       
+    >
+    
+    
+    
+        Supplementary
+    
+    </a>
+
+
+                
+            </li>
+            
+            <li class="nav-item">
+                
+                
+                
+
+
+
+
+
+
+
+    <a href="/notes/" class="btn nav-link"
+       
+    >
+    
+    
+    
+        Notes
+    
+    </a>
+
+
+                
+            </li>
+            
+        </ul>
+        
+    </div>
+    <div class="d-flex my-1 ms-auto">
+        
+        <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        <button
+                class="btn nav-item mt-1 webifier-theme-toggle"
+                type="button"
+                id="webifier-theme-toggle"
+                title="Switch color theme"
+                aria-label="Switch color theme"
+                data-theme-default="system"
+                data-theme-modes="system,light,dark"
+        >
+            <svg class="webifier-theme-symbol webifier-theme-symbol-system" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="13" rx="2"></rect>
+                <path d="M8 21h8"></path>
+                <path d="M12 17v4"></path>
+            </svg>
+            <svg class="webifier-theme-symbol webifier-theme-symbol-light" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="M4.93 4.93l1.41 1.41"></path>
+                <path d="M17.66 17.66l1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="M6.34 17.66l-1.41 1.41"></path>
+                <path d="M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="webifier-theme-symbol webifier-theme-symbol-dark" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+            </svg>
+            <span class="visually-hidden webifier-theme-label">Theme</span>
+        </button>
+        
+
+        
+        <a class="btn nav-item mt-1 wf-colab-link" href="https://colab.research.google.com/github/sut-ai/supplementary/blob/master/notebooks/dimensionality_reduction/index.ipynb" aria-label="Open in Colab" title="Open in Colab">
+            <img src="/supplementary/assets/images/colab-badge.svg" alt="Open in Colab">
+        </a>
+        
+    </div>
+</nav>
+
+
+
+
+
+
+    <div id="app-body"
+         class="app-body container-fluid bg-body justify-content-center align-items-center d-flex shadow">
+        <div class="container-fluid p-0 m-0 no-gutters">
+            
+            <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
+                <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+<main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Dimensionality-Reduction">Dimensionality Reduction<a class="anchor-link" href="#Dimensionality-Reduction">¶</a></h1><hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Introduction-">Introduction <a name="introduction"></a><a class="anchor-link" href="#Introduction-">¶</a></h2><p>When dealing with real problems and real data we often deal with high dimensional data that can go up to millions. In the Big Data era, data is not only becoming bigger and bigger; it is also becoming more and more complex. This translates into a spectacular increase of the dimensionality of the data.</p>
+<p>While in its original high dimensional structure the data represents itself best sometimes we might need to reduce its dimensionality.
+The need to reduce dimensionality is often associated with visualizations (reducing to 2–3 dimensions so we can plot it) but that is not always the case.</p>
+<p>Sometimes we might value performance over precision so we could reduce 1,000 dimensional data to 10 dimensions so we can manipulate it faster (eg. calculate distances).</p>
+<p>The need to reduce dimensionality at times is real and has many applications.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Table-of-contents">Table of contents<a class="anchor-link" href="#Table-of-contents">¶</a></h2><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#what-is">What is dimensionality reduction?</a></li>
+<li><a href="#main-approaches">Main Approaches for Dimensionality Reduction</a><ul>
+<li><a href="#pca-explain">PCA (Principal Component Analysis)</a></li>
+<li><a href="#t-sne-explain">t-SNE ( T-distributed stochastic neighbour embedding )</a></li>
+<li><a href="#umap-explain">UMAP ( Uniform Manifold Approximation and Projection )</a></li>
+<li><a href="#lda-explain">LDA ( Linear Discriminant Analysis )</a></li>
+</ul>
+</li>
+<li><a href="#implementation">Implementation</a><ul>
+<li><a href="#pca-code">PCA</a></li>
+<li><a href="#t-sne-code">t-SNE</a></li>
+<li><a href="#umap-code">UMAP</a></li>
+<li><a href="#lda-code">LDA</a></li>
+</ul>
+</li>
+<li><a href="#comparison">Comparison</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="What-is-dimensionality-reduction?-">What is dimensionality reduction? <a id="what-is"></a><a class="anchor-link" href="#What-is-dimensionality-reduction?-">¶</a></h2><hr/>
+<p>Dimensionality reduction is transforming high dimension data space into a lower dimension data space still maintaining the essence of the data.</p>
+<p>A higher dimension space creates a <em><strong>Curse of dimensionality</strong></em>, which challenges data analysis, visualization, and machine learning model training due to data sparsity and concentration.</p>
+<p>When a dataset has 100s of input features, additional training samples are required to capture all possible combinations for the model to generalize better. However, it also leads to data sparsity, where many input features have zero value.</p>
+<p>Data sparsity leads to high variance, and the model will be over-fitting.</p>
+<p>The curse of dimensionality is also known as the Hughes phenomenon or peaking phenomenon.</p>
+<p>Hughes phenomenon or peaking phenomenon states, “As the number of input features increases, the machine learning model’s performance increases until an optimal number of input features. Beyond the optimal number of features, adding more input features decreases a model’s performance instead of improving”.</p>
+<p>A reduced number of features in the dataset that are most relevant to the problem space have several advantages.</p>
+<ul>
+<li><p><strong>Easier Visualization:</strong> Reducing data dimension to 2-D or 3-D helps visualize the data to observe and understand the data pattern.</p>
+</li>
+<li><p><strong>Increases speed to train the model:</strong> A dataset with reduced dimensionality will train the model faster as it would need less computation.</p>
+</li>
+<li><p><strong>Increases model interpretability:</strong> Dimensionality reduction preserves only the most relevant features in a dataset, making the model simpler and easier to interpret.</p>
+</li>
+<li><p><strong>Improves model accuracy:</strong> Irrelevant features in a dataset introduce noise and reduce the model's accuracy, whereas dimensionality reduction removes multi-colinear features to increase the model's accuracy.</p>
+</li>
+<li><p><strong>Reduces Over-fitting:</strong> When a predictive model is trained on a noisy dataset, the model learns the noise and will not generalize well, leading to overfitting. Dimensionality reduction removes the noise in the dataset by including the features most influencing the prediction, thus reducing overfitting.</p>
+</li>
+<li><p><strong>Avoids Curse of Dimensionality</strong></p>
+</li>
+<li><p><strong>Reduce storage space:</strong> Dimensionality reduction reduces the number of input features, reducing the disk space required for storage.</p>
+</li>
+</ul>
+<p>Most Dimensionality Reduction applications are used for:</p>
+<ul>
+<li>Data Compression</li>
+<li>Noise Reduction</li>
+<li>Data Classification</li>
+<li>Data Visualization</li>
+</ul>
+<p>One of the most critical aspects of Dimensionality reduction is <strong>Data Visualization</strong>. Having to drop the dimensionality down to two or three makes it possible to visualize the data on a 2d or 3d plot, meaning essential insights can be gained by analyzing these patterns in clusters and much more.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Main-Approaches-for-Dimensionality-Reduction-">Main Approaches for Dimensionality Reduction <a id="main-approaches"></a><a class="anchor-link" href="#Main-Approaches-for-Dimensionality-Reduction-">¶</a></h2><hr/>
+<p>The two main approaches to reducing dimensionality:
+<strong>Projection and Manifold Learning.</strong></p>
+<ul>
+<li><p><strong>Projection:</strong> This technique deals with projecting every data point in high dimension onto a subspace suitable lower-dimensional space in a way that approximately preserves the distances between the points.</p>
+</li>
+<li><p><strong>Manifold Learning:</strong> Many dimensionality reductions algorithm work by modeling the manifold on which the training instance lie; this is called Manifold learning. It relies on the manifold hypothesis or assumption, which holds that most real-world high-dimensional datasets lie close to a much lower-dimensional manifold. This assumption, in most cases, is based on observation or experience rather than theory or pure logic.</p>
+</li>
+</ul>
+<p><img alt="Approaches for Dimensionality Reduction" src="/supplementary/assets/./images/fig1.png"/></p>
+<p>Now let's briefly explain the four techniques before jumping into solving the use case.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="PCA-(Principal-Component-Analysis)-">PCA (Principal Component Analysis) <a id="pca-explain"></a><a class="anchor-link" href="#PCA-(Principal-Component-Analysis)-">¶</a></h3><hr/>
+<p>One of the most known dimensionality reduction “unsupervised” algorithms is PCA(Principal Component Analysis).</p>
+<p>This works by identifying the hyperplane which lies closest to the data and then projects the data on that hyperplane while retaining most of the variation in the data set.</p>
+<p><strong>Principal Components</strong>:
+The axis that explains the maximum variance in the training set is called the Principal Components.</p>
+<p>The axis orthogonal to this axis is called the second principal component. As we go for higher dimensions, PCA would find a third component orthogonal to the other two components. We always stick to 2 or a maximum of 3 principal components for visualization purposes.</p>
+<p><img alt="Making sense of PCA by fitting on a 2-D dataset" src="/supplementary/assets/./images/fig2.gif"/></p>
+<p>The PCs can be determined via eigen decomposition of the covariance matrix C. After all, the geometrical meaning of eigen decomposition is to find a new coordinate system of the eigenvectors for C through rotations.</p>
+<p>$$C = W\Lambda W^{-1}$$</p>
+<p>In the equation above, the covariance matrix $C_(m×m)$ is decomposed to a matrix of eigenvectors $W_(m×m)$ and a diagonal matrix of $m$ eigenvalues $\Lambda$. The eigenvectors, which are the column vectors in W, are, in fact, the PCs we are seeking. We can then use matrix multiplication to project the data onto the PC space. For dimensionality reduction, we can project the data points onto the first k PCs as the representation of the data:</p>
+<p>$$ X_k = XW_k $$</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="t-SNE-(-T-distributed-stochastic-neighbour-embedding-)-">t-SNE ( T-distributed stochastic neighbour embedding ) <a id="t-sne-explain"></a><a class="anchor-link" href="#t-SNE-(-T-distributed-stochastic-neighbour-embedding-)-">¶</a></h3><hr/>
+<p>Though PCA is great, it does have some drawbacks. One of the major drawbacks of PCA is that it does not retain non-linear variance. This means PCA will not be able to get results for figures like this.</p>
+<p>In simple terms, PCA works on retaining only global variance, and thus retaining local variance was the motivation behind t-SNE.</p>
+<h4 id="What-is-t-SNE?">What is t-SNE?<a class="anchor-link" href="#What-is-t-SNE?">¶</a></h4><p>t-SNE is a nonlinear dimensionality reduction technique that is well suited for embedding high dimension data into lower dimensional data (2D or 3D) for data visualization.</p>
+<p>t-SNE stands for t-distributed Stochastic Neighbor Embedding, which tells the following :</p>
+<ul>
+<li><p><strong>t-Distributed</strong> → probability distribution used by the algorithm to calculate similarity scores in the lower-dimensional embedding.</p>
+</li>
+<li><p><strong>Stochastic</strong> → not definite but random probability</p>
+</li>
+<li><p><strong>Neighbor</strong> → concerned only about retaining the variance of neighbor points</p>
+</li>
+<li><p><strong>Embedding</strong> → plotting data into lower dimensions</p>
+</li>
+</ul>
+<p>In short, t-SNE is a machine learning algorithm that generates slightly different results each time on the same data set, focusing on retaining the structure of neighbor points.</p>
+<h4 id="Hyperparameter-Tuning">Hyperparameter Tuning<a class="anchor-link" href="#Hyperparameter-Tuning">¶</a></h4><p>Two parameters that can highly influence the results are</p>
+<ol>
+<li><em>n_iter:</em> The number of iterations that the algorithm runs.</li>
+<li><em>perplexity:</em> This can be thought of as the number of neighboring points t-SNE must consider.</li>
+</ol>
+<h4 id="How-does-t-SNE-work?">How does t-SNE work?<a class="anchor-link" href="#How-does-t-SNE-work?">¶</a></h4><ol>
+<li><p>t-SNE constructs a probability distribution on pairs in higher dimensions such that similar objects are assigned a higher probability and dissimilar objects are assigned lower probability.</p>
+</li>
+<li><p>Then, t-SNE replicates the same probability distribution on lower dimensions iteratively till the Kullback-Leibler divergence is minimized.</p>
+</li>
+</ol>
+<p><em><strong>Kullback-Leibler</strong></em> divergence is a measure of the difference between the probability distributions from Step 1 and Step 2. KL divergence is mathematically given as the expected value of the logarithm of the difference of these probability distributions.</p>
+<h4 id="How-to-effectively-use-t-SNE?">How to effectively use t-SNE?<a class="anchor-link" href="#How-to-effectively-use-t-SNE?">¶</a></h4><ol>
+<li>t-SNE plots are highly influenced by parameters. Thus it is necessary to perform t-SNE using different parameter values before analyzing results.</li>
+<li>Since t-SNE is stochastic, each run may lead to slightly different output. This can be solved by fixing the value of random_state parameter for all the runs.</li>
+<li>t-SNE doesn’t retain the distance between clusters from the raw data. Distance between clusters might vary post dimensionality reduction in t-SNE. It is recommended not to obtain any conclusions solely from the distance between the clusters.</li>
+<li>t-SNE shrinks widespread data and expands densely packed data. It is hence suggested not to decide the size and density/spread/variance of the clusters based on the output.</li>
+<li>Lower perplexity values might result in fewer clusters. It is hence recommended to try various perplexity values ranging from 2 to the number of data points to obtain better results.</li>
+</ol>
+<p>You can play with different parameters and distributions <a href="https://distill.pub/2016/misread-tsne/">here</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="UMAP-(-Uniform-Manifold-Approximation-and-Projection-)-">UMAP ( Uniform Manifold Approximation and Projection ) <a id="umap-explain"></a><a class="anchor-link" href="#UMAP-(-Uniform-Manifold-Approximation-and-Projection-)-">¶</a></h3><hr/>
+<p>Uniform Manifold Approximation and Projection, created in 2018 by (Leland McInnes, John Healy, James Melville) is a general-purpose manifold learning and dimension reduction algorithm.</p>
+<p>UMAP is a non-linear dimensionality reduction method. It effectively visualizes clusters or groups of data points and their relative proximities.</p>
+<p>The significant difference with TSNE is scalability. It can be applied directly to sparse matrices, thereby eliminating the need to use any Dimensionality reduction such as PCA or Truncated SVD(Singular Value Decomposition) as a prior pre-processing step.</p>
+<p>Put simply; it is similar to t-SNE but with probably higher processing speed; therefore, faster and probably better visualization.</p>
+<p>UMAP approximates a manifold on which the data is assumed to lie and then constructs a fuzzy simplicial set representation of the approximated manifold.</p>
+<p>UMAP is based on the following assumptions</p>
+<ol>
+<li>There exists a Riemannian manifold on which the data is uniformly distributed.</li>
+<li>The underlying manifold of interest is locally connected</li>
+<li>The Riemannian metric is locally constant or can be approximated</li>
+<li>Preserving the topological structure of the manifold is the primary goal</li>
+</ol>
+<p>UMAP can be described in two phases.</p>
+<ol>
+<li>A weighted k-neighbor graph is constructed.</li>
+<li>A low dimensional layout of the weighted k-neighbor graph is computed</li>
+</ol>
+<h4 id="Comparison-between-UMAP-and-t-SNE">Comparison between UMAP and t-SNE<a class="anchor-link" href="#Comparison-between-UMAP-and-t-SNE">¶</a></h4><p><img alt="UMAP vs. t-SNE" src="/supplementary/assets/./images/fig3.png"/></p>
+<ul>
+<li>UMAP and t-SNE are non-linear dimensionality reduction techniques useful for visualization though the quality of UMAP is better than t-SNE.</li>
+<li>UMAP preserves more of the global structure than t-SNE</li>
+<li>UMAP has superior run time performance compared to t-SNE</li>
+<li>UMAP can scale to significantly more extensive data set sizes than possible for t-SNE</li>
+<li>UMAP preserves pairwise Euclidean distances significantly better than t-SNE</li>
+</ul>
+<p><a href="https://pair-code.github.io/understanding-umap/">Here</a> is a good article for understanding how UMAP works.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="LDA-(-Linear-Discriminant-Analysis-)-">LDA ( Linear Discriminant Analysis ) <a id="lda-explain"></a><a class="anchor-link" href="#LDA-(-Linear-Discriminant-Analysis-)-">¶</a></h3><hr/>
+<p>Linear Discriminant Analysis (LDA) is a commonly used dimensionality reduction technique. However, despite the similarities to Principal Component Analysis (PCA), it differs in one crucial aspect.</p>
+<p>Instead of finding new axes (dimensions) that maximize the variation in the data, it focuses on maximizing the separability among the known categories (classes) in the target variable.t the axes that maximize the separation between multiple classes.</p>
+<p><img alt="PCA vs. LDA" src="/supplementary/assets/./images/fig4.png"/></p>
+<p>Unlike Principal Component Analysis (PCA), LDA requires you to provide features and class labels for your target. Hence, despite being a dimensionality reduction technique similar to PCA, it sits within the supervised branch of Machine Learning.</p>
+<h4 id="How-does-LDA-find-the-right-axis?">How does LDA find the right axis?<a class="anchor-link" href="#How-does-LDA-find-the-right-axis?">¶</a></h4><ol>
+<li>Maximizing the distance (d²).</li>
+</ol>
+<ul>
+<li><p>2 categories — when you have two classes in your target variable, the distance refers to the difference between the mean (μ) of class 1 and the mean of class 2.</p>
+</li>
+<li><p>More than two categories — when you have three or more classes in your target variable, the algorithm first finds a central point to all of the data and then measures the distance from each category mean (μ) to that central point.</p>
+</li>
+</ul>
+<ol start="2">
+<li>Minimize the variation known as “scatter” in LDA (s²).</li>
+</ol>
+<p>Let’s illustrate the two criteria on a graph:</p>
+<p><img alt="LDA steps" src="/supplementary/assets/./images/fig5.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Imports-">Imports <a id="implementation"></a><a class="anchor-link" href="#Imports-">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">plotly</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">umap</span><span class="o">-</span><span class="n">learn</span>
+<span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">umap</span><span class="o">-</span><span class="n">learn</span><span class="p">[</span><span class="n">plot</span><span class="p">]</span>
+<span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">holoviews</span>
+<span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">ipykernel</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_digits</span> <span class="c1"># for MNIST data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Prepare-Dataset">Prepare Dataset<a class="anchor-link" href="#Prepare-Dataset">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+
+<span class="c1"># Load arrays containing digit data (64 pixels per image) and their true labels</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Some stats</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Shape of digit images: '</span><span class="p">,</span> <span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Shape of X (main data): '</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Shape of y (true labels): '</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Display images of the first 10 digits</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span> 
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([]);</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Shape of digit images:  (1797, 8, 8)
+Shape of X (main data):  (1797, 64)
+Shape of y (true labels):  (1797,)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
+<img alt="No description has been provided for this image" class="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA1gAAAGKCAYAAAAR9uClAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjQuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/MnkTPAAAACXBIWXMAAAsTAAALEwEAmpwYAAAajklEQVR4nO3dfazXdf3/8SeCAgJyTiDDRD1ehDo3OQ6sNi2PZptTkxObbpXGcW5aXkysNnV5gcs/cGWcptPJvk2ILDeyDmtpJE3Q1V+aHzIvwknHlplGnoN4mQfP74/v4jt+gqU94H083m6b/zB4nBeHN+/3597ndBgzPDw8XAAAAPzX9mr6AAAAAKOFwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrB2o5deeqk+//nP16RJk+qQQw6pH/3oR00fCd7h1ltvrXnz5tX48eOrp6en6ePATr355pt1wQUX1CGHHFJTpkypzs7Ouu+++5o+FuzUueeeWwcccEDtt99+NXv27Pqf//mfpo8Eu/T000/XhAkT6txzz236KKPGuKYPMJpdcskltc8++9QLL7xQrVarzjjjjJozZ04dc8wxTR8NtvvoRz9a11xzTa1Zs6Zef/31po8DOzU0NFQHHXRQrV+/vg4++OC6995765xzzqnHHnusOjo6mj4e7ODqq6+u73//+zV+/Ph66qmnqqurq4477riaO3du00eDd7jkkkvq+OOPb/oYo4p3sHaTV199te6555761re+VZMnT64TTzyxzjrrrFq5cmXTR4MdLFiwoLq7u2vatGlNHwV2adKkSbV48eLq6Oiovfbaq84888w69NBD65FHHmn6aPAOxxxzTI0fP76qqsaMGVNjxoypZ555puFTwTvdfffd1dbWVp/5zGeaPsqoIrB2k40bN9a4ceNq9uzZ239szpw59fjjjzd4KoDR4YUXXqiNGzf6igBGrIsvvrj23XffOuqoo+qAAw6o008/vekjwQ5efvnluu666+q73/1u00cZdQTWbvLKK6/Ufvvtt8OPTZ06tbZu3drQiQBGh7feequ+9KUv1cKFC+uoo45q+jiwU7fddltt3bq1HnrooVqwYMH2d7RgpLj22mvrggsuqFmzZjV9lFFHYO0mkydPrpdffnmHH3v55ZdrypQpDZ0I4IPv7bffrvPOO6/22WefuvXWW5s+DryrsWPH1oknnlh/+ctf6vbbb2/6OLBdq9WqtWvX1hVXXNH0UUYl3+RiN5k9e3YNDQ3V008/XR/72MeqqmrDhg2+nAXgfRoeHq4LLrigXnjhhbr33ntr7733bvpI8B8ZGhry/8FiRFm3bl319/fXwQcfXFX/+5VX27ZtqyeeeKJ+97vfNXy6Dz7vYO0mkyZNqgULFtR1111Xr776av3mN7+p1atX13nnndf00WAHQ0ND9cYbb9S2bdtq27Zt9cYbb9TQ0FDTx4J3+OpXv1pPPvlk/fznP6+JEyc2fRzYqRdffLHuvvvu7S9Y16xZUz/+8Y99EwFGlAsvvLCeeeaZarVa1Wq16itf+UqdccYZtWbNmqaPNioIrN3otttuq9dff71mzJhRX/jCF+r222/3DhYjzo033lgTJ06sJUuW1A9/+MOaOHFi3XjjjU0fC3bw7LPP1h133FGtVqtmzpxZkydPrsmTJ9ddd93V9NFgB2PGjKnbb7+9Zs2aVe3t7fWNb3yjent766yzzmr6aLDdvvvuWzNnztz+3+TJk2vChAm1//77N320UWHM8PDwcNOHAAAAGA28gwUAABAisAAAAEIEFgAAQIjAAgAACBFYAAAAIe/pHxoeM2bM7jrHf629vT26d+CBB8a2Xn755dhWVdVzzz0X3du2bVt0L+n9fJPLkXydps2ePTu2NW5c9t8dT1+nW7Zsie4lTZs2rTZv3vyef92H6VqdPHlybOuII46IbVVVvfbaa9G9jRs3RveS3u83Dh7J1+rMmTOje8nn/5tvvhnbqqp68skno3ue/x9cY8eOjW11dHTEtqrqQ/WPau/q+Z99RdWgU089Nbq3ZMmS2NbatWtjW1VVV111VXRvYGAgusees2zZsthWW1tbbKuq6vrrr4/urV69OrqXlH44jUbz5s2LbfX19cW2qqparVZ0r6urK7rHu1u4cGF0L/n837RpU2yrKvv3qMrz/4NsypQpsa2bb745tlVV1d3dHd0byXb1/PclggAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACHjmj5AypIlS6J7hx12WGyrvb09tlVV9dJLL0X3zjnnnNjWqlWrYlv8e4ODg7Gtk046KbZVVXXyySdH91avXh3d4911dnZG9x544IHY1pYtW2JbVVUdHR3RPf695DP77LPPjm1VVV100UWxrTvuuCO2VVU1d+7c6N7atWuje+w5PT09sa1WqxXb4n95BwsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAISMa/KDz507N7Z12GGHxbaqqg4//PDY1qZNm2JbVVX3339/dC/557Bq1arY1mjU2dkZ3evq6oruJbVaraaPwH+hu7s7urdhw4bYVl9fX2yrqur666+P7vHvLVu2LLZ10003xbaqqh5++OHYVvr5v3bt2ugee05bW1t0r6enJ7bV29sb26qq6ujoiO4l9ff375GP4x0sAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCxjX5wdvb22NbjzzySGyrqmrTpk3RvaT075V3t2jRotjW4sWLY1tVVVOnTo3uJa1bt67pI/Bf6O3tje719/fHttJnW716dXSPfy/5jD3ssMNiW+m9tWvXxraqsq+bqqoGBgaie+xaT09PdK+joyO2tXz58thWVf4ePTg4GNtKvw7bFe9gAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAkHFNfvD29vbY1tq1a2NbI13y81ZVNTAwEN0bbXp7e2Nby5cvj21Vjew/u7a2tqaP8KGT/JwvWrQotlVV1d3dHd1L6unpafoI/Bc2bdoU3fvIRz4S27r//vtjW7tj77Of/WxsayQ/j96v+fPnx7aWLl0a26qqWrFiRXQv6fLLL4/unX/++dG9PcE7WAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhIxr8oMPDAzEtubOnRvbSmtvb4/upX+vq1atiu5BVVVnZ2d0r9VqRfdGo8WLF8e2Lr/88thWWnd3d3RvcHAwuscHW/K1yWc/+9nYVlXVHXfcEd278sorY1tXXXVVbGuk2LJly4jcqqpauHBhbCv9vE7r6+tr+gjvmXewAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIGdfkB9+0aVNsa+7cubGtqqqzzz57RG7tDjfddFPTRwACli9fHtvq6uqKbVVVzZkzJ7bV19cX26qqWr16dXTvzjvvjG2lzzYaLVmyJLq3du3a2FZ7e3tsq6rq1FNPje6tWrUqujfarFu3LrbV1tYW26qq6uzsjG0lf59VVStWrIjuDQ4ORvf2BO9gAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAkHFNfvBNmzbFtq666qrYVlXVkiVLYluPPPJIbKuqat68edE99pzBwcHo3urVq2Nb8+fPj21VVXV1dUX3li9fHt0bjVqtVmyrs7MztpXeW7x4cWyrKn/t9/f3x7aSf8dHq4GBgejeHXfcEd1LWrVqVXTvoosuiu6x5yRfT0ydOjW2VeV5XeUdLAAAgBiBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQsYMDw8P/6c/efr06dXR0bEbjwP/p7+/vzZv3vyef53rlD3NtcoHwfu9Tqtcq+xZ7ql8UOzqWn1PgQUAAMCu+RJBAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERg7UZdXV01YcKEmjx5ck2ePLmOPPLIpo8Eu3T33XfX0UcfXZMmTarDDz+8HnrooaaPBNv96z76r//Gjh1bl112WdPHgp3q7++v008/vdrb22vmzJl16aWX1tDQUNPHgh08+eSTdcopp9TUqVPriCOOqJ/97GdNH2nUEFi72a233lqvvPJKvfLKK/XHP/6x6ePATt1///115ZVX1p133llbt26tBx98sA477LCmjwXb/es++sorr9Tf/va3mjhxYp199tlNHwt26uKLL64ZM2bU888/X61Wq9avX1+33XZb08eC7YaGhmr+/Pl15pln1ksvvVTLli2rc889tzZu3Nj00UYFgQXU9ddfX9ddd1198pOfrL322qsOPPDAOvDAA5s+FuzUPffcUzNmzKhPfepTTR8FdupPf/pTnXPOOTVhwoSaOXNmnXbaafX44483fSzY7qmnnqq//vWvdcUVV9TYsWPrlFNOqRNOOKFWrlzZ9NFGBYG1m1199dU1ffr0OuGEE2rdunVNHwfeYdu2bfXwww/X3//+9zriiCNq1qxZdemll9brr7/e9NFgp1asWFFf/vKXa8yYMU0fBXZq0aJFdffdd9drr71Wzz33XN1333112mmnNX0seFfDw8P1hz/8oeljjAoCaze66aabatOmTfXcc8/VhRdeWJ/73OfqmWeeafpYsIMXXnih3nrrrfrJT35SDz30ULVarXr00UfrxhtvbPpo8A7PPvtsrV+/vhYuXNj0UWCXPv3pT9fjjz9e++23X82aNavmzZtX3d3dTR8LtjvyyCNrxowZ9e1vf7veeuut+tWvflXr16+v1157remjjQoCazf6xCc+UVOmTKnx48fXwoUL64QTTqh777236WPBDiZOnFhVVZdddlkdcMABNX369Pra177mWmVEWrlyZZ144ol16KGHNn0U2Km33367TjvttFqwYEG9+uqrtXnz5hoYGKgrr7yy6aPBdnvvvXf19fXVL37xi5o5c2bdfPPNdc4559SsWbOaPtqoILD2oDFjxtTw8HDTx4AdtLe316xZs3b4citfesVI9YMf/MC7V4xoL730Uv35z3+uSy+9tMaPH1/Tpk2r888/3/9oxYhz7LHH1vr16+sf//hHrVmzpjZt2lQf//jHmz7WqCCwdpPBwcFas2ZNvfHGGzU0NFR33XVXPfjgg74GmxHp/PPPr1tuuaVefPHFGhgYqKVLl9aZZ57Z9LFgB7/97W/rueee890DGdGmT59ehx56aN1+++01NDRUg4ODtWLFijr22GObPhrs4Pe//3298cYb9dprr9V3vvOdev7556unp6fpY40KAms3eeutt+qaa66p/fffv6ZPn1633HJL9fX11ezZs5s+GrzDtddeW8cff3zNnj27jj766DruuOPqm9/8ZtPHgh2sWLGiFixYUFOmTGn6KPCufvrTn9Yvf/nL2n///euII46ovffeu5YuXdr0sWAHK1eurAMOOKBmzJhRv/71r+v++++v8ePHN32sUWHMsK9ZAwAAiPAOFgAAQIjAAgAACBFYAAAAIQILAAAgRGABAACEjHsvP3kk/+Oj6W9//s9//jO21d/fH9v6sHk/3+RyJF+nacnrfty493Q7+LeeeOKJ6N5INm3atNq8efN7/nUj+VqdMWNGdG/s2LGxrfb29thWVdXEiROje9u2bYttPfbYY7Gtt99+u95+++339WtH8rV60EEHRffa2tpiW+/nvvBuXnzxxehe8lpNG23P/8MPPzy6l7ynbty4Mbb1YbOr53/2FVWDli1bFt1LRpF/tI3dJXndJ19UVFV1dnZG90ayjo6Opo8Q98UvfjG6l7y+uru7Y1tVVXPmzInubdmyJbaVvLa2bt0a2xpJvv71r0f3ktfX8uXLY1tVVb29vdG9wcHB6B67dvPNN0f3kvfUrq6u2NaHza7u0b5EEAAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIGRc0wdI6ejoiO6ddNJJsa2FCxfGtqqqnn322ehe+nPHrs2fPz+6l7xOb7jhhtgW/P8GBwdjW4sWLYpt7Y69tra22Fby8zZadXZ2Nn2EXerp6YnudXV1jei90Sb5+ij9/E8aHh6O7m3YsCG6N5L/ju+Kd7AAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAEDIuKYPkDI4OBjdO+SQQ2JbW7ZsiW1VVa1bty6619bWFttK/zmMNjfccEPTR9ilvr6+po/ACNLb29v0EXZp8eLF0b2Ojo7oXldXV3SPd9dqtaJ7/f39sa2enp7YVlX+GZu8VtOvTUaC5OujtPXr18e2ktd8lXtglXewAAAAYgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIGdf0AVL6+/uje3PmzIltTZ06NbZVVdVqtaJ7g4OD0T12ra2tLbq3YcOG2Fb6umLP6+rqGpFbaYsWLWr6CO+qu7s7trV8+fLY1miV/hw9+uijsa2Ojo7YVlX+eZ1+7TTajOTPT/I+09fXF9uqyr/W+SDyDhYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgRWAAAACECCwAAIERgAQAAhAgsAACAEIEFAAAQIrAAAABCBBYAAECIwAIAAAgZ1/QBUrq7u6N7XV1dsa3Ozs7YVlXV0qVLo3tJvb29TR9hRGtra4vu9ff3x7YWLVoU26qq6uvri+4lf6+jVfJzlL5vJe+paennx7p166J7vLv0fTXppJNOiu4deuih0T331Xc3ODgY29qwYUNsq6pqYGAgtvW9730vtlWVf350dHTEtvbUNe8dLAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQsY1fYCRat26dU0fYY/p6Oho+ggfGv39/dG9k046KbbV1tYW26qqWrp0aXTvuOOOi221Wq3Y1kiSvL66u7tjW1VVw8PDsa302T5M9/uRorOzM7b1wAMPxLaqqm644YbYVvr52tfXF91L/l1KP99Gm+Q1n94b6c/E3t7e2Fb6+bEr3sECAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBkXNMHSJk/f350b8uWLbGtxYsXx7Z2h76+vqaP8KGxfPny6N7SpUtjW/39/bGtqqqOjo7oXnd3d2yr1WrFtkar3t7e6F7ynrp+/frYFs1I3m+S11ZV9tpP3wcfffTR6F5PT09sa6S/1hltks+x9P0+eV1VZZ//e4p3sAAAAEIEFgAAQIjAAgAACBFYAAAAIQILAAAgRGABAACECCwAAIAQgQUAABAisAAAAEIEFgAAQIjAAgAACBFYAAAAIQILAAAgRGABAACECCwAAIAQgQUAABAisAAAAEIEFgAAQMi4pg+QcvLJJ0f3Lr/88uhe0ooVK6J769ati+6xa8uXL4/udXR0xLZ6enpiW1X566qvry+6x7vr6uqK7i1cuDC2NTg4GNuiGck/w/S9ZmBgILa1ZcuW2FZV1erVq6N7vb290T12Lf257uzsjG21tbXFtqryz49WqxXd2xO8gwUAABAisAAAAEIEFgAAQIjAAgAACBFYAAAAIQILAAAgRGABAACECCwAAIAQgQUAABAisAAAAEIEFgAAQIjAAgAACBFYAAAAIQILAAAgRGABAACECCwAAIAQgQUAABAisAAAAEIEFgAAQMiY4eHh4f/0J0+fPr06Ojp243Hg//T399fmzZvf869znbKnuVb5IHi/12mVa5U9yz2VD4pdXavvKbAAAADYNV8iCAAAECKwAAAAQgQWAABAiMACAAAIEVgAAAAhAgsAACBEYAEAAIQILAAAgBCBBQAAEPL/APGEZ5x0Ine1AAAAAElFTkSuQmCC"/>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="c1"># For plotting</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.io</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt_io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_2d</span><span class="p">(</span><span class="n">component1</span><span class="p">,</span> <span class="n">component2</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">component1</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">component2</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span>
+        <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="c1">#set color equal to a variable</span>
+            <span class="n">colorscale</span><span class="o">=</span><span class="s1">'Rainbow'</span><span class="p">,</span> <span class="c1"># one of plotly colorscales</span>
+            <span class="n">showscale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">hovertext</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+    <span class="p">))</span>
+    
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span> <span class="n">l</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span><span class="n">width</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">1200</span><span class="p">)</span>                 
+
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_3d</span><span class="p">(</span><span class="n">component1</span><span class="p">,</span><span class="n">component2</span><span class="p">,</span><span class="n">component3</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">component1</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">component2</span><span class="p">,</span>
+        <span class="n">z</span><span class="o">=</span><span class="n">component3</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span>
+        <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>                <span class="c1"># set color to an array/list of desired values</span>
+            <span class="n">colorscale</span><span class="o">=</span><span class="s1">'Rainbow'</span><span class="p">,</span>   <span class="c1"># choose a colorscale</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">line_width</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">),</span>
+        <span class="n">hovertext</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+    <span class="p">)])</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">),</span><span class="n">width</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">durations</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Normalize-Data">Normalize Data<a class="anchor-link" href="#Normalize-Data">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="c1">## Normalize the data</span>
+<span class="n">x_standard</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="PCA-">PCA <a id="pca-code"></a><a class="anchor-link" href="#PCA-">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">PCA_components</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_standard</span><span class="p">)</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<span class="n">durations</span><span class="p">[</span><span class="s1">'PCA'</span><span class="p">]</span> <span class="o">=</span> <span class="n">duration</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Duration: </span><span class="si">{}</span><span class="s1"> seconds'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">duration</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Duration: 0.02001357078552246 seconds
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-2d">Plot 2d<a class="anchor-link" href="#Plot-2d">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_2d</span><span class="p">(</span><span class="n">PCA_components</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span><span class="n">PCA_components</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-3d">Plot 3d<a class="anchor-link" href="#Plot-3d">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_3d</span><span class="p">(</span><span class="n">PCA_components</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">PCA_components</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">PCA_components</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="t-SNE-">t-SNE <a id="t-sne-code"></a><a class="anchor-link" href="#t-SNE-">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span>
+    <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="c1"># default=2, Dimension of the embedded space.</span>
+    <span class="n">perplexity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1"># default=30.0, The perplexity is related to the number of nearest neighbors that is used in other manifold learning algorithms.</span>
+    <span class="n">early_exaggeration</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="c1"># default=12.0, Controls how tight natural clusters in the original space are in the embedded space and how much space will be between them. </span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="c1"># default=200.0, The learning rate for t-SNE is usually in the range [10.0, 1000.0]. If the learning rate is too high, the data may look like a ‘ball’ with any point approximately equidistant from its nearest neighbours. If the learning rate is too low, most points may look compressed in a dense cloud with few outliers.</span>
+    <span class="n">n_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="c1"># default=1000, Maximum number of iterations for the optimization. Should be at least 250.</span>
+    <span class="n">n_iter_without_progress</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="c1"># default=300, Maximum number of iterations without progress before we abort the optimization, used after 250 initial iterations with early exaggeration. </span>
+    <span class="n">min_grad_norm</span><span class="o">=</span><span class="mf">0.0000001</span><span class="p">,</span> <span class="c1"># default=1e-7, If the gradient norm is below this threshold, the optimization will be stopped.</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s1">'euclidean'</span><span class="p">,</span> <span class="c1"># default=’euclidean’, The metric to use when calculating distance between instances in a feature array.</span>
+    <span class="n">init</span><span class="o">=</span><span class="s1">'random'</span><span class="p">,</span> <span class="c1"># {‘random’, ‘pca’} or ndarray of shape (n_samples, n_components), default=’random’. Initialization of embedding</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="c1"># default=0, Verbosity level.</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="c1"># RandomState instance or None, default=None. Determines the random number generator. Pass an int for reproducible results across multiple function calls.</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">'barnes_hut'</span><span class="p">,</span> <span class="c1"># default=’barnes_hut’. By default the gradient calculation algorithm uses Barnes-Hut approximation running in O(NlogN) time. method=’exact’ will run on the slower, but exact, algorithm in O(N^2) time. The exact algorithm should be used when nearest-neighbor errors need to be better than 3%. </span>
+    <span class="n">angle</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="c1"># default=0.5, Only used if method=’barnes_hut’ This is the trade-off between speed and accuracy for Barnes-Hut T-SNE.</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="c1"># default=None, The number of parallel jobs to run for neighbors search. -1 means using all processors. </span>
+<span class="p">)</span>
+<span class="n">tSNE_components</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_standard</span><span class="p">)</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<span class="n">durations</span><span class="p">[</span><span class="s1">'t-SNE'</span><span class="p">]</span> <span class="o">=</span> <span class="n">duration</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Duration: </span><span class="si">{}</span><span class="s1"> seconds'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">duration</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Duration: 85.79078960418701 seconds
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-2d">Plot 2d<a class="anchor-link" href="#Plot-2d">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_2d</span><span class="p">(</span><span class="n">tSNE_components</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">tSNE_components</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-3d">Plot 3d<a class="anchor-link" href="#Plot-3d">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_3d</span><span class="p">(</span><span class="n">tSNE_components</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span><span class="n">tSNE_components</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">tSNE_components</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="UMAP-">UMAP <a id="umap-code"></a><a class="anchor-link" href="#UMAP-">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">umap.umap_</span><span class="w"> </span><span class="kn">import</span> <span class="n">UMAP</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">reducer</span> <span class="o">=</span> <span class="n">UMAP</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="c1"># default 15, The size of local neighborhood (in terms of number of neighboring sample points) used for manifold approximation.</span>
+               <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="c1"># default 2, The dimension of the space to embed into.</span>
+               <span class="n">metric</span><span class="o">=</span><span class="s1">'euclidean'</span><span class="p">,</span> <span class="c1"># default 'euclidean', The metric to use to compute distances in high dimensional space.</span>
+               <span class="n">n_epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="c1"># default None, The number of training epochs to be used in optimizing the low dimensional embedding. Larger values result in more accurate embeddings. </span>
+               <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="c1"># default 1.0, The initial learning rate for the embedding optimization.</span>
+               <span class="n">init</span><span class="o">=</span><span class="s1">'spectral'</span><span class="p">,</span> <span class="c1"># default 'spectral', How to initialize the low dimensional embedding. Options are: {'spectral', 'random', A numpy array of initial embedding positions}.</span>
+               <span class="n">min_dist</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="c1"># default 0.1, The effective minimum distance between embedded points.</span>
+               <span class="n">spread</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="c1"># default 1.0, The effective scale of embedded points. In combination with ``min_dist`` this determines how clustered/clumped the embedded points are.</span>
+               <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># default False, For some datasets the nearest neighbor computation can consume a lot of memory. If you find that UMAP is failing due to memory constraints consider setting this option to True.</span>
+               <span class="n">set_op_mix_ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="c1"># default 1.0, The value of this parameter should be between 0.0 and 1.0; a value of 1.0 will use a pure fuzzy union, while 0.0 will use a pure fuzzy intersection.</span>
+               <span class="n">local_connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="c1"># default 1, The local connectivity required -- i.e. the number of nearest neighbors that should be assumed to be connected at a local level.</span>
+               <span class="n">repulsion_strength</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="c1"># default 1.0, Weighting applied to negative samples in low dimensional embedding optimization.</span>
+               <span class="n">negative_sample_rate</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="c1"># default 5, Increasing this value will result in greater repulsive force being applied, greater optimization cost, but slightly more accuracy.</span>
+               <span class="n">transform_queue_size</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="c1"># default 4.0, Larger values will result in slower performance but more accurate nearest neighbor evaluation.</span>
+               <span class="n">a</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># default None, More specific parameters controlling the embedding. If None these values are set automatically as determined by ``min_dist`` and ``spread``.</span>
+               <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># default None, More specific parameters controlling the embedding. If None these values are set automatically as determined by ``min_dist`` and ``spread``.</span>
+               <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="c1"># default: None, If int, random_state is the seed used by the random number generator;</span>
+               <span class="n">metric_kwds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># default None) Arguments to pass on to the metric, such as the ``p`` value for Minkowski distance.</span>
+               <span class="n">angular_rp_forest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># default False, Whether to use an angular random projection forest to initialise the approximate nearest neighbor search.</span>
+               <span class="n">target_n_neighbors</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="c1"># default -1, The number of nearest neighbors to use to construct the target simplcial set. If set to -1 use the ``n_neighbors`` value.</span>
+               <span class="c1">#target_metric='categorical', # default 'categorical', The metric used to measure distance for a target array is using supervised dimension reduction. By default this is 'categorical' which will measure distance in terms of whether categories match or are different. </span>
+               <span class="c1">#target_metric_kwds=None, # dict, default None, Keyword argument to pass to the target metric when performing supervised dimension reduction. If None then no arguments are passed on.</span>
+               <span class="c1">#target_weight=0.5, # default 0.5, weighting factor between data topology and target topology.</span>
+               <span class="n">transform_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="c1"># default 42, Random seed used for the stochastic aspects of the transform operation.</span>
+               <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># default False, Controls verbosity of logging.</span>
+               <span class="n">unique</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># default False, Controls if the rows of your data should be uniqued before being embedded. </span>
+              <span class="p">)</span>
+<span class="n">embedding</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_standard</span><span class="p">)</span>
+<span class="n">UMAP_components</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">embedding_</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<span class="n">durations</span><span class="p">[</span><span class="s1">'UMAP'</span><span class="p">]</span> <span class="o">=</span> <span class="n">duration</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Duration: </span><span class="si">{}</span><span class="s1"> seconds'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">duration</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Duration: 24.376087188720703 seconds
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-2d">Plot 2d<a class="anchor-link" href="#Plot-2d">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_2d</span><span class="p">(</span><span class="n">UMAP_components</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">UMAP_components</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-3d">Plot 3d<a class="anchor-link" href="#Plot-3d">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_3d</span><span class="p">(</span><span class="n">UMAP_components</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">UMAP_components</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">UMAP_components</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="LDA-">LDA <a id="lda-code"></a><a class="anchor-link" href="#LDA-">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.discriminant_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span> <span class="k">as</span> <span class="n">LDA</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">LDA_components</span> <span class="o">=</span> <span class="n">LDA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_standard</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<span class="n">durations</span><span class="p">[</span><span class="s1">'LDA'</span><span class="p">]</span> <span class="o">=</span> <span class="n">duration</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Duration: </span><span class="si">{}</span><span class="s1"> seconds'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">duration</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Duration: 0.05424618721008301 seconds
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-2d">Plot 2d<a class="anchor-link" href="#Plot-2d">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_2d</span><span class="p">(</span><span class="n">LDA_components</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">LDA_components</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Plot-3d">Plot 3d<a class="anchor-link" href="#Plot-3d">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_3d</span><span class="p">(</span><span class="n">LDA_components</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">LDA_components</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">LDA_components</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Comparison-">Comparison <a id="comparison"></a><a class="anchor-link" href="#Comparison-">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">durations</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'time'</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>PCA</th>
+<th>t-SNE</th>
+<th>UMAP</th>
+<th>LDA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>time</th>
+<td>0.020014</td>
+<td>85.79079</td>
+<td>24.376087</td>
+<td>0.054246</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">plotly.subplots</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_subplots</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_2by2_grids</span><span class="p">(</span><span class="n">plots</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">titles</span><span class="p">):</span>
+  <span class="c1"># Initialize figure with 4 subplots</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span>
+        <span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">specs</span><span class="o">=</span><span class="p">[[{</span><span class="s1">'type'</span><span class="p">:</span> <span class="nb">type</span><span class="p">},</span> <span class="p">{</span><span class="s1">'type'</span><span class="p">:</span> <span class="nb">type</span><span class="p">}],</span>
+              <span class="p">[{</span><span class="s1">'type'</span><span class="p">:</span> <span class="nb">type</span><span class="p">},</span> <span class="p">{</span><span class="s1">'type'</span><span class="p">:</span> <span class="nb">type</span><span class="p">}]],</span>
+        <span class="n">subplot_titles</span><span class="o">=</span><span class="n">titles</span><span class="p">)</span>
+    
+    <span class="c1"># adding surfaces to subplots.</span>
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+      <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+          <span class="n">data</span><span class="p">,</span>
+          <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">plots</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+      <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+          <span class="n">data</span><span class="p">,</span>
+          <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+      <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+          <span class="n">data</span><span class="p">,</span>
+          <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">plots</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+      <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+          <span class="n">data</span><span class="p">,</span>
+          <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+        <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">),</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">1500</span>
+    <span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">components</span> <span class="o">=</span> <span class="p">[</span><span class="n">PCA_components</span><span class="p">,</span> <span class="n">tSNE_components</span><span class="p">,</span> <span class="n">UMAP_components</span><span class="p">,</span> <span class="n">LDA_components</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'PCA'</span><span class="p">,</span> <span class="s1">'t-SNE'</span><span class="p">,</span> <span class="s1">'UMAP'</span><span class="p">,</span> <span class="s1">'LDA'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="2d-Visualization">2d Visualization<a class="anchor-link" href="#2d-Visualization">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_2by2_grids</span><span class="p">(</span>
+    <span class="n">plots</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_2d</span><span class="p">(</span><span class="n">component</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">component</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">components</span><span class="p">],</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">'scatter'</span><span class="p">,</span>
+    <span class="n">titles</span> <span class="o">=</span> <span class="n">names</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="3d-Visualization">3d Visualization<a class="anchor-link" href="#3d-Visualization">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_2by2_grids</span><span class="p">(</span>
+    <span class="n">plots</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_3d</span><span class="p">(</span><span class="n">component</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">component</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>  <span class="n">component</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">y</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">components</span><span class="p">],</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">'scatter3d'</span><span class="p">,</span>
+    <span class="n">titles</span> <span class="o">=</span> <span class="n">names</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="3d-Visualization-with-Digits">3d Visualization with Digits<a class="anchor-link" href="#3d-Visualization-with-Digits">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_digits_3d</span><span class="p">(</span><span class="n">component1</span><span class="p">,</span> <span class="n">component2</span><span class="p">,</span> <span class="n">component3</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="mf">0.8</span>
+    <span class="k">for</span> <span class="n">x_src</span><span class="p">,</span> <span class="n">y_src</span><span class="p">,</span> <span class="n">z_src</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">img</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">component1</span><span class="p">,</span> <span class="n">component2</span><span class="p">,</span> <span class="n">component3</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
+      <span class="n">img</span> <span class="o">/=</span> <span class="mi">16</span>
+      <span class="n">sh_0</span><span class="p">,</span> <span class="n">sh_1</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span>
+      <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">sh_0</span><span class="p">)</span> <span class="o">+</span> <span class="n">x_src</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">sh_1</span><span class="p">)</span> <span class="o">+</span> <span class="n">y_src</span>
+      <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">sh_0</span><span class="p">,</span> <span class="n">sh_1</span><span class="p">))</span> <span class="o">+</span> <span class="n">z_src</span>
+      <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">sh_0</span><span class="p">,</span> <span class="n">sh_1</span><span class="p">),</span><span class="n">fx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_NEAREST</span><span class="p">)</span>
+      <span class="n">color</span> <span class="o">=</span>  <span class="p">(</span><span class="n">label</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span>
+      <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+          <span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span>
+          <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
+          <span class="n">surfacecolor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+          <span class="n">colorscale</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'hsv(</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s1">,0,10)'</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'hsv(</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s1">,100,80)'</span><span class="p">]],</span>
+          <span class="n">opacity</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+          <span class="n">hovertext</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">),</span>
+          <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+          <span class="p">)</span>
+      <span class="p">)</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+    <span class="c1"># Update chart looks</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">showscale</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                      <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">orientation</span><span class="o">=</span><span class="s2">"h"</span><span class="p">,</span> <span class="n">yanchor</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xanchor</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+                      <span class="n">scene_camera</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">up</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> 
+                                            <span class="n">center</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">),</span>
+                                            <span class="n">eye</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)),</span>
+                                            <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+    
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sample_number</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">),</span> <span class="n">sample_number</span><span class="p">)</span>
+
+<span class="n">plot_2by2_grids</span><span class="p">(</span>
+    <span class="n">plots</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_digits_3d</span><span class="p">(</span><span class="n">component</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][</span><span class="n">indices</span><span class="p">],</span> <span class="n">component</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">indices</span><span class="p">],</span> <span class="n">component</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">][</span><span class="n">indices</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">indices</span><span class="p">])</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">components</span><span class="p">],</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">'surface'</span><span class="p">,</span>
+    <span class="n">titles</span> <span class="o">=</span> <span class="n">names</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li><p>PCA could not do such an excellent job in differentiating the signs. The main drawback of PCA is that it is highly influenced by outliers present in the data. PCA is a linear projection, which means it can’t capture non-linear dependencies; its goal is to find the directions (the so-called principal components) that maximize the variance in a dataset.</p>
+</li>
+<li><p>t-SNE does a better job(it tries to preserve topology neighborhood structure) than PCA when it comes to visualizing the different patterns of the clusters. Similar labels are clustered together, even though there are oversized agglomerates of data points on top of each other, which is certainly not good enough to expect a clustering algorithm to perform well.</p>
+</li>
+<li><p>UMAP outperformed t-SNE and PCA; if we look at the 2d and 3d plots, we can see mini-clusters that are being separated well. It effectively visualizes clusters or groups of data points and their relative proximities. However, for this use case indeed not good enough to expect a clustering algorithm to distinguish the patterns.UMAP is much faster than t-SNE; another problem faced by the latter is the need for another dimensionality reduction method; otherwise, it would take longer to compute.</p>
+</li>
+<li><p>Finally, LDA outperformed all the previous techniques in all aspects. Excellent computation time (second fastest) proves our expected well-separated clusters.</p>
+</li>
+</ul>
+<blockquote>
+<p>Note: it is not surprising that LDA performed better than the other techniques; that was what we were expecting. Unlike LDA, PCA, TSNE, and UMAP are performed without knowing the true class label.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Conclusion-">Conclusion <a id="conclusion"></a><a class="anchor-link" href="#Conclusion-">¶</a></h2><p>We have explored four dimensionality reduction techniques for data visualization : (PCA, t-SNE, UMAP, and LDA) and tried to use them to visualize a high-dimensional dataset in 2d and 3d plots.</p>
+<blockquote>
+<p>Note: It is not difficult to fall into the trap of considering one technique better than the other. At the end of the day, there is no way to map high-dimensional data into low dimensions and preserve the whole structure simultaneously; there is always a trade-off of qualities one technique will have compared to the other.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="References-">References <a id="references"></a><a class="anchor-link" href="#References-">¶</a></h2><ol>
+<li><a href="https://medium.com/buzzrobot/using-t-sne-to-visualise-how-your-deep-model-thinks-4ba6da0c63a0">Using T-SNE to Visualise how your Model thinks</a></li>
+<li><a href="https://towardsdatascience.com/t-sne-machine-learning-algorithm-a-great-tool-for-dimensionality-reduction-in-python-ec01552f1a1e">t-SNE Machine Learning Algorithm — A Great Tool for Dimensionality Reduction in Python</a></li>
+<li><a href="https://arshren.medium.com/a-comprehensive-guide-to-dimensionality-reduction-851624b7377d">A Comprehensive Guide to Dimensionality Reduction</a></li>
+<li><a href="https://www.oreilly.com/content/an-illustrated-introduction-to-the-t-sne-algorithm/">An illustrated introduction to the t-SNE algorithm</a></li>
+<li><a href="https://distill.pub/2016/misread-tsne/">How to Use t-SNE Effectively</a></li>
+<li><a href="https://towardsdatascience.com/umap-dimensionality-reduction-an-incredibly-robust-machine-learning-algorithm-b5acb01de568">UMAP Dimensionality Reduction — An Incredibly Robust Machine Learning Algorithm</a></li>
+<li><a href="https://towardsdatascience.com/dimensionality-reduction-for-data-visualization-pca-vs-tsne-vs-umap-be4aa7b1cb29">Dimensionality Reduction for Data Visualization</a></li>
+<li><a href="https://towardsdatascience.com/pca-and-svd-explained-with-numpy-5d13b0d2a4d8">PCA and SVD explained with numpy</a></li>
+<li><a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues">Making sense of principal component analysis, eigenvectors &amp; eigenvalues</a></li>
+<li><a href="https://towardsdatascience.com/reducing-dimensionality-from-dimensionality-reduction-techniques-f658aec24dfe">Reducing Dimensionality from Dimensionality Reduction Techniques</a></li>
+<li><a href="https://www.jmlr.org/papers/v9/vandermaaten08a.html">Visualizing Data using t-SNE</a></li>
+<li><a href="https://arxiv.org/abs/1802.03426">UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction</a></li>
+<li><a href="https://usir.salford.ac.uk/id/eprint/52074/">Linear discriminant analysis : a detailed tutorial</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body>
+            </div>
+            
+                
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+<div id="authors"
+    
+        class="hover-shadow row align-items-start my-2 px-xs-0
+            px-sm-0 px-md-1
+         px-lg-2 px-xlg-2 px-xxlg-2"
+        style="min-height: 5vh;"
+    
+>
+    
+    
+        
+            <div class="wf-section-label text-center col-12 py-3">
+                <span class="shadow-lg p-3 px-5 w-100"><strong>Authors</strong></span>
+            </div>
+        
+    
+
+    <div
+        
+            class="rounded  bg-body shadow col-12 px-4 p-4
+            justify-content-center"
+        
+    >
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="wf-people"
+     style="--wf-people-card-min: 14rem;
+            --wf-people-card-max: 18rem;
+            --wf-people-gap: 1rem;
+            --wf-people-avatar-size: 4.25rem;">
+    
+    <div class="wf-people-grid wf-people-grid-center wf-people-density-comfortable">
+        
+        
+        
+        <article class="wf-person-card wf-person-card-center">
+            
+            <div class="wf-person-avatar-wrap">
+                <img class="wf-person-avatar" src="https://github.com/Mohammadjafari80.png" alt="Mohammad Jafari">
+            </div>
+            
+            <div class="wf-person-main">
+                
+                <h3 class="wf-person-name">Mohammad Jafari</h3>
+                
+                
+                <p class="wf-person-title">Author</p>
+                
+                
+                
+                
+            </div>
+            
+            <div class="wf-person-links">
+                
+                
+                
+                
+                <a href="https://github.com/Mohammadjafari80">GitHub</a>
+                
+                
+                
+                
+                
+                <a href="https://www.linkedin.com/in/mohammadjafari01/">LinkedIn</a>
+                
+                
+                
+                
+                
+                <a href="mailto://mamad.jafari91@gmail.com">Email</a>
+                
+                
+            </div>
+            
+        </article>
+        
+    </div>
+</div>
+
+        
+    </div>
+
+    
+    
+</div>
+            
+                
+
+
+    
+
+
+<div class="p-2">
+    <script src="https://utteranc.es/client.js"
+            repo="sut-ai/comments"
+            issue-term="pathname"
+            label="comments"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+            
+        </div>
+    </div>
+    
+
+
+    
+
+
+
+
+    
+
+
+<footer class="container-fluid wf-page-chrome shadow text-center align-items-center p-0 hidden-print"
+        
+        style="min-height: 2vh;
+          background-image: url('/supplementary/assets/index/images/supplementary-header.jpg');
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;"
+        
+>
+    <div
+            
+            class="wf-header-panel w-100 p-3 m-auto text-center"
+            
+    >
+        
+        © Powered by <a class="link-primary" href="https://webifier.github.io/">Webifier</a>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>

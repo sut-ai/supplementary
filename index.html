@@ -1,4 +1,546 @@
----
-layout: home
-index: index
----
+
+
+
+
+
+
+
+
+<html>
+
+
+
+
+<head>
+    <title>SUT-AI | Supplementary</title>
+    
+<!-- viewport meta-tag for responsiveness -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+<!-- Bootstrap v5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- FontAwesome JS -->
+<script src="https://kit.fontawesome.com/01c0691b3e.js" crossorigin="anonymous"></script>
+
+<!-- Loading mathjax macro -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+<script type="text/x-mathjax-config" defer>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+</script>
+<link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
+<link rel="stylesheet" href="/supplementary/assets/css/main.css">
+<script defer src="/supplementary/assets/js/codeblocks.js"></script>
+
+<script>
+(function () {
+  const switcherEnabled = true;
+  const stored = switcherEnabled ? localStorage.getItem("webifier-theme") : null;
+  const selected = stored || "system";
+  const systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const resolved = selected === "system" ? (systemDark ? "dark" : "light") : selected;
+  document.documentElement.dataset.wfTheme = selected;
+  document.documentElement.dataset.wfResolvedTheme = resolved;
+  document.documentElement.dataset.bsTheme = resolved === "dark" ? "dark" : "light";
+})();
+</script>
+<link rel="stylesheet" href="/supplementary/assets/css/theme.css">
+<script defer src="/supplementary/assets/js/theme.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VZRZHCJ5V0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VZRZHCJ5V0');
+</script>
+
+
+
+    
+
+    
+        <meta
+        
+            name="keywords"
+        
+            content="Webifier, Sharif University of Technology, Mohammad Hossein Rohban, Markov Decision Processes, Supplementary Material, Additional Content, Deep Learning, Machine Learning, Artificial Intelligence, Probability and Statistics, 
+"
+        
+        >
+    
+        <meta
+        
+            name="author"
+        
+            content="sut-ai"
+        
+        >
+    
+
+
+    
+</head>
+
+<body class="bg-body-tertiary">
+<div class="app-content container-fluid">
+    
+
+
+
+
+
+
+<header class="container-fluid wf-page-chrome text-center align-items-center p-0"
+        
+        style="min-height: 5vh;
+          background-image: url('/supplementary/assets/index/images/supplementary-header.jpg');
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;"
+        
+>
+    <div
+            
+            class="wf-image-overlay w-100 p-3 m-auto text-center"
+            
+    >
+        <h1>Supplementary</h1>
+        
+        <p class="mt-3">Additional contents and supplementary materials!</p>
+        
+    </div>
+</header>
+
+
+    
+
+
+
+
+
+    
+
+
+
+
+
+
+<nav class="px-2 navbar navbar-expand-sm bg-body-tertiary m-0 p-2 sticky-top shadow wf-navbar">
+    
+    
+    
+
+
+
+
+
+
+
+    <a href="https://github.com/sut-ai" class="btn navbar-brand"
+       
+    >
+    
+    
+    
+        SUT-AI
+    
+    </a>
+
+
+    
+
+    <div
+            
+            class="collapse navbar-collapse p-0 m-0"
+            id="navbarSupportedContent"
+            
+    >
+        <ul class="navbar-nav me-auto my-1 p-0">
+            
+            <li class="nav-item">
+                
+                
+                
+
+
+
+
+
+
+
+    <a href="/supplementary/" class="btn nav-link active"
+       
+    >
+    
+    
+    
+        Supplementary
+    
+    </a>
+
+
+                
+            </li>
+            
+            <li class="nav-item">
+                
+                
+                
+
+
+
+
+
+
+
+    <a href="/notes/" class="btn nav-link"
+       
+    >
+    
+    
+    
+        Notes
+    
+    </a>
+
+
+                
+            </li>
+            
+        </ul>
+        
+    </div>
+    <div class="d-flex my-1 ms-auto">
+        
+        <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        <button
+                class="btn nav-item mt-1 webifier-theme-toggle"
+                type="button"
+                id="webifier-theme-toggle"
+                title="Switch color theme"
+                aria-label="Switch color theme"
+                data-theme-default="system"
+                data-theme-modes="system,light,dark"
+        >
+            <svg class="webifier-theme-symbol webifier-theme-symbol-system" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="13" rx="2"></rect>
+                <path d="M8 21h8"></path>
+                <path d="M12 17v4"></path>
+            </svg>
+            <svg class="webifier-theme-symbol webifier-theme-symbol-light" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="M4.93 4.93l1.41 1.41"></path>
+                <path d="M17.66 17.66l1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="M6.34 17.66l-1.41 1.41"></path>
+                <path d="M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="webifier-theme-symbol webifier-theme-symbol-dark" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+            </svg>
+            <span class="visually-hidden webifier-theme-label">Theme</span>
+        </button>
+        
+
+        
+    </div>
+</nav>
+
+
+
+
+
+
+
+    <div id="app-body"
+         class="app-body container-fluid bg-body justify-content-center align-items-center d-flex shadow">
+        <div class="container-fluid p-0 m-0 no-gutters">
+            
+                
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+<div id="prerequisites"
+    
+        class="row align-items-start py-3 pe-xs-0 pe-sm-0
+        pe-md-1 pe-lg-2 pe-xlg-2 pe-xxlg-2"
+        style="min-height: 5vh;
+          background-image: url('/supplementary/assets/index/images/supplementary-header.jpg');
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;"
+    
+>
+    
+    
+        
+            <div class="wf-section-label mt-4 mb shadow-lg col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2
+                col-xxl-2 p-3 d-flex justify-content-center">
+                <strong>Prerequisites</strong>
+            </div>
+        
+    
+
+    <div
+        
+            class="rounded hover-shadow bg-body shadow col-12 col-sm-12
+                col-md-10 col-lg-10 col-xl-10 col-xxl-10 px-4 p-4 justify-content-center"
+        
+    >
+        
+            
+                <p>The supplementary notebooks are written to be approachable, but they assume
+some comfort with the usual mathematical and programming background for an
+artificial intelligence course.</p>
+<p>See the <a data-bs-html="true" data-bs-toggle="tooltip" href="/supplementary/pages/prerequisites.html" title="Background material for getting the most out of the SUT-AI supplementary notebooks.">full prerequisites page</a> for a compact
+checklist and recommended review material.</p>
+            
+        
+    </div>
+
+    
+    
+</div>
+            
+                
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+<div id="notebooks"
+    
+        class="row align-items-start py-3 pe-xs-0 pe-sm-0
+        pe-md-1 pe-lg-2 pe-xlg-2 pe-xxlg-2"
+        style="min-height: 5vh;
+          background-image: url('/supplementary/assets/index/images/supplementary-header.jpg');
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;"
+    
+>
+    
+    
+        
+            <div class="wf-section-label mt-4 mb shadow-lg col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2
+                col-xxl-2 p-3 d-flex justify-content-center">
+                <strong>Notebooks</strong>
+            </div>
+        
+    
+
+    <div
+        
+            class="rounded hover-shadow bg-body shadow col-12 col-sm-12
+                col-md-10 col-lg-10 col-xl-10 col-xxl-10 px-4 p-4 justify-content-center"
+        
+    >
+        
+            
+                <p>These notebooks are gateway tutorials for selected artificial intelligence
+topics: short enough to browse, but practical enough to include code,
+examples, visualizations, and pointers for going deeper.</p>
+<p><strong>Mathematical and Classical Foundations</strong></p>
+<ul>
+<li><a href="/supplementary/notebooks/search_in_continuous_space/">Gradient Descent in Machine Learning</a>: Gradient descent, practical challenges, and common improvements.</li>
+<li><a href="/supplementary/notebooks/convex_optimization/">Convex Optimization</a>: Convex optimization fundamentals with a practical image in-painting example using CVXPY.</li>
+<li><a href="/supplementary/notebooks/decision_trees/">Decision Trees</a>: Decision trees, pruning, and indexing ideas in classical machine learning.</li>
+<li><a href="/supplementary/notebooks/clustering/">Clustering in Machine Learning</a>: Clustering variants and their behavior in unsupervised learning workflows.</li>
+<li><a href="/supplementary/notebooks/dimensionality_reduction/">Dimensionality Reduction</a>: PCA, t-SNE, UMAP, and LDA on MNIST for visualizing lower-dimensional structure.</li>
+<li><a href="/supplementary/notebooks/ml_methods_online_semisupervised_fewshot_learning/">Machine Learning Methods</a>: Online learning, semi-supervised learning, few-shot learning, and meta-learning.</li>
+</ul>
+<p><strong>Logic, Sequence Modeling, and Language</strong></p>
+<ul>
+<li><a href="/supplementary/notebooks/logic_programming/">Prolog and Logic Programming</a>: Prolog basics and how to use logic programming ideas from Python.</li>
+<li><a href="/supplementary/notebooks/hmm_speech_recognition/">HMM Speech Recognition</a>: Hidden Markov Models for speech recognition, with useful automatic speech recognition tools.</li>
+<li><a href="/supplementary/notebooks/recurrent_neural_networks/">Recurrent Neural Networks</a>: Sequence modeling with recurrent neural networks.</li>
+<li><a href="/supplementary/notebooks/transformer/">Transformer</a>: Attention, positional encoding, encoder-decoder structure, and transformer sequence modeling.</li>
+<li><a href="/supplementary/notebooks/natural_language_processing/">Natural Language Processing</a>: NLP challenges and approaches for working with text.</li>
+</ul>
+<p><strong>Deep Learning, Vision, and Generative Models</strong></p>
+<ul>
+<li><a href="/supplementary/notebooks/keras/">Introduction to Keras</a>: A practical introduction to Keras for deep learning workflows.</li>
+<li><a href="/supplementary/notebooks/cnn/">Convolutional Neural Networks</a>: CNNs, convolution, pooling, image classification, and TensorFlow training.</li>
+<li><a href="/supplementary/notebooks/3d_vision/">3D Computer Vision</a>: Point clouds, 3D vision neural networks, and adversarial attacks.</li>
+<li><a href="/supplementary/notebooks/generative_adversarial_networks/">Generative Adversarial Networks</a>: GAN fundamentals, applications, and an anime face generation example.</li>
+<li><a href="/supplementary/notebooks/generative_adversarial_networks_wgan/">Generative Adversarial Networks with WGANs</a>: GANs, conditional GANs, WGAN variants, and PyTorch implementations.</li>
+<li><a href="/supplementary/notebooks/robust_and_trustworthy_machine_learning/">Robust and Trustworthy Machine Learning</a>: Evasion attacks, poisoning attacks, and defenses for robust ML systems.</li>
+</ul>
+<p><strong>Systems, Applications, and Reinforcement Learning</strong></p>
+<ul>
+<li><a href="/supplementary/notebooks/big_data_intro/">Introduction to Big Data</a>: Big data concepts, distributed data processing, and Apache Spark in ML workflows.</li>
+<li><a href="/supplementary/notebooks/mlops/">MLOps</a>: A simple model deployment walkthrough and the engineering ideas around MLOps.</li>
+<li><a href="/supplementary/notebooks/deep_reinforcement_learning/">Deep Reinforcement Learning</a>: Early deep-learning approaches to reinforcement learning, including a DQN example.</li>
+<li><a href="/supplementary/notebooks/global_warming/">AI Applications in Global Warming</a>: How AI can support climate analysis, including CO2 emission prediction.</li>
+</ul>
+            
+        
+    </div>
+
+    
+    
+</div>
+            
+                
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+<div id="further-readings"
+    
+        class="row align-items-start py-3 pe-xs-0 pe-sm-0
+        pe-md-1 pe-lg-2 pe-xlg-2 pe-xxlg-2"
+        style="min-height: 5vh;
+          background-image: url('/supplementary/assets/index/images/supplementary-header.jpg');
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;"
+    
+>
+    
+    
+        
+            <div class="wf-section-label mt-4 mb shadow-lg col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2
+                col-xxl-2 p-3 d-flex justify-content-center">
+                <strong>Further Readings</strong>
+            </div>
+        
+    
+
+    <div
+        
+            class="rounded hover-shadow bg-body shadow col-12 col-sm-12
+                col-md-10 col-lg-10 col-xl-10 col-xxl-10 px-4 p-4 justify-content-center"
+        
+    >
+        
+            
+                <p>If you want to go deeper than the notebooks, we keep a curated list of
+major public courses and references across computer vision, unsupervised
+learning, reinforcement learning, deep learning, and related topics.</p>
+<p>See the <a data-bs-html="true" data-bs-toggle="tooltip" href="/supplementary/pages/further-reading.html" title="Public courses and references for going deeper after the supplementary notebooks.">full further reading page</a> for the
+course list.</p>
+            
+        
+    </div>
+
+    
+    
+</div>
+            
+        </div>
+    </div>
+
+    
+
+
+
+    
+
+
+
+
+    
+
+
+<footer class="container-fluid wf-page-chrome shadow text-center align-items-center p-0 hidden-print"
+        
+        style="min-height: 2vh;
+          background-image: url('/supplementary/assets/index/images/supplementary-header.jpg');
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;"
+        
+>
+    <div
+            
+            class="wf-header-panel w-100 p-3 m-auto text-center"
+            
+    >
+        
+        © Powered by <a class="link-primary" href="https://webifier.github.io/">Webifier</a>
+    </div>
+</footer>
+
+</div>
+</body>
+
+</html>
