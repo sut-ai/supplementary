@@ -15,6 +15,7 @@
 <head>
     <title>Robust and Trustworthy Machine Learning</title>
     
+
 <!-- viewport meta-tag for responsiveness -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,6 +52,11 @@
         });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  const webifierTheme = document.documentElement.getAttribute("data-bs-theme");
+  mermaid.initialize({ startOnLoad: true, theme: webifierTheme === "dark" ? "dark" : "default" });
+</script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
@@ -119,6 +125,7 @@
 
 
     
+
 
 
 
@@ -290,7 +297,7 @@
         <div class="container-fluid p-0 m-0 no-gutters">
             
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
-                <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#Abstract">Abstract</a></li><li class="wf-content-toc-level-2"><a href="#1.---Terminology">1.   Terminology</a></li><li class="wf-content-toc-level-2"><a href="#-2.---Evasion-and-Adversarial-Training">2.   Evasion and Adversarial Training</a></li><li class="wf-content-toc-level-2"><a href="#-2.1---How-can-we-construct-adversarial-examples?">2.1   How can we construct adversarial examples?</a></li><li class="wf-content-toc-level-3"><a href="#-2.1.1---Fast-Gradient-Sign-Method-(FGSM)">2.1.1   Fast Gradient Sign Method (FGSM)</a></li><li class="wf-content-toc-level-3"><a href="#-2.1.2---Projected-Gradient--Descent-(PGD)">2.1.2   Projected Gradient  Descent (PGD)</a></li><li class="wf-content-toc-level-2"><a href="#-2.2---Targeted-and-Non-targeted-attacks">2.2   Targeted and Non-targeted attacks</a></li><li class="wf-content-toc-level-2"><a href="#-2.3---Universal-Perturbations">2.3   Universal Perturbations</a></li><li class="wf-content-toc-level-2"><a href="#-2.4---Adversarial-Training:-a-defense-against-evasion">2.4   Adversarial Training: a defense against evasion</a></li><li class="wf-content-toc-level-2"><a href="#-2.5---An-implementation">2.5   An implementation</a></li><li class="wf-content-toc-level-2"><a href="#-3.---Poisoning-attacks-and-defenses">3.   Poisoning attacks and defenses</a></li><li class="wf-content-toc-level-2"><a href="#-3.1---Targeted-Clean-Label-Poisoning-Attacks-on-Neural-Networks-%5B9%5D">3.1   Targeted Clean-Label Poisoning Attacks on Neural Networks [ 9 ]</a></li><li class="wf-content-toc-level-3"><a href="#-3.1.1-A-simple-clean-label-poisoning-attack">3.1.1 A simple clean-label poisoning attack</a></li><li class="wf-content-toc-level-3"><a href="#-3.1.2--Poisoning-attacks-on-transfer-learning-vs.-end-to-end-training">3.1.2  Poisoning attacks on transfer learning vs. end-to-end training</a></li><li class="wf-content-toc-level-3"><a href="#Watermarking">Watermarking</a></li><li class="wf-content-toc-level-3"><a href="#Multiple-poison-instances">Multiple poison instances</a></li><li class="wf-content-toc-level-2"><a href="#-3.2-A-certified-defense-against-poisoning-attacks">3.2 A certified defense against poisoning attacks</a></li><li class="wf-content-toc-level-3"><a href="#-3.2.1-Deep-Partitioning-Aggregation-(DPA)">3.2.1 Deep Partitioning Aggregation (DPA)</a></li><li class="wf-content-toc-level-3"><a href="#-3.2.2-Semi-Supervised-Deep-Partition-Aggregation-(SS-DPA)">3.2.2 Semi-Supervised Deep Partition Aggregation (SS-DPA)</a></li><li class="wf-content-toc-level-3"><a href="#Results">Results</a></li><li class="wf-content-toc-level-2"><a href="#-4.-References">4. References</a></li></ol></nav>
+                <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#Abstract">Abstract</a></li><li class="wf-content-toc-level-2"><a href="#Terminology">Terminology</a></li><li class="wf-content-toc-level-2"><a href="#Evasion-and-Adversarial-Training">Evasion and Adversarial Training</a></li><li class="wf-content-toc-level-2"><a href="#How-can-we-construct-adversarial-examples?">How can we construct adversarial examples?</a></li><li class="wf-content-toc-level-3"><a href="#Fast-Gradient-Sign-Method-(FGSM)">Fast Gradient Sign Method (FGSM)</a></li><li class="wf-content-toc-level-3"><a href="#Projected-Gradient-Descent-(PGD)">Projected Gradient Descent (PGD)</a></li><li class="wf-content-toc-level-2"><a href="#Targeted-and-Non-targeted-attacks">Targeted and Non-targeted attacks</a></li><li class="wf-content-toc-level-2"><a href="#Universal-Perturbations">Universal Perturbations</a></li><li class="wf-content-toc-level-2"><a href="#Adversarial-Training:-a-defense-against-evasion">Adversarial Training: a defense against evasion</a></li><li class="wf-content-toc-level-2"><a href="#An-implementation">An implementation</a></li><li class="wf-content-toc-level-2"><a href="#Poisoning-attacks-and-defenses">Poisoning attacks and defenses</a></li><li class="wf-content-toc-level-2"><a href="#Targeted-Clean-Label-Poisoning-Attacks-on-Neural-Networks">Targeted Clean-Label Poisoning Attacks on Neural Networks</a></li><li class="wf-content-toc-level-3"><a href="#A-simple-clean-label-poisoning-attack">A simple clean-label poisoning attack</a></li><li class="wf-content-toc-level-3"><a href="#Poisoning-attacks-on-transfer-learning-vs.-end-to-end-training">Poisoning attacks on transfer learning vs. end-to-end training</a></li><li class="wf-content-toc-level-3"><a href="#Watermarking">Watermarking</a></li><li class="wf-content-toc-level-3"><a href="#Multiple-poison-instances">Multiple poison instances</a></li><li class="wf-content-toc-level-2"><a href="#A-certified-defense-against-poisoning-attacks">A certified defense against poisoning attacks</a></li><li class="wf-content-toc-level-3"><a href="#Deep-Partitioning-Aggregation-(DPA)">Deep Partitioning Aggregation (DPA)</a></li><li class="wf-content-toc-level-3"><a href="#Semi-Supervised-Deep-Partition-Aggregation-(SS-DPA)">Semi-Supervised Deep Partition Aggregation (SS-DPA)</a></li><li class="wf-content-toc-level-3"><a href="#Results">Results</a></li><li class="wf-content-toc-level-2"><a href="#References">References</a></li></ol></nav>
 <main>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -310,56 +317,11 @@
 </div>
 </div>
 </div>
-
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li><p>1 <a href="#terminology">Terminology</a></p>
-</li>
-<li><p>2 <a href="#evasion">Evasion and Adversarial Training</a></p>
-</li>
-<li><p>2.1 <a href="#2.1">How can we construct adversarial examples?</a></p>
-<ul>
-<li>2.1.1 <a href="#2.1.1">Fast Gradient Sign Method (FGSM)</a></li>
-<li>2.1.2 <a href="#2.1.2">Projected Gradient Descent (PGD)</a> <br/></li>
-</ul>
-</li>
-<li><p>2.2 <a href="#2.2">Targeted and Non-targeted attacks</a></p>
-</li>
-<li><p>2.3 <a href="#2.3">Universal Perturbations</a></p>
-</li>
-<li><p>2.4 <a href="#2.4"> Adversarial Training: a defense against evasion</a></p>
-</li>
-<li><p>2.5 <a href="#2.5">An implementation</a></p>
-</li>
-<li><p>3 <a href="#poisoning">Poisoning attacks and defenses</a></p>
-</li>
-<li><p>3.1 <a href="#3.1">Targeted Clean-Label Poisoning Attacks on Neural Networks</a></p>
-<ul>
-<li>3.1.1 <a href="#3.1.1">A simple clean-label poisoning attack</a></li>
-<li>3.1.2  <a href="#3.1.2">Poisoning attacks on transfer learning vs. end-to-end training</a></li>
-</ul>
-</li>
-<li><p>3.2 <a href="#3.2">A certified defense against poisoning attacks</a></p>
-<ul>
-<li>3.2.1 <a href="#3.2.1">Deep Partitioning Aggregation (DPA)</a></li>
-<li>3.2.2 <a href="#3.2.2">Semi-Supervised Deep Partition Aggregation (SS-DPA)</a></li>
-</ul>
-</li>
-<li><p>4 <a href="#4">References</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.---Terminology"><a id="terminology"></a>1.   Terminology</h2>
+<h2 id="Terminology">Terminology</h2>
 </div>
 </div>
 </div>
@@ -379,7 +341,7 @@
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="-2.---Evasion-and-Adversarial-Training"><a id="evasion"></a> 2.   Evasion and Adversarial Training</h2><blockquote>
+<h2 id="Evasion-and-Adversarial-Training">Evasion and Adversarial Training</h2><blockquote>
 <p><strong>For more information</strong>, look at : chapters 3 and 4 of [<a href="https://adversarial-ml-tutorial.org/">4</a>]</p>
 </blockquote>
 </div>
@@ -426,7 +388,7 @@
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="-2.1---How-can-we-construct-adversarial-examples?"><a id="2.1"></a> 2.1   How can we construct adversarial examples?</h2>
+<h2 id="How-can-we-construct-adversarial-examples?">How can we construct adversarial examples?</h2>
 </div>
 </div>
 </div>
@@ -444,7 +406,7 @@
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="-2.1.1---Fast-Gradient-Sign-Method-(FGSM)"><a id="2.1.1"></a> 2.1.1   Fast Gradient Sign Method (FGSM)</h3>
+<h3 id="Fast-Gradient-Sign-Method-(FGSM)">Fast Gradient Sign Method (FGSM)</h3>
 </div>
 </div>
 </div>
@@ -501,7 +463,7 @@
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="-2.1.2---Projected-Gradient--Descent-(PGD)"><a id="2.1.2"></a> 2.1.2   Projected Gradient  Descent (PGD)</h3>
+<h3 id="Projected-Gradient-Descent-(PGD)">Projected Gradient Descent (PGD)</h3>
 </div>
 </div>
 </div>
@@ -565,7 +527,7 @@ $</center>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="-2.2---Targeted-and-Non-targeted-attacks"><a id="2.2"></a> 2.2   Targeted and Non-targeted attacks</h2><p>Adversarial attacks fall into two categories, <em>targeted</em> or <em>non-targeted</em>. Suppose we have a classifier with loss function $l$, parameters $\theta$, and an input <strong>$x$</strong> with label $y$. A <strong>targeted attack</strong> aims to misclassify the input to a target class <em>t$\neq$y</em>, whereas a <strong>non-targeted attack</strong> only aims to misclassify the input into a class different from its natural one ($y$) [<a href="https://www.oxford-man.ox.ac.uk/wp-content/uploads/2020/03/BayesOpt-attack-paper-002.pdf">6</a>], [<a href="https://arxiv.org/pdf/1904.12843.pdf">7</a>], thus in targeted attacks, instead of just maximizing the loss of the true label, we maximize the loss of the true label and minimize the loss for the alternative label.</p>
+<h2 id="Targeted-and-Non-targeted-attacks">Targeted and Non-targeted attacks</h2><p>Adversarial attacks fall into two categories, <em>targeted</em> or <em>non-targeted</em>. Suppose we have a classifier with loss function $l$, parameters $\theta$, and an input <strong>$x$</strong> with label $y$. A <strong>targeted attack</strong> aims to misclassify the input to a target class <em>t$\neq$y</em>, whereas a <strong>non-targeted attack</strong> only aims to misclassify the input into a class different from its natural one ($y$) [<a href="https://www.oxford-man.ox.ac.uk/wp-content/uploads/2020/03/BayesOpt-attack-paper-002.pdf">6</a>], [<a href="https://arxiv.org/pdf/1904.12843.pdf">7</a>], thus in targeted attacks, instead of just maximizing the loss of the true label, we maximize the loss of the true label and minimize the loss for the alternative label.</p>
 <p>In mathematical terms, a targeted attack aims to solve the optimization problem (1), and a non-targeted attack aims to solve the optimization problem (2), where:</p>
 </div>
 </div>
@@ -585,7 +547,7 @@ $</center>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="-2.3---Universal-Perturbations"><a id="2.3"></a> 2.3   Universal Perturbations</h2>
+<h2 id="Universal-Perturbations">Universal Perturbations</h2>
 </div>
 </div>
 </div>
@@ -603,7 +565,7 @@ $</center>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="-2.4---Adversarial-Training:-a-defense-against-evasion"><a id="2.4"></a> 2.4   Adversarial Training: a defense against evasion</h2>
+<h2 id="Adversarial-Training:-a-defense-against-evasion">Adversarial Training: a defense against evasion</h2>
 </div>
 </div>
 </div>
@@ -621,7 +583,7 @@ $</center>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="-2.5---An-implementation"><a id="2.5"></a> 2.5   An implementation</h2>
+<h2 id="An-implementation">An implementation</h2>
 </div>
 </div>
 </div>
@@ -639,7 +601,7 @@ $</center>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="-3.---Poisoning-attacks-and-defenses"><a id="poisoning"></a> 3.   Poisoning attacks and defenses</h2>
+<h2 id="Poisoning-attacks-and-defenses">Poisoning attacks and defenses</h2>
 </div>
 </div>
 </div>
@@ -661,7 +623,7 @@ Attacks on Neural Networks</a> to learn about these kinds of attacks in detail.<
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="-3.1---Targeted-Clean-Label-Poisoning-Attacks-on-Neural-Networks-%5B9%5D"><a id="3.1"></a> 3.1   Targeted Clean-Label Poisoning Attacks on Neural Networks [<a href="https://arxiv.org/pdf/1804.00792.pdf">9</a>]</h2>
+<h2 id="Targeted-Clean-Label-Poisoning-Attacks-on-Neural-Networks">Targeted Clean-Label Poisoning Attacks on Neural Networks</h2><p>Based on [<a href="https://arxiv.org/pdf/1804.00792.pdf">9</a>].</p>
 </div>
 </div>
 </div>
@@ -681,7 +643,7 @@ Attacks on Neural Networks</a> to learn about these kinds of attacks in detail.<
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="-3.1.1-A-simple-clean-label-poisoning-attack"><a id="3.1.1"></a> 3.1.1 A simple clean-label poisoning attack</h3>
+<h3 id="A-simple-clean-label-poisoning-attack">A simple clean-label poisoning attack</h3>
 </div>
 </div>
 </div>
@@ -740,7 +702,7 @@ Attacks on Neural Networks</a> to learn about these kinds of attacks in detail.<
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="-3.1.2--Poisoning-attacks-on-transfer-learning-vs.-end-to-end-training"><a id="3.1.2"></a> 3.1.2  Poisoning attacks on transfer learning vs. end-to-end training</h3>
+<h3 id="Poisoning-attacks-on-transfer-learning-vs.-end-to-end-training">Poisoning attacks on transfer learning vs. end-to-end training</h3>
 </div>
 </div>
 </div>
@@ -873,7 +835,7 @@ Attacks on Neural Networks</a> to learn about these kinds of attacks in detail.<
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="-3.2-A-certified-defense-against-poisoning-attacks"><a id="3.2"></a> 3.2 A certified defense against poisoning attacks</h2>
+<h2 id="A-certified-defense-against-poisoning-attacks">A certified defense against poisoning attacks</h2>
 </div>
 </div>
 </div>
@@ -892,7 +854,7 @@ Attacks on Neural Networks</a> to learn about these kinds of attacks in detail.<
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="-3.2.1-Deep-Partitioning-Aggregation-(DPA)"><a id="3.2.1"></a> 3.2.1 Deep Partitioning Aggregation (DPA)</h3>
+<h3 id="Deep-Partitioning-Aggregation-(DPA)">Deep Partitioning Aggregation (DPA)</h3>
 </div>
 </div>
 </div>
@@ -901,7 +863,7 @@ Attacks on Neural Networks</a> to learn about these kinds of attacks in detail.<
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>DPA is a certified <strong>defense against general poisoning attacks</strong> (introduced in <a href="#poisoning">section 3</a>) based on <strong>ensemble learning</strong>. In this method, we keep <em>$k$</em> base classifiers (which could be neural networks) and partition the training set into <em>$k$</em> subsets using a deterministic hash function <em>$h$</em>, and then train the classifier <em>$i$</em> on the subset $i$. The hash function must be <em>deterministic</em> such that the hash value depends only on the value of the training instance $s$ itself (for example, for an image $I$, $h(I)$ can be defined as the sum of its pixels ($h(I)=\Sigma_{i,j} I_{i,j})$), so that poisoning other samples, or changing the order of data do not change the partition that $s$ is assigned to; therefore, in all these alterations $s$ will be used to train the same base classifier. At test time, the test instance $t$ is passed to all of the classifiers and the label which has the majority of votes will be the chosen label for $t$.</p>
+<p>DPA is a certified <strong>defense against general poisoning attacks</strong> (introduced in <a href="#Poisoning-attacks-and-defenses">section 3</a>) based on <strong>ensemble learning</strong>. In this method, we keep <em>$k$</em> base classifiers (which could be neural networks) and partition the training set into <em>$k$</em> subsets using a deterministic hash function <em>$h$</em>, and then train the classifier <em>$i$</em> on the subset $i$. The hash function must be <em>deterministic</em> such that the hash value depends only on the value of the training instance $s$ itself (for example, for an image $I$, $h(I)$ can be defined as the sum of its pixels ($h(I)=\Sigma_{i,j} I_{i,j})$), so that poisoning other samples, or changing the order of data do not change the partition that $s$ is assigned to; therefore, in all these alterations $s$ will be used to train the same base classifier. At test time, the test instance $t$ is passed to all of the classifiers and the label which has the majority of votes will be the chosen label for $t$.</p>
 <p>How does this help to defend against poisoning attacks? With this architecture and setting, adding a new (probably poisoned) training instance, or removing one, will affect the classification of only one classifier. This lets us provide certificates for each test instance.</p>
 <p>Let us proceed with an example: Consider $k=10$ and classification with $3$ classes. Suppose that by training on clean data, the number of classifiers which output $i=1,2,3$ for test instance $t$ is $6,3,1$ respectively. With one insertion or deletion, in the worst case, the numbers will change to $5,4,1$, so class $1$ still has the majority of votes, and therefore, the result of the network for instance $t$ will not change with one alteration. In the general case, let $n_1$ be the number of base classifiers that output $c$ as the final label for the test instance $t$, and let $n_2$ be the number of base classifiers that output the next-most-frequently returned class $c^\prime$. With the floor of $\frac{n_1-n_2}{2}$ alterations, $c_1$ will still be the highest voted class. So $\frac{n_1-n_2}{2}$ is a lower bound on the alterations (e.g. the symmetric difference between the clean and poisoned dataset) needed to manipulate the classification of the model on instance $t$.</p>
 <p>There are also some <em>practical considerations</em> that we should take care of. The whole function that computes the label and the training procedure should be deterministic. As we mentioned earlier, the hash function should be deterministic (i.e. only based on the value of the training sample). Also, the output of a base classifier should be a deterministic function of its training data as an unordered set. To ensure this, the training data for each classifier should be sorted before training, and we should set a fixed random seed for each classifier at the start of training to make the training procedure, which is based on standard stochastic gradient descent, deterministic.</p>
@@ -914,7 +876,7 @@ Attacks on Neural Networks</a> to learn about these kinds of attacks in detail.<
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="-3.2.2-Semi-Supervised-Deep-Partition-Aggregation-(SS-DPA)"><a id="3.2.2"></a> 3.2.2 Semi-Supervised Deep Partition Aggregation (SS-DPA)</h3>
+<h3 id="Semi-Supervised-Deep-Partition-Aggregation-(SS-DPA)">Semi-Supervised Deep Partition Aggregation (SS-DPA)</h3>
 </div>
 </div>
 </div>
@@ -923,7 +885,7 @@ Attacks on Neural Networks</a> to learn about these kinds of attacks in detail.<
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>SS-DPA is a <strong>defense against label-flipping attacks</strong> (introduced in <a href="#poisoning">section 3</a>). Since in these attacks the <em>unlabeled</em> dataset is <em>clean</em>, we can trust them and use semi-supervised algorithms to learn more complex features from the unlabeled dataset and empower the base classifiers. Similar to DPA, we can ensure that a particular (unlabeled) sample is assigned to the same partition regardless of the label so that only one partition is affected by a label flip. Certificates provided by this method are usually larger than those for general poisoning attacks. In the method proposed in the paper, they choose a semi-supervised algorithm where the unlabeled training dataset is used <em>only once</em>, before the training on labeled data, to learn semantic feature representations of data, and then these learned features are shared with base classifiers when training on labeled data.</p>
+<p>SS-DPA is a <strong>defense against label-flipping attacks</strong> (introduced in <a href="#Poisoning-attacks-and-defenses">section 3</a>). Since in these attacks the <em>unlabeled</em> dataset is <em>clean</em>, we can trust them and use semi-supervised algorithms to learn more complex features from the unlabeled dataset and empower the base classifiers. Similar to DPA, we can ensure that a particular (unlabeled) sample is assigned to the same partition regardless of the label so that only one partition is affected by a label flip. Certificates provided by this method are usually larger than those for general poisoning attacks. In the method proposed in the paper, they choose a semi-supervised algorithm where the unlabeled training dataset is used <em>only once</em>, before the training on labeled data, to learn semantic feature representations of data, and then these learned features are shared with base classifiers when training on labeled data.</p>
 </div>
 </div>
 </div>
@@ -970,17 +932,17 @@ Attacks on Neural Networks</a> to learn about these kinds of attacks in detail.<
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="-4.-References"><a id="4"></a> 4. References</h2><p>[1] <a id="ref_8"></a> <strong><a href="http://ce.sharif.edu/courses/99-00/1/ce875-1/">Security and Privacy in Machine Learning course</a></strong>, Mohammad Hossein Rohban, Amir Mahdi Sadeghzadeh, Fall 2020</p>
-<p>[2] <a id="ref_2"></a> Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, JoanBruna, Dumitru Erhan, IanGoodfellow, and Rob Fergus, <strong><a href="https://arxiv.org/pdf/1312.6199.pdf">Intriguing properties of neural networks</a></strong>, 2013</p>
-<p>[3] <a id="ref_3"></a> Ian J. Goodfellow, Jonathon Shlens, Christian Szegedy, <strong><a href="https://arxiv.org/pdf/1412.6572.pdf">Explaining and Harnessing Adversarial Examples</a></strong>, 2015</p>
-<p>[4] <a id="ref_4"></a> A tutorial on <strong><a href="https://adversarial-ml-tutorial.org/">Adversarial Robustness, Theory and Practice</a></strong></p>
-<p>[5] <a id="ref_5"></a>  Seyed-Mohsen Moosavi-Dezfooli, Alhussein Fawzi, Omar Fawzi, and Pascal Frossard,  <strong><a href="https://arxiv.org/pdf/1610.08401.pdf">Universal Adversarial Perturbations</a></strong>, 2016</p>
-<p>[6] <a id="ref_6"></a> Binxin Ru, Adam D. Cobb, Arno Blaas, Yarin Gal, <strong><a href="https://www.oxford-man.ox.ac.uk/wp-content/uploads/2020/03/BayesOpt-attack-paper-002.pdf">BayesOpt Adversarial Attack</a></strong>, ICLR 2020</p>
-<p>[7] <a id="ref_7"></a> Ali Shafahi et. al, <strong><a href="https://arxiv.org/pdf/1904.12843.pdf">Adversarial Training For Free!</a></strong>, NIPS 2019</p>
-<p>[8] <a id="ref_1"></a> Nicolas Papernot et. al, <strong><a href="https://arxiv.org/pdf/1611.03814.pdf">SoK: Towards the Science of Security and Privacy in Machine Learning</a></strong>, 2016</p>
-<p>[9] <a id="ref_9"></a>  Ali Shafahi et. al, <strong><a href="https://arxiv.org/pdf/1804.00792.pdf">Poison Frogs! Targeted Clean-Label Poisoning Attacks on Neural Networks</a></strong>, 2018</p>
-<p>[10] <a id="ref_10"></a> Alexander Levine, Soheil Feizi, <strong><a href="https://arxiv.org/pdf/2006.14768.pdf">Deep Partition Aggregation: Provable Defense against General Poisoning Attacks</a></strong>, 2021</p>
-<p>[11] <a id="ref_11"></a> Marco Barreno et, al, <strong><a href="https://people.eecs.berkeley.edu/~adj/publications/paper-files/SecML-MLJ2010.pdf">The security of machine learning</a></strong>, 2010</p>
+<h2 id="References">References</h2><p>[1] <strong><a href="http://ce.sharif.edu/courses/99-00/1/ce875-1/">Security and Privacy in Machine Learning course</a></strong>, Mohammad Hossein Rohban, Amir Mahdi Sadeghzadeh, Fall 2020</p>
+<p>[2] Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, JoanBruna, Dumitru Erhan, IanGoodfellow, and Rob Fergus, <strong><a href="https://arxiv.org/pdf/1312.6199.pdf">Intriguing properties of neural networks</a></strong>, 2013</p>
+<p>[3] Ian J. Goodfellow, Jonathon Shlens, Christian Szegedy, <strong><a href="https://arxiv.org/pdf/1412.6572.pdf">Explaining and Harnessing Adversarial Examples</a></strong>, 2015</p>
+<p>[4] A tutorial on <strong><a href="https://adversarial-ml-tutorial.org/">Adversarial Robustness, Theory and Practice</a></strong></p>
+<p>[5] Seyed-Mohsen Moosavi-Dezfooli, Alhussein Fawzi, Omar Fawzi, and Pascal Frossard,  <strong><a href="https://arxiv.org/pdf/1610.08401.pdf">Universal Adversarial Perturbations</a></strong>, 2016</p>
+<p>[6] Binxin Ru, Adam D. Cobb, Arno Blaas, Yarin Gal, <strong><a href="https://www.oxford-man.ox.ac.uk/wp-content/uploads/2020/03/BayesOpt-attack-paper-002.pdf">BayesOpt Adversarial Attack</a></strong>, ICLR 2020</p>
+<p>[7] Ali Shafahi et. al, <strong><a href="https://arxiv.org/pdf/1904.12843.pdf">Adversarial Training For Free!</a></strong>, NIPS 2019</p>
+<p>[8] Nicolas Papernot et. al, <strong><a href="https://arxiv.org/pdf/1611.03814.pdf">SoK: Towards the Science of Security and Privacy in Machine Learning</a></strong>, 2016</p>
+<p>[9] Ali Shafahi et. al, <strong><a href="https://arxiv.org/pdf/1804.00792.pdf">Poison Frogs! Targeted Clean-Label Poisoning Attacks on Neural Networks</a></strong>, 2018</p>
+<p>[10] Alexander Levine, Soheil Feizi, <strong><a href="https://arxiv.org/pdf/2006.14768.pdf">Deep Partition Aggregation: Provable Defense against General Poisoning Attacks</a></strong>, 2021</p>
+<p>[11] Marco Barreno et, al, <strong><a href="https://people.eecs.berkeley.edu/~adj/publications/paper-files/SecML-MLJ2010.pdf">The security of machine learning</a></strong>, 2010</p>
 </div>
 </div>
 </div>

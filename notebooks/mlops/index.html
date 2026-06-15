@@ -15,6 +15,7 @@
 <head>
     <title>MLOps</title>
     
+
 <!-- viewport meta-tag for responsiveness -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,6 +52,11 @@
         });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  const webifierTheme = document.documentElement.getAttribute("data-bs-theme");
+  mermaid.initialize({ startOnLoad: true, theme: webifierTheme === "dark" ? "dark" : "default" });
+</script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
@@ -127,6 +133,7 @@
 
 
     
+
 
 
 
@@ -300,7 +307,6 @@
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
                 <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#Introduction-">Introduction</a></li><li class="wf-content-toc-level-2"><a href="#Machine-Learning-Lifecycle-">Machine Learning Lifecycle</a></li><li class="wf-content-toc-level-2"><a href="#MLOps-Tools-">MLOps Tools</a></li><li class="wf-content-toc-level-3"><a href="#Data-Management-">Data Management</a></li><li class="wf-content-toc-level-3"><a href="#Modeling-">Modeling</a></li><li class="wf-content-toc-level-3"><a href="#Operationalization-">Operationalization</a></li><li class="wf-content-toc-level-2"><a href="#Example-">Example</a></li><li class="wf-content-toc-level-2"><a href="#Conclusion-">Conclusion</a></li><li class="wf-content-toc-level-2"><a href="#References-">References</a></li></ol></nav>
 <main>
-
 
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">

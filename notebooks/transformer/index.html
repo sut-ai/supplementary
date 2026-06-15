@@ -15,6 +15,7 @@
 <head>
     <title>Transformer</title>
     
+
 <!-- viewport meta-tag for responsiveness -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,6 +52,11 @@
         });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  const webifierTheme = document.documentElement.getAttribute("data-bs-theme");
+  mermaid.initialize({ startOnLoad: true, theme: webifierTheme === "dark" ? "dark" : "default" });
+</script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
@@ -127,6 +133,7 @@
 
 
     
+
 
 
 
@@ -300,12 +307,10 @@
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
                 <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#Introduction">Introduction</a></li><li class="wf-content-toc-level-2"><a href="#Transformer-Architecture">Transformer Architecture</a></li><li class="wf-content-toc-level-3"><a href="#Transformer-Encoder">Transformer Encoder</a></li><li class="wf-content-toc-level-3"><a href="#Transformer-Decoder">Transformer Decoder</a></li><li class="wf-content-toc-level-3"><a href="#Positional-Encoding">Positional Encoding</a></li><li class="wf-content-toc-level-2"><a href="#Supplementary-Material">Supplementary Material</a></li><li class="wf-content-toc-level-3"><a href="#Attention-Mechanism">Attention Mechanism</a></li><li class="wf-content-toc-level-3"><a href="#Multi-Head-Attention-Mechanism">Multi-Head Attention Mechanism</a></li><li class="wf-content-toc-level-3"><a href="#Masked-Multi-Head-Attention-Mechanism">Masked Multi-Head Attention Mechanism</a></li><li class="wf-content-toc-level-2"><a href="#References">References</a></li></ol></nav>
 <main>
-
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h2 id="Introduction">Introduction</h2><p>Before transformers, the state of the art aproaches in sequence modeling were mostly based on recurrent neural networks. The problem with recurrent neural networks is their limitation is parallelization during training phase because of processing the sequence elements one at a time and it becomes more problematic when we have long sequences and the memory limit, limits batching across the examples.
 Transformer, on the other hand, is a model architecture, entirely based on attention mechanism to consider long-term dependencies in the sequence and between input and output sequences and it allows notably more parallelization.
 In the following sections we first explain transformer architecture and then give an example of transformer models.</p>
@@ -317,7 +322,6 @@ In the following sections we first explain transformer architecture and then giv
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h2 id="Transformer-Architecture">Transformer Architecture</h2><p>The main transformer model intruduced in Attention Is All You Need paper consists of two main parts: Encoder and Decoder.
 The encoder and the decoder both consist of N = 6 similar layers.</p>
 </div>
@@ -337,7 +341,6 @@ The encoder and the decoder both consist of N = 6 similar layers.</p>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h3 id="Transformer-Encoder">Transformer Encoder</h3><p>The architecture of each encoder layer is shown at the left side of the figure bellow. Each encoder layer is made of two sub-layers.
 The first sub layer is multi-head self-attention block and the second sub-layer is a fully connected network. As you can see in the image below, Both sub-layers are wrapped by a residual connection followed by a layer normalization.</p>
 </div>
@@ -357,7 +360,6 @@ The first sub layer is multi-head self-attention block and the second sub-layer 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h3 id="Transformer-Decoder">Transformer Decoder</h3><p>The architecture of each decoder layer is shown at the right side of the figure below. The decoder consists of three sub-layers. A masked multi-head self attention, a masked multi-head attention and a fully connected feed forward network. The same as encoder part, the three sub-layers are wraped by a residual connection followed by a layer normalization. As you can see in the image below, the two of the multi-head attention inputs are from the output of the encoder stack. The third sub-layer which is called Masked Multi-Head Attention is a modification of self-attention module and ensures that the predictions for position i only attends to the known outputs which means the outputs at position less than i. That is because, for example if you are using transformer for machine translation task, the decoder input will be the translated sentence. Hence the transformer only should attent to the tokens of the sentence that has been translated until the current step, not to the whole translated sequence.</p>
 </div>
 </div>
@@ -376,7 +378,6 @@ The first sub layer is multi-head self-attention block and the second sub-layer 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h3 id="Positional-Encoding">Positional Encoding</h3><p>Since the attention mechanism in transformer model doesn't consider any order for the token in the input sequence, it is needed to inject some information about the position of the tokens in the sequence. To do so, the transformer makes use of a kind of embedding which is called positional embedding and it has the same dimension as the input embeddings so it can be added to the input embeddings. There are multiple options for such an embedding that encodes the position in a sequence. The transformer model makes use of sine and cosine functions for this purpose.</p>
 </div>
 </div>
@@ -467,7 +468,6 @@ $$PE_{(pos, 2i+1)} = cos(pos/10000^{2i/d_{model}}) $$</p>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h2 id="Supplementary-Material">Supplementary Material</h2>
 </div>
 </div>
@@ -486,7 +486,6 @@ $$PE_{(pos, 2i+1)} = cos(pos/10000^{2i/d_{model}}) $$</p>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h3 id="Attention-Mechanism">Attention Mechanism</h3><p>In this section we explain what attention mechanism is and how it works.
 Attention mechanism first was introduced by <a href="https://arxiv.org/pdf/1409.0473.pdf">Dzmitry Bahdanau</a> to improve the performance of encoder-decoder architectures in neural machine translation. It mentions that using a fixed-length vector is a bottleneck in the performance of encoder-decoder architectures and suggests that we use an architecture that allows the model to predict the target word by automatically attending to the parts of the input sentence that are relevant to the target word, regardless of how far the relevant parts are in that sentence in contrast to RNNs which as we go further in the sentence, we start forgetting about the past information in the sentence which means that the ability of RNNs in encoding long-term dependencies is limited which is fixed in attention mechanism.</p>
 </div>
@@ -535,7 +534,6 @@ $$</p>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h3 id="Multi-Head-Attention-Mechanism">Multi-Head Attention Mechanism</h3>
 </div>
 </div>
@@ -564,7 +562,6 @@ This makes the attention mechanism to be able to encode different kinds of relat
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h3 id="Masked-Multi-Head-Attention-Mechanism">Masked Multi-Head Attention Mechanism</h3>
 </div>
 </div>
@@ -592,7 +589,6 @@ This makes the attention mechanism to be able to encode different kinds of relat
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h2 id="References">References</h2><ul>
 <li><a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a></li>
 <li><a href="https://medium.com/inside-machine-learning/what-is-a-transformer-d07dd1fbec04">What is Transformer</a></li>

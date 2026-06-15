@@ -15,6 +15,7 @@
 <head>
     <title>HMM Speech Recognition</title>
     
+
 <!-- viewport meta-tag for responsiveness -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,6 +52,11 @@
         });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  const webifierTheme = document.documentElement.getAttribute("data-bs-theme");
+  mermaid.initialize({ startOnLoad: true, theme: webifierTheme === "dark" ? "dark" : "default" });
+</script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
@@ -128,6 +134,7 @@
 
 
     
+
 
 
 
@@ -315,15 +322,6 @@
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Because of HMMs' structure, they are very well suited for analyzing time series, as these data can be modeled as a <a href="https://en.wikipedia.org/wiki/Stochastic_process">stochastic process</a>. Some examples of these applications are in financial analysis (<a href="https://www.mdpi.com/2227-7072/6/2/36">example</a>), expression and gesture analysis (<a href="http://www.cs.umd.edu/~djacobs/CMSC828/ApplicationsHMMs.pdf">example</a>), and speech recognition. In this notebook, we will study how HMMs can be applied for speech recognition and introduce some useful automatic speech recognition (ASR) tools.</p>
-<h5 id="Contents:">Contents:</h5><ul>
-<li><a href="#audio-signal-manipulation">Audio Signal Manipulation</a></li>
-<li><a href="#speech-recognition-using-hmms">Speech Recognition Using HMMs</a><ul>
-<li><a href="#feature-extraction">Feature Extraction</a></li>
-<li><a href="#phoneme-pred-decode">Phoneme Prediction and Decoding</a></li>
-<li><a href="#links">Useful links</a></li>
-</ul>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -332,7 +330,6 @@
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h2 id="Audio-Signal-Manipulation">Audio Signal Manipulation</h2>
 </div>
 </div>
@@ -584,7 +581,6 @@ speaker 1 audio shape: (3050,)
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h2 id="Speech-Recognition-Using-HMMs">Speech Recognition Using HMMs</h2>
 </div>
 </div>
@@ -600,7 +596,6 @@ speaker 1 audio shape: (3050,)
 <li>phoneme prediction based on the extracted features</li>
 <li>Decoding the obtained phonemes to words</li>
 </ol>
-
 <h3 id="Feature-Extraction">Feature Extraction</h3><p>In this step, the goal is to extract features that represent the data best and have the least amount of noise possible. Some widely used descriptors are:</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Mel-frequency_cepstrum">MFCC</a> and <a href="https://en.wikipedia.org/wiki/Cepstral_mean_and_variance_normalization">CMVN</a> that are closely related to the fourier transform and the spectrogram.</li>
@@ -691,7 +686,6 @@ speaker 1 audio shape: (3050,)
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-
 <h3 id="Phoneme-Prediction-and-Decoding">Phoneme Prediction and Decoding</h3><p>In the next step, an HMM transforms the sequence of features into <em>phonemes</em>. Phonemes are the basic and smallest unit of sound in a language. In Kaldi, the structure of such HMM can be set using a topology file. <a href="http://kaldi-asr.org/doc/hmm.html">Here</a> is the documentation page for HMM models in Kaldi.</p>
 <p>Afterward, the phonemes are decoded into words using weighted finite state machines (WFSMs) - or in general, <strong>decoding graphs</strong> - in which the weights represent the phoneme probabilities. For more information on how FSMs can be used in ASR, see this <a href="https://cs.nyu.edu/~mohri/pub/hbka.pdf">paper</a>. Generally, converting a set of features to a word is equivalent to maximizing the probability of the word given the data:
 $$

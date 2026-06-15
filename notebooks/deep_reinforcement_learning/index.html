@@ -15,6 +15,7 @@
 <head>
     <title>Deep Reinforcement Learning</title>
     
+
 <!-- viewport meta-tag for responsiveness -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,6 +52,11 @@
         });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  const webifierTheme = document.documentElement.getAttribute("data-bs-theme");
+  mermaid.initialize({ startOnLoad: true, theme: webifierTheme === "dark" ? "dark" : "default" });
+</script>
 <link rel="stylesheet" href="/supplementary/assets/css/codehilite.css">
 <link rel="stylesheet" href="/supplementary/assets/css/main.css">
 <script defer src="/supplementary/assets/js/codeblocks.js"></script>
@@ -119,6 +125,7 @@
 
 
     
+
 
 
 
@@ -292,8 +299,7 @@
             <div class="wf-content-page-body container-fluid bg-body px-4 py-4 px-md-5 py-md-5">
                 <nav aria-label="Table of contents" class="wf-content-toc is-collapsed"><h2><button aria-expanded="false" class="wf-content-toc-toggle" type="button"><span aria-hidden="true" class="wf-content-toc-toggle-icon">▸</span><span>Table of Contents</span></button></h2><ol><li class="wf-content-toc-level-2"><a href="#Introduction">Introduction</a></li><li class="wf-content-toc-level-2"><a href="#PlayingAtari">PlayingAtari</a></li><li class="wf-content-toc-level-2"><a href="#Disadvantages">Disadvantages</a></li><li class="wf-content-toc-level-2"><a href="#Pong">Pong</a></li><li class="wf-content-toc-level-2"><a href="#Environment-and-Lib">Environment and Lib</a></li><li class="wf-content-toc-level-2"><a href="#Installation">Installation</a></li><li class="wf-content-toc-level-2"><a href="#Game-structure">Game structure</a></li><li class="wf-content-toc-level-2"><a href="#Model-Structure">Model Structure</a></li><li class="wf-content-toc-level-2"><a href="#Train">Train</a></li><li class="wf-content-toc-level-2"><a href="#Defining-loss">Defining loss</a></li><li class="wf-content-toc-level-2"><a href="#Hyper-parameters">Hyper parameters</a></li><li class="wf-content-toc-level-2"><a href="#Training-process">Training process</a></li><li class="wf-content-toc-level-2"><a href="#Results-of-training">Results of training</a></li><li class="wf-content-toc-level-2"><a href="#Interpretation">Interpretation</a></li><li class="wf-content-toc-level-2"><a href="#Test">Test</a></li><li class="wf-content-toc-level-2"><a href="#Interpretation-2">Interpretation</a></li><li class="wf-content-toc-level-2"><a href="#Results">Results</a></li><li class="wf-content-toc-level-2"><a href="#Limitations">Limitations</a></li><li class="wf-content-toc-level-2"><a href="#Next-steps">Next steps</a></li><li class="wf-content-toc-level-2"><a href="#References">References</a></li></ol></nav>
 <main>
-
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=24940cc4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ffb15b51">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -317,7 +323,7 @@ An RL problem consists of some steps, and it is not easy to check whether each s
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cfb9fff6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6ede2ffa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -326,7 +332,7 @@ An RL problem consists of some steps, and it is not easy to check whether each s
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=da08a5bd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=40411156">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -335,7 +341,7 @@ An RL problem consists of some steps, and it is not easy to check whether each s
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1b50b4d9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6005487c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -372,7 +378,7 @@ a human expert on three of them.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=908f5781">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7f0cd53b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -381,7 +387,7 @@ a human expert on three of them.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3a8d3ffd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2b180552">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -390,7 +396,7 @@ a human expert on three of them.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e05a065">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d7c3f735">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -414,7 +420,7 @@ seen by watching the videos at <a href="https://adversarialpolicies.github.io/">
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1910b820">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=30f3ac65">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -423,7 +429,7 @@ seen by watching the videos at <a href="https://adversarialpolicies.github.io/">
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=180fdb6f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cb8f1deb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -437,7 +443,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2208f2ca">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1b1a64e0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -446,7 +452,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9fd7b570">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1cb3ade7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -455,7 +461,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a445b38b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=825ea15d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -463,7 +469,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=03083698">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9314be02">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -479,7 +485,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ff937260">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0e684c47">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -487,7 +493,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2a21bf6d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3be8c214">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -518,7 +524,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d5846635">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5e2781e1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -539,7 +545,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=25663262">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e12b16e3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -547,7 +553,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e7145c49">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2363affa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -566,7 +572,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f2107f8b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f7afd220">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -574,7 +580,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a6308e94">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=05a29698">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -588,7 +594,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fc2dd967">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ee34d8a6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -596,7 +602,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e8ee43c4">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=864545be">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -610,7 +616,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b2751a20">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9c7a7c01">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -618,7 +624,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=405b2a0e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4a8226d3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -636,7 +642,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9fd95500">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a275ec13">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -653,7 +659,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=39651882">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=769e7099">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -671,7 +677,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=38a9810e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=35869410">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -686,7 +692,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9e85311b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=36b8bdcd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -695,7 +701,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=193b0e20">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b7aa24b8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -703,7 +709,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=aa29f5dc">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=92742f46">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -756,7 +762,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cf80b5a9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=13e60492">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -764,7 +770,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=98310b5a">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9da68c2e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -778,7 +784,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=26137faf">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ff962867">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -787,7 +793,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fd9eed71">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1207f2e9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -796,7 +802,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=94b893b1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a15a768e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -804,7 +810,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=74aa35d1">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f06be3bb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -856,7 +862,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7fd8c37e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d26a3992">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -865,7 +871,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7d567fd5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e1681a9d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -881,7 +887,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a7047c64">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=acee1f89">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -928,7 +934,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=87cab166">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b0700055">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -937,7 +943,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ed88835d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d2a840e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -949,7 +955,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=169ddb95">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=33927184">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -1032,7 +1038,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e1ba3108">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=24ccf941">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -1041,7 +1047,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2f30a051">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7b15b6f7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -1049,7 +1055,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=50ef6c84">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c1f9b9d3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -1070,7 +1076,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=67d81332">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d3d25d4b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -1089,7 +1095,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7e33292c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d6b48aa0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -1098,7 +1104,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=95caba08">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0210051">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -1107,7 +1113,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f089ddf6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=52e47d2c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -1115,7 +1121,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0bae1315">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3ca5a568">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -1164,7 +1170,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6cd1e706">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=69593c7e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -1173,7 +1179,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=615ee709">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=437c7c53">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -1181,7 +1187,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0259dde3">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a85b45fb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -1205,7 +1211,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=65341db6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=91cc74e7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -1219,7 +1225,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f6a6f479">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=36993c46">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -1228,7 +1234,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=af5f8884">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4a7a42fb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
@@ -1247,7 +1253,7 @@ policies are robust to off-distribution observations that are not adversarially 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=de289d5c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=87659f43">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 
 <div class="jp-InputArea jp-Cell-inputArea">
