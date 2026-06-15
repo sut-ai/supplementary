@@ -1,0 +1,29 @@
+title: Dimensionality Reduction
+
+meta:
+  - name: keywords
+    content: Artificial Intelligence, Dimensionality Reduction, PCA, t-SNE, UMAP, LDA
+
+header:
+  title: Dimensionality Reduction
+  description: In this notebook, we talk about Dimensionality Reduction fundamentals. We try to reduce the dimension of the mnist dataset using PCA, t-SNE, UMAP, and LDA and visualize it to understand each method better.
+
+authors:
+  label:
+    position: top
+    text: Authors
+  kind: people
+  content:
+    - name: Mohammad Jafari
+      role: Author
+      contact:
+        - link: https://github.com/Mohammadjafari80/
+          icon: fab fa-github
+        - link: https://www.linkedin.com/in/mohammadjafari01/
+          icon: fab fa-linkedin
+        - link: mailto://mamad.jafari91@gmail.com
+          icon: fas fa-envelope
+
+comments:
+  label: false
+  kind: comments
