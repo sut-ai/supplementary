@@ -18,7 +18,7 @@ Right now we only accept educational notebooks, if you want to submit your noteb
 1. First [fork this repository](https://github.com/sut-ai/supplementary/fork)!
 2. Create a new folder in `notebooks/` (please follow lower-cased underline seperated naming convention for your folder).
 3. Create your notebook inside your newly created folder and name it `index.ipynb`. Make sure that all the necessary files (images and other potential assets) are all located inside this folder. Make sure that all your assets are referenced relative from your notebook.
-4. Create `matadata.yml` inside your notebook and fill in these informations:
+4. Create `page.yml` inside your notebook folder and fill in this page data:
 
     ```yml
     title: <change this> # shown on browser tab
@@ -47,7 +47,7 @@ Right now we only accept educational notebooks, if you want to submit your noteb
         label: false
         kind: comments
     ```
-    You can look at the [already merged notebooks](https://github.com/sut-ai/supplementary/tree/master/notebooks) to find example metadata and folder structures. To learn more about further customizations please consult the [Webifier](https://github.com/webifier/build/) documentations.
+    You can look at the [already merged notebooks](https://github.com/sut-ai/supplementary/tree/master/notebooks) to find example page data and folder structures. To learn more about further customizations please consult the [Webifier](https://github.com/webifier/build/) documentation.
 5. Add your notebook directory name to the list of notebooks in `notebooks/index.yml`
 6. After making sure that you've done everything correctly, proceed to open a pull request with your notebook directory name as the subject.
 
